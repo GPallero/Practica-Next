@@ -12,12 +12,18 @@
   <script type="text/jsx">
     const app = document.getElementById('app')
     
-    function Header() {
-      return <h1> Documentacion de Next - Empezando con React</h1>
+    function Header({title}) {
+      return <h1>{title? title : "Default title"}</h1>
     }
 
     function HomePage() {
-      return <div><Header/></div>
+      return (
+        <div>
+          <Header title="REACT 💙"/>
+          <Header title="Other title"/>
+          <Header/>
+        </div>
+      )
     }
     
     ReactDOM.render(<HomePage/>, app)
