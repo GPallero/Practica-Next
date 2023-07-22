@@ -17,11 +17,16 @@
     }
 
     function HomePage() {
+      const names = ['Ana', 'Augusto', 'Gonzalo', 'Julieta', 'Karen']
+
       return (
         <div>
           <Header title="REACT 💙"/>
           <Header title="Other title"/>
-          <Header/>
+          <Header />
+          <ul>
+            {names.map((name) => (<li key={name}>{name}</li>))}
+          </ul>
         </div>
       )
     }
