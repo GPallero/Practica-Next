@@ -17,7 +17,13 @@
     }
 
     function HomePage() {
+      const [likes, setLikes] = React.useState(0);
+
       const names = ['Ana', 'Augusto', 'Gonzalo', 'Julieta', 'Karen']
+      
+      function handleClick(){
+        setLikes(likes + 1);
+      }
 
       return (
         <div>
@@ -27,6 +33,7 @@
           <ul>
             {names.map((name) => (<li key={name}>{name}</li>))}
           </ul>
+          <button onClick={handleClick}>Like({likes})</button>
         </div>
       )
     }
