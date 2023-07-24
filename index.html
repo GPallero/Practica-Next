@@ -18,8 +18,11 @@
         
         const [likes, setLikes] = React.useState(0)
 
-        function handleClick() {
+        function addLike() {
           setLikes(likes + 1)
+        }
+        function disLike() {
+          setLikes(likes - 1)
         }
 
         return (
@@ -30,8 +33,13 @@
                 <li key={name}>{name}</li>
               ))}
             </ul>
+            
+            <div>
+              <button onClick={addLike}>+</button>
+              <p>{likes}</p>
+              <button onClick={disLike}>-</button>
+            </div>
 
-            <button onClick={handleClick}>Like ({likes})</button>
           </div>
         )
       }
