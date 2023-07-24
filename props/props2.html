@@ -6,7 +6,7 @@
   <title>Document</title>
 </head>
 <body>
-  <div id="props2"></div>  
+  <div id="props2"></div>
   
   <script src="http://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
@@ -15,6 +15,7 @@
   <script type="text/jsx">
     const tutorialProps = document.getElementById('props2')
 
+    //Adding content to the buttons using props
     function Button ({name}){
       console.log(name);
       return (<button>{name}</button>)
