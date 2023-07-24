@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="props2"></div>  
+  
+  <script src="http://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="http://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/jsx">
+    const tutorialProps = document.getElementById('props2')
+
+    function Button ({name}){
+      console.log(name);
+      return (<button>{name}</button>)
+    }
+
+    function Buttons (){
+      return (
+        <>
+          <Button name="uno"/>
+          <Button name="dos"/>
+          <Button name="tres"/>
+          <Button name="cuatro"/>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Buttons/>, props2)
+  </script>
+</body>
+</html>
