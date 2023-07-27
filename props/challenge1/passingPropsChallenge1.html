@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="passingProps"></div>  
+  
+  <script src="http://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="http://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/jsx">
+    
+    //utils
+    function getImageUrl(imageId, size = 's'){
+      return (
+        'https://i.imgur.com/' +
+        imageId +
+        size +
+        '.jpg'
+      );
+    }
+    //end utils
+
+    //Start img component
+
+    //Start
+    function Gallery() {
+      return (
+        <div>
+          <h1>Notable Scientists</h1>
+          <section className="profile">
+            <h2>Maria Skłodowska-Curie</h2>
+            
+            <img
+              className="avatar"
+              src={getImageUrl('szV5sdG')}
+              alt="Maria Skłodowska-Curie"
+              width={70}
+              height={70}
+            />
+            <ul>
+              <li>
+                <b>Profession: </b> 
+                physicist and chemist
+              </li>
+              <li>
+                <b>Awards: 4 </b> 
+                (Nobel Prize in Physics, Nobel Prize in Chemistry, Davy Medal, Matteucci Medal)
+              </li>
+              <li>
+                <b>Discovered: </b>
+                polonium (element)
+              </li>
+            </ul>
+          </section>
+          <section className="profile">
+            <h2>Katsuko Saruhashi</h2>
+            <img
+              className="avatar"
+              src={getImageUrl('YfeOqp2')}
+              alt="Katsuko Saruhashi"
+              width={70}
+              height={70}
+            />
+            <ul>
+              <li>
+                <b>Profession: </b> 
+                geochemist
+              </li>
+              <li>
+                <b>Awards: 2 </b> 
+                (Miyake Prize for geochemistry, Tanaka Prize)
+              </li>
+              <li>
+                <b>Discovered: </b>
+                a method for measuring carbon dioxide in seawater
+              </li>
+            </ul>
+          </section>
+        </div>
+      );
+    }
+    //End
+
+    ReactDOM.render(<Gallery/>, passingProps)
+  </script>
+</body>
+</html>
