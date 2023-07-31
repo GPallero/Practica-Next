@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Script para utilizar la funcion en 'utils2.js' -->
+  <script type="text/javascript" src="utils2.js"></script>
   <title>REACT Passing props to a component - Challenge 2</title>
 </head>
 <body>
@@ -13,8 +15,54 @@
   <script src="http://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="http://unpkg.com/@babel/standalone/babel.min.js"></script>
   <!-- General script   -->
-  <script type="txt/jsx">
-    
+  <script type="text/jsx">
+
+    function Avatar({person, size}){
+      let avatarSize = 's';
+      if (size>90){
+        avatarSize = 'b'
+      }
+      console.log(avatarSize);
+      return(
+        <img
+          className="Avatar"
+          src={getImageUrl(person, avatarSize)}
+          alt={person.name}
+          width={size}
+          height={size}
+        />
+      )
+    }
+
+    function Profile(){
+      return(
+        <>
+          <Avatar
+            size={20}
+            person={{
+              name: 'Gregorio Y. Zara', 
+              imageId: '7vQD0fP'
+            }}
+          />
+          <Avatar
+            size={89}
+            person={{
+              name: 'Gregorio Y. Zara', 
+              imageId: '7vQD0fP'
+            }}
+          />
+          <Avatar
+            size={91}
+            person={{
+              name: 'Gregorio Y. Zara', 
+              imageId: '7vQD0fP'
+            }}
+          />
+        </>
+      );
+    }
+
+    ReactDOM.render(<Profile/>, main)
   </script>
 </body>
 </html>
