@@ -16,7 +16,38 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    //Item function returns a 'li' element using the props of each Item
+    function Item({name, isPacked}){
+      return(<li>{name}</li>)
+    }
     
+    //Made a list of things I cannot forget when I leave home
+    function PackingList(){
+      return(
+        <section>
+          <h1>Guille Ride's Packing List</h1>
+          <ul>
+            <Item
+              isPacked={true}
+              name="Keys"/>
+            <Item
+              isPacked={true}
+              name="Wallet"
+            />
+            <Item
+              isPacked={true}
+              name="Glasses"
+            />
+            <Item
+              isPacked={false}
+              name="Cellphone"
+            />
+          </ul>
+        </section>
+      )
+    }
+
+    ReactDOM.render(<PackingList/>, main)
   </script>
 </body>
 </html>
