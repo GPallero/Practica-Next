@@ -20,7 +20,7 @@
     function Item({name, isPacked}){
       return(
         <li className="item">
-          {isPacked ? name + '✔' : name}
+          {isPacked ? (<div><del>{name}</del> packed ✔</div>)   : name}
         </li>
       )
     }
