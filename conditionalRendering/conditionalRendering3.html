@@ -19,7 +19,11 @@
     function Item({isPacked, name}){
       let itemContent = name;
       if (isPacked){
-        itemContent = name + ' ✔'
+        itemContent = (
+          <del>
+            {name + ' ✔'}
+          </del>
+        )
       }
       return (
         <li className="Item">
