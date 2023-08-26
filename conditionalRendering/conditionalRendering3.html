@@ -15,8 +15,46 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General Script -->
-  <script type="text/js">
-    
+  <script type="text/jsx">
+    function Item({isPacked, name}){
+      let itemContent = name;
+      if (isPacked){
+        itemContent = name + ' ✔'
+      }
+      return (
+        <li className="Item">
+          {itemContent}
+        </li>
+      )
+    }
+
+    function PackingList(){
+      return(
+        <section>
+          <h1>Guille's Packing List</h1>
+          <ul>  
+            <Item
+            isPacked = {true}
+            name = "Cellphone"
+            />
+            <Item
+            isPacked = {false}
+            name = "Keys"
+            />
+            <Item
+            isPacked = {false}
+            name = "Glasses"
+            />
+            <Item
+            isPacked = {false}
+            name = "Wallet"
+            />
+          </ul>
+        </section>
+        )
+    }
+
+    ReactDOM.render(<PackingList/>, main)
   </script>
 </body>
 </html>
