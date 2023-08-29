@@ -16,7 +16,37 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    function Item({name, isPacked}){
+      return(
+        <li className="item">
+          {name} {isPacked && '✔'}
+        </li>
+      )
+    }
 
+    function PackingList(){
+      return(
+        <section>
+          <h1>Guillermo's Packing List</h1>
+          <ul>
+            <Item
+              isPacked={true}
+              name="Cellphone"
+            />
+            <Item
+              isPacked={true}
+              name="Keys"
+            />
+            <Item
+              isPacked={false}
+              name="Wallet"
+            />
+          </ul>
+        </section>
+      )
+    }
+
+    ReactDOM.render(<PackingList/>, main)
   </script>
 </body>
 </html>
