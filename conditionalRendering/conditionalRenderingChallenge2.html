@@ -19,7 +19,7 @@
     function Item({name, importance}){
       return (
         <li className="Item">
-          {name}
+          {name} {importance > 0 && <i>Importance:{importance}</i>}
         </li>
       )
     }
@@ -46,12 +46,20 @@
               importance = {8}
             />
             <Item
+              name = "Nintendo"
+              importance = {0}
+            />
+            <Item
               name = "Keys"
               importance = {10}
             />
             <Item
               name = "Wallet"
               importance = {6}
+            />
+            <Item
+              name = "ball"
+              importance = {0}
             />
             <Item
               name = "Cellphone"
