@@ -30,6 +30,12 @@
 
     //For the challenge:
     function Drink({name}){
+      let drinkData = {drink:name, source:'leaf', caffeine:'15-70 mg/cup', age:'4000'}
+      
+      if(drinkData.drink != 'tea'){
+        drinkData = {drink:name, source:'leaf', caffeine:'80-185 mg/cup', age:'1000'}
+      }
+      
       return (  
         <section>
           <h1>{drinkData.drink}</h1>
@@ -39,7 +45,7 @@
             <dt>Caffeine content</dt>
             <dd>{drinkData.caffeine}</dd>
             <dt>Age</dt>
-            <dd>{drinkData.age} years</dd>
+            <dd>{drinkData.age}+ years</dd>
           </dl>
         </section>
       )
