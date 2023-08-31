@@ -30,14 +30,32 @@
         id: 2,
         name: 'Mohammad Abdus Salam',
         profession: 'physicist',
-      }, {
-        name: 'Percy Lavon Julian',
-        profession: 'chemist',
-      }, {
-        name:'Subrahmanyan Chandrasekhar',
+      },{
+        name:'Percy Lavon Julian',
+        profession: 'chemist'
+      },{
+        name: 'Subrahmanyan Chandrasekhar',
         profession: 'astrophysicist',
       }];
+
       
+      function ChemistList(){
+        //I only want to show people whose profession is 'chemist'.
+        //I can use JavaScript's 'filter()' method to return just those people.
+        const chemists = people.filter(person => person.profession === 'chemist');
+        
+        const listItems = chemists.map(person => <li>{person.name}</li>)
+        
+        return(
+          <>  
+            <h3>This lists results from filter first by profession (in this case 'chemist') and then map 
+            over the array of chemists:</h3>
+            <ul>{listItems}</ul>
+          </>
+      )
+    }
+
+    ReactDOM.render(<ChemistList/>, main)  
   </script>
 </body>
 </html>
