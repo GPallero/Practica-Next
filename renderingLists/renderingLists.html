@@ -16,7 +16,22 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-    
+    function VanillaList(){
+      return(
+        <>
+          <h3>This is a list made of pure html</h3>
+          <ul>
+            <li>Creola Katherine Johnson: mathematician</li>
+            <li>Mario José Molina-Pasquel Henríquez: chemist</li>
+            <li>Mohammad Abdus Salam: physicist</li>
+            <li>Percy Lavon Julian: chemist</li>
+            <li>Subrahmanyan Chandrasekhar: astrophysicist</li>
+          </ul>
+        </>
+      )
+    }
+
+    ReactDOM.render(<VanillaList/>, main)
   </script>
 </body>
 </html>
