@@ -32,14 +32,14 @@
     function Drink({name}){
       return (  
         <section>
-          <h1>{name}</h1>
+          <h1>{drinkData.drink}</h1>
           <dl>
             <dt>Part of plant</dt>
-            <dd>{name === 'tea' ? 'leaf' : 'bean'}</dd>
+            <dd>{drinkData.source}</dd>
             <dt>Caffeine content</dt>
-            <dd>{name === 'tea' ? '17-70 mg/cup' : '80-185 mg/cup'}</dd>
+            <dd>{drinkData.caffeine}</dd>
             <dt>Age</dt>
-            <dd>{name === 'tea' ? '4000+ years' : '1000+ years'}</dd>
+            <dd>{drinkData.age} years</dd>
           </dl>
         </section>
       )
