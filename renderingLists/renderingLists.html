@@ -16,6 +16,17 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    //Array of people we used this in the VanillaList function but just as content, now we stored that in 
+    //an array called 'people'.
+    const people = [
+      'Creola Katherine Johnson: mathematician',
+      'Mario José Molina-Pasquel Henríquez: chemist',
+      'Mohammad Abdus Salam: physicist',
+      'Percy Lavon Julian: chemist',
+      'Subrahmanyan Chandrasekhar: astrophysicist'
+    ]
+    
+    //VanillaList returns a list of pure html
     function VanillaList(){
       return(
         <>
@@ -31,7 +42,17 @@
       )
     }
 
-    ReactDOM.render(<VanillaList/>, main)
+    function MapedList(){
+      const listItems = people.map(person => <li>{person}</li>)
+      return (
+        <>
+          <h3>This is a list created with the JavaScript array method 'map'</h3>
+          <ul>{listItems}</ul>
+        </>
+      )
+    }
+
+    ReactDOM.render(<MapedList/>, main)
   </script>
 </body>
 </html>
