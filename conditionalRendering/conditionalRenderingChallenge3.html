@@ -23,6 +23,7 @@
           <h1>Statement of Challenge 3</h1>
           <h2>Refactor a series of '? :' to 'if' and variables</h2>
           <p>The 'Drink' component starts with a series of '? :' conditions to show different information depending of whether the 'name' prop is "tea" or "coffee". The problem is that the information about each drink is spread across multiple conditions. Refactor the code to use a single 'if' statement instead of three '? ::' conditions</p>
+          <h2>Now goes the solution:</h2>
         </section>
       )
     }
@@ -46,10 +47,13 @@
 
     function DrinkList (){
       return(
-        <div>
-          <Drink name="tea"/>
-          <Drink name="coffee"/>
-        </div>
+        <section>
+          <Intro/>
+          <div>
+            <Drink name="tea"/>
+            <Drink name="coffee"/>
+          </div>
+        </section>
       )
     }
 
