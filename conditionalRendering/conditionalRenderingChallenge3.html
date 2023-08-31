@@ -16,6 +16,7 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    //Add an introduction to the document, so that it is understood what it is about the challenge
     function Intro(){
       return(
         <section>
@@ -26,7 +27,33 @@
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    //For the challenge:
+    function Drink({name}){
+      return (  
+        <section>
+          <h1>{name}</h1>
+          <dl>
+            <dt>Part of plant</dt>
+            <dd>{name === 'tea' ? 'leaf' : 'bean'}</dd>
+            <dt>Caffeine content</dt>
+            <dd>{name === 'tea' ? '17-70 mg/cup' : '80-185 mg/cup'}</dd>
+            <dt>Age</dt>
+            <dd>{name === 'tea' ? '4000+ years' : '1000+ years'}</dd>
+          </dl>
+        </section>
+      )
+    }
+
+    function DrinkList (){
+      return(
+        <div>
+          <Drink name="tea"/>
+          <Drink name="coffee"/>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<DrinkList/>, main)
     </script>
   </body>
 </html>
