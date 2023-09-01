@@ -63,11 +63,30 @@
     //The next function is used to return de URL of the required image:
     function getImageURL(person){
       return (
-        'https://i.imgur.com/' + person.imageID + 's.jpg'
+        'https://i.imgur.com/' + person.imageId + 's.jpg'
+      );
+    }
+
+    //Function List, used to return the list of people:
+    function List(){
+      //Map people to get an array of list items:
+      const listItems = people.map(person =>
+        <li key={person.id}>
+          <img src={getImageURL(person)} alt={person.name}/>
+          <p><b>{person.name}:</b>{' ' + person.profession + ' '} known for {person.acomplishment}</p>
+        </li>
+      )
+
+      //Return an article with a header and a list filled with the listItems array
+      return(
+        <article>
+          <h1>Scientists</h1>
+          <ul>{listItems}</ul>
+        </article>
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    ReactDOM.render(<List/>, main)
   </script>
 </body>
 </html>
