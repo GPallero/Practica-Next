@@ -22,20 +22,32 @@
         id: 0,
         name: 'Creola Katherine Johnson',
         profession: 'mathematician',
+        acomplishment:'spaceflightcalculations',
+        imageId: 'MK3eW3A'
       }, {
         id: 1,
         name: 'Mario José Molina-Pasquel Henríquez',
         profession: 'chemist',
+        acomplishment:'discovery of Arctic ozone hole',
+        imageId: 'mynHUSa'
       }, {
         id: 2,
         name: 'Mohammad Abdus Salam',
         profession: 'physicist',
+        acomplishment: 'electromagnetism theory',
+        imageId: 'bE7W1ji'
       },{
+        id:3,
         name:'Percy Lavon Julian',
         profession: 'chemist'
+        acomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
+        imageId: 'IOjWm71'
       },{
+        id: 4,
         name: 'Subrahmanyan Chandrasekhar',
         profession: 'astrophysicist',
+        acomplishment: 'white dwarf star mass calculations',
+        imageId: 'lrWQx8l'
       }];
 
       
@@ -44,7 +56,11 @@
         //I can use JavaScript's 'filter()' method to return just those people.
         const chemists = people.filter(person => person.profession === 'chemist');
         
-        const listItems = chemists.map(person => <li>{person.name}</li>)
+        const listItems = chemists.map(person =>
+        <li>
+          {person.name}
+        </li>
+        )
         
         return(
           <>  
