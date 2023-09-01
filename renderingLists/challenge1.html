@@ -27,8 +27,7 @@
       )
     }
 
-    //Next comes the Data, in a normal project I would use an external '.js' document to store it
-    //but for now we gonna use just this document for everything.
+    //Next comes the Data, stored in an array of objects called 'people':
     const people = [{
       id:0,
       name: 'Creola Katherine Johnson',
@@ -60,6 +59,13 @@
       acomplishment: 'withedwarf star mass calculations',
       imageId: 'lrWQx8l'
     }];
+
+    //The next function is used to return de URL of the required image:
+    function getImageURL(person){
+      return (
+        'https://i.imgur.com/' + person.imageID + 's.jpg'
+      )
+    }
 
     ReactDOM.render(<Intro/>, main)
   </script>
