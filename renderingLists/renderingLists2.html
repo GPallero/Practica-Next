@@ -58,7 +58,11 @@
         
         const listItems = chemists.map(person =>
         <li>
-          {person.name}
+          <img src={getImageUrl(person)} alt={person.name}/>
+          <p>
+            <b>{person.name}:</b>
+            {' ' + person.profesion + ' '} 
+            known for {person.acomplishment}</p>
         </li>
         )
         
