@@ -39,7 +39,7 @@
       },{
         id:3,
         name:'Percy Lavon Julian',
-        profession: 'chemist'
+        profession: 'chemist',
         acomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
         imageId: 'IOjWm71'
       },{
@@ -50,12 +50,19 @@
         imageId: 'lrWQx8l'
       }];
 
+      //Function to get the source of the image:
+      function getImageUrl(person){
+        return(
+          'https://i.imgur.com/' + person.imageId + 's.jpg'
+        );
+      }
       
       function ChemistList(){
         //I only want to show people whose profession is 'chemist'.
         //I can use JavaScript's 'filter()' method to return just those people.
         const chemists = people.filter(person => person.profession === 'chemist');
         
+        //Mapping:
         const listItems = chemists.map(person =>
         <li>
           <img src={getImageUrl(person)} alt={person.name}/>
