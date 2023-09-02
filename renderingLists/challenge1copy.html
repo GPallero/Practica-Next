@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rendering Lists - Challenge 1</title>
+</head>
+<body>
+  <!-- Div for rendering -->
+  <div id="main"></div>
+  
+  <!-- Scripts for React, React DOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General script -->
+  <script type="text/jsx">
+    //Intro functions returns the challenge statement and other relevant information about the 
+    //exercise:
+    function Intro(){
+      return (
+        <h1>This is a copy of 'challenge 1' to made some tests</h1>
+      )
+    }
+
+    //Next comes the Data, stored in an array of objects called 'people':
+    const people = [{
+      id:0,
+      name: 'Creola Katherine Johnson',
+      profession: 'mathematician',
+      acomplishment: 'spaceflight calculations',
+      imageId: 'MK3eW3a'
+    },{
+      id: 1,
+      name: 'Mario José Molina-Pasquel Henríquez',
+      profession: 'chemist',
+      acomplishment: 'discovery of Arctic ozone hole',
+      imageId: 'mynHUSa'
+    },{
+      id: 2,
+      name: 'Mohammad Abdus Salam',
+      profession: 'physicist',
+      acomplishment: 'electromagnetism theory',
+      imageId: 'bE7W1ji'
+    },{
+      id: 3,
+      name: 'Percy Lavon Julian',
+      profession: 'chemist', 
+      acomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
+      imageId: 'IOjWm71'
+    },{
+      id: 4,
+      name: 'Subrahmanyan Chandrasekhar',
+      profession: 'astrophysicist',
+      acomplishment: 'withedwarf star mass calculations',
+      imageId: 'lrWQx8l'
+    }];
+
+    //The next function is used to return de URL of the required image:
+    function getImageURL(person){
+      return (
+        'https://i.imgur.com/' + person.imageId + 's.jpg'
+      );
+    }
+
+    //Function List, used to return the list of people:
+    function List(){
+      //Map people to get an array of list items:
+      const listItems = people.map(person =>
+        <li key={person.id}>
+          <img src={getImageURL(person)} alt={person.name}/>
+          <p><b>{person.name}:</b>{' ' + person.profession + ' '} known for {person.acomplishment}</p>
+        </li>
+      )
+
+      //Return an article with a header and a list filled with the listItems array
+      return(
+        <article>
+          <Intro/>
+          <h1>Scientists</h1>
+          <ul>{listItems}</ul>
+        </article>
+      )
+    }
+
+    ReactDOM.render(<List/>, main)
+  </script>
+</body>
+</html>
