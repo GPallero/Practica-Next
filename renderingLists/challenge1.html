@@ -67,26 +67,60 @@
       );
     }
 
-    //Function List, used to return the list of people:
-    function List(){
-      //Map people to get an array of list items:
-      const listItems = people.map(person =>
+    //Function ChemistsList, used to return the list of Chemists:
+    function ChemistsList(){
+      //Filter by person.profession
+      const chemists = people.filter(person => person.profession === 'chemist')
+      
+      //Map people to get an array of chemists items:
+      const chemistsItem = chemists.map(person =>
         <li key={person.id}>
           <img src={getImageURL(person)} alt={person.name}/>
           <p><b>{person.name}:</b>{' ' + person.profession + ' '} known for {person.acomplishment}</p>
         </li>
       )
 
-      //Return an article with a header and a list filled with the listItems array
+      //Return an article with a header and a list filled with the chemistsItem array
       return(
         <article>
-          <h1>Scientists</h1>
-          <ul>{listItems}</ul>
+          <h1>Chemists</h1>
+          <ul>{chemistsItem}</ul>
         </article>
       )
     }
 
-    ReactDOM.render(<List/>, main)
+    function OthersList(){
+      //Filter by person.profession
+      const others = people.filter(person => person.profession != 'chemist')
+      
+      //Map people to get an array of others items:
+      const othersItem = others.map(person =>
+        <li key={person.id}>
+          <img src={getImageURL(person)} alt={person.name}/>
+          <p><b>{person.name}:</b>{' ' + person.profession + ' '} known for {person.acomplishment}</p>
+        </li>
+      )
+
+      //Return an article with a header and a list filled with the otherstItem array
+      return(
+        <article>
+          <h1>Others</h1>
+          <ul>{othersItem}</ul>
+        </article>
+      )
+    }
+
+    function CallToList(){
+      return (
+        <>  
+          <Intro/>
+          <ChemistsList/>
+          <OthersList/>
+        </>
+      )
+    }
+
+    ReactDOM.render(<CallToList/>, main)
   </script>
 </body>
 </html>
