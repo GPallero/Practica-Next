@@ -16,7 +16,29 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-    
+    //Intro function returns the challenge statement and other relevant information about the exercise:
+    function Intro(){
+      return(
+        <section>
+          <h1>Challenge 2 - Nested lists in one component</h1>
+          <p>Make a List of recipes from 'recipes' array! For each recipe in the array, display its name as an 'h2' element and lists its ingredients in a 'ul' element.</p>
+        </section>
+      )
+    }
+
+    const recipes = [{
+      id:'greek-salad',
+      name: 'Greek Salad',
+      ingredients: ['tomatoes', 'cucumber', 'onion', 'olives', 'feta']
+    },{
+      id: 'hawaiian-pizza',
+      name: 'Hawaiian Pizza',
+      ingredients: ['pizza crust', 'pizza sauce', 'mozzarella', 'ham', 'pineapple']
+    },{
+      id:'hummus',
+      name:'Hummus',
+      ingredients: ['chickpeas', 'olive oil', 'garlic cloves', 'lemon', 'tahini']
+    }];
   </script>
 </body>
 </html>
