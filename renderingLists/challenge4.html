@@ -16,7 +16,24 @@
   
   <!-- General Script -->
   <script type="text/jsx">
+    //Intro function returns the challenge statement and other relevant information about the challenge:
+    function Intro(){
+      return(
+        <div>
+          <h1>Challenge 4 - List with separator</h1>
+          <p>This example renders a famous haiku by Katsushika Hokusai, with each line wrapped in a <b>p</b> tag. My job is to insert an <b>hr</b> separator between each paragraph. The resulting structure should look like this:</p>
+          <article>
+            <p>I write, erase, rewrite</p>
+            <hr/>
+            <p>Erase again, and then</p>
+            <hr/>
+            <p>A poppy blooms</p>
+          </article>
+        </div>
+      )
+    }
 
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
