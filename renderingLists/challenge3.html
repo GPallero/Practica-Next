@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Challenge 3 - Extracting a list item component</title>
 </head>
 <body>
@@ -42,7 +42,7 @@
 
     function Recipe({id, name, ingredients}){
       return(
-        <div key={id}>
+        <div>
           <h2>{name}</h2>
           <ul>
             {ingredients.map(ingredient => <li key={ingredient}>{ingredient}</li>)}
