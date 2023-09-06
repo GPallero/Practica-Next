@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Challenge 3 - Extracting a list item component</title>
+</head>
+<body>
+  <!-- Div for render  -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, React DOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General Script -->
+  <script type="text/jsx">
+    //Intro function returns the challenge statement and other relevant information about the challenge:
+    function Intro(){
+      return(
+        <section>
+          <h1>Challenge 3 - Extracting a list item component</h1>
+          <p>The <b>RecipeList</b> component contains two nested <b>map</b> calls. To simplify it, extract a <b>Recipe</b> component from it wich will accept <b>id</b>, <b>name</b> and <b>ingredients</b> props. Where do you place the outer <b>key</b> and why?</p>
+        </section>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
+  </script>
+</body>
+</html>
