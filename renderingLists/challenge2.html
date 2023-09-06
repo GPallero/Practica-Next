@@ -48,7 +48,6 @@
       <div key={recipe.id}>
         <h2>{recipe.name}</h2>
         <ul>
-          //Second map to iterate throug the ingredients of each recipe
           {recipe.ingredients.map (ingredient => <li key={ingredient}>{ingredient}</li>)}
         </ul>
       </div>
