@@ -39,11 +39,31 @@
       lines: [
       'I write, erase, rewrite',
       'Erase again, and then',
-      'A poppy blooms'
+      'A poppy blooms',
+      'The poem could go on ...',
+      'But it does not'
       ]
     };
 
-    ReactDOM.render(<Intro/>, main)
+    function Poem(){
+      return (
+        <div>
+          <Intro/>
+          
+          <article>
+            <h2>Poem:</h2>
+            {poem.lines.map((line, index) =>
+              <div key={index}>
+                <p>{line}</p>
+                {index < poem.lines.length -1 ? <hr/> : null}
+              </div>
+              )}
+            </article>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Poem/>, main)
   </script>
 </body>
 </html>
