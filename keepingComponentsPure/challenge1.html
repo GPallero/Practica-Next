@@ -34,18 +34,15 @@
       let hours = new Date()
       let hour = hours.getHours();
       let className;
-      console.log(hour);
       if ( hour >= 0 && hour <= 6){
-        console.log("Se aplicara clase night");
         className = 'night'
       } else {
-        console.log("Se aplicara clase day");
         className = 'day'
       }
       return (
         <div>
           <Intro/>
-          <h1 className={className}>{hours.toLocaleTimeString()}</h1>
+          <h1 id="time" className={className}>{hours.toLocaleTimeString()}</h1>
         </div>
       )
     }
