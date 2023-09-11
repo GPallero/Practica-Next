@@ -15,6 +15,21 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General Script -->
-  <script type="text/jsx"></script>
+  <script type="text/jsx">
+    //As I started to use, the Intro function returns the statement of the challenge and other useful info or stuff 
+    //that I consider of relevance.
+    function Intro(){
+      return (
+        <div>
+          <h1>Challenge 1 - Fix a broken clock</h1>
+          <p>The Clock function tries to set the 'h1's CSS class to 'night' during the time from midnight to six hours in the morning, and 'day' at all other times. However, it doesn't work. Can you fix this component?</p>
+          <p>You can verify wether your solution works by temporarily changing the computer's timezone. When the current time is between midnight and six in the morning, the clock should have inverted colors!</p>
+          <p>See the original code (the broken code) in <a href="https://react.dev/learn/keeping-components-pure#challenges">Challenge 1 - Fix a broken clock</a></p>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
+  </script>
 </body>
 </html>
