@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="challenge1.css">
   <title>Keeping Components Pure - Challenge 1</title>
 </head>
 <body>
@@ -33,9 +34,12 @@
       let hours = new Date()
       let hour = hours.getHours();
       let className;
-      if ( hour => 0 && hour <=6){
+      console.log(hour);
+      if ( hour >= 0 && hour <= 6){
+        console.log("Se aplicara clase night");
         className = 'night'
       } else {
+        console.log("Se aplicara clase day");
         className = 'day'
       }
       return (
