@@ -29,7 +29,24 @@
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    function Clock(){
+      let hours = new Date()
+      let hour = hours.getHours();
+      let className;
+      if ( hour => 0 && hour <=6){
+        className = 'night'
+      } else {
+        className = 'day'
+      }
+      return (
+        <div>
+          <Intro/>
+          <h1 className={className}>{hours.toLocaleTimeString()}</h1>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Clock/>, main)
   </script>
 </body>
 </html>
