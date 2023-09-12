@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="challenge1.css">
+  <title>Keeping Components Pure - Upgrade Challenge 1</title>
+</head>
+<body onload="startClock()">
+  <!-- Script for rendering -->
+  <div id="main">
+    <h1 id="time"></h1>
+  </div>
+
+  <!-- Scripts for React, React DOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General Script -->
+  <script type="text/jsx">
+    function startClock(){
+      const now = new Date();
+      let h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+      h = checkTime(h)
+      m = checkTime(m);
+      s = checkTime(s);
+
+      if (h >= 0 && h <= 6){
+        document.getElementById('time').classList.remove('day')
+        document.getElementById('time').classList.add('night')
+      } else {
+        document.getElementById('time').classList.remove('night')
+        document.getElementById('time').classList.add('day')
+      }
+
+      document.getElementById('time').innerHTML = h + ":" + m + ":" + s
+      setTimeout(startClock, 1000)
+    }
+
+    function checkTime(i){
+      if (i < 10){i = "0" + i}; //add zero in front of numbers < 10
+      return i;
+    }
+  </script>
+</body>
+</html>
