@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="challenge2.css">
   <title>Keeping Components Pure - Challenge 2</title>
 </head>
 <body>
@@ -72,7 +73,7 @@
     // Function Avatar returns a div with an image of the person required:
     function Avatar ({person}){
       return(
-        <div>
+        <div className="avatar">
           <img
             src={getImageUrl({person})} 
             alt={person.name}
