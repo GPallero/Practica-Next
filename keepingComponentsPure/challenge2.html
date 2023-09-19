@@ -28,6 +28,17 @@
       )
     }
 
+    // Begining GetImageUrl function:
+    function getImageUrl({person, size = 's'}){
+      return (
+        'https://i.imgur.com/' +
+        person.imageId +
+        size + 
+        '.jpg'
+      );
+    }
+
+
     ReactDOM.render(<Intro/>, main)
   </script>
 </body>
