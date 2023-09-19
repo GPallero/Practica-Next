@@ -16,6 +16,9 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    //To acces useEffect:
+    const {useState} = React
+
     //Intro function returns the statement of the challenge and any other relevant info about the challenge -->
     function Intro(){
       return(
@@ -38,8 +41,21 @@
       );
     }
 
+    //Attempt to create a collapsable panel:
+    function Panel({ children }){
+      const [open, setOpen] = useState(true);
+      return(
+        <section className='panel'>
+          <button onClick={() =>setOpen(!open)}>
+            {open ? 'Collapse' : 'Expand'}
+          </button>
+          {open && children}
+        </section>
+      );
+    }
 
-    ReactDOM.render(<Intro/>, main)
+
+    ReactDOM.render(<Panel/>, main)
   </script>
 </body>
 </html>
