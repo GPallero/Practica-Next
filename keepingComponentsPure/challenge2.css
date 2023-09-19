@@ -1,0 +1,10 @@
+.panel{
+  width: 200px;
+  margin-top: 10px;
+  border: solid #c9c0c0 thin;
+  border-radius: 10px;
+}
+
+.avatar img{
+  border-radius: 50%;
+}
