@@ -54,8 +54,30 @@
       );
     }
 
+    // Function Profile would return a Panel with a Header and an Avatar:
+    function Profile({ person }){
+      return (
+        <Panel>
+          <Header name={person.name}/>
+        </Panel>
+      )
+    }
 
-    ReactDOM.render(<Panel/>, main)
+    // Function Header just returns an h1 tag with the name of the person
+    function Header({ name }){
+      return <h1>{name}</h1>
+    }
+
+    // Function App this begins everything it returns the two Profile components:
+    function App(){
+      return(
+        <div>
+          <Profile person={{imageId:'lrWQx8l', name:'Subrahmanyan Chandrasekhar'}}/>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<App/>, main)
   </script>
 </body>
 </html>
