@@ -61,6 +61,7 @@
       );
     }
 
+    //Clock
     function useTime() {
       const [time, setTime] = useState(() => new Date());
       useEffect(() => {
@@ -73,13 +74,16 @@
     }
 
     function StoryTray ({ stories }){
+      //Use a copy of stories to prevent mutation:
       const displayStories = stories.slice()
       
+      //Push the fake story into the copy of stories
       displayStories.push({
         id: 'fakeStorie', 
         label: 'Create Story'
       })
 
+      //Map displayStories
       return (
         <ul>
           {displayStories.map(story =>(
