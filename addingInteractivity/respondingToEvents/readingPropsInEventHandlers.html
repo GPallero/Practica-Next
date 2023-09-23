@@ -16,7 +16,39 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    //Intro function will return relevant info about the document.
+    function Intro(){
+      return(
+        <div>
+          <h1>Reading Props in Event Handlers</h1>
+          <p>Because event handlers are declared inside of a component, they have acces to the component's props. Here is a button that, when clicked shows an alert with its 'message' prop:</p>
+        </div>  
+      )
+    }
+
+    function AlertButton({ message, children}){
+      return (
+        <button onClick={ () => alert(message)}>
+          {children}
+        </button>
+      )
+    }
+
+    function Toolbar(){
+      return (
+        <div>
+          <Intro/>
+          <AlertButton message="I'm button 1!">
+            Button 1
+          </AlertButton>
+          <AlertButton message="I'm button 2!">
+            Button 2
+          </AlertButton>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<Toolbar/>, main)
   </script>
 </body>
 </html>
