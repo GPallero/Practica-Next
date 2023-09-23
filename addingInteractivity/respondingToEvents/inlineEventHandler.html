@@ -19,7 +19,15 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    function Button(){
+      return (
+        <button onClick={function handleClick(){alert("You clicked me !")}}>Click Me!</button>
+      )
+    }
 
+    
+
+    ReactDOM.render(<Button/>, main)
   </script>
 </body>
 </html>
