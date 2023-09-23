@@ -6,6 +6,35 @@
   <title>Adding Event Handlers</title>
 </head>
 <body>
-  
+  <!-- Div for rendering -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, React DOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General script -->
+  <script type="text/jsx">
+    //The function Button will return a button that shows an alert when clicked
+    //To achieve this I follow three steps:
+    function Button(){
+      //1- Inside the component Button, I create another function called 'handleClick':
+      
+      function handleClick(){
+        //2- Here I implement the logic (Use alert to show the message):
+        alert("You clicked me!");
+      }
+
+      //3- Add 'onClick={handleClick} to the <button> JSX and return that <button>'
+      return(
+        <button onClick={handleClick}>
+          Click me !
+        </button>
+      )
+    }
+
+    ReactDOM.render(<Button/>, main)
+  </script>
 </body>
 </html>
