@@ -21,13 +21,26 @@
   <script type="text/jsx">
     function Button(){
       return (
-        <button onClick={function handleClick(){alert("You clicked me !")}}>Click Me!</button>
+        <button onClick={function handleClick(){alert("You clicked me ! (Inline Event Handler)")}}>Click Me!</button>
       )
     }
 
-    
+    function OtherButton(){
+      return (
+        <button onClick={ () => {alert("You clicked me ! (Arrow function event handler)")}}>Click Me too!</button>
+      )
+    }
 
-    ReactDOM.render(<Button/>, main)
+    function Buttons(){
+      return (
+        <>
+          <Button/>
+          <OtherButton/>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Buttons/>, main)
   </script>
 </body>
 </html>
