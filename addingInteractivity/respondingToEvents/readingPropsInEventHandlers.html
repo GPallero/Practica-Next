@@ -26,6 +26,12 @@
       )
     }
 
+    function Achievement(){
+      return (
+        <h3>This lets these two buttons show different messages according to their 'message' prop value.</h3>
+      )
+    }
+    
     function AlertButton({ message, children}){
       return (
         <button onClick={ () => alert(message)}>
@@ -44,6 +50,7 @@
           <AlertButton message="I'm button 2!">
             Button 2
           </AlertButton>
+          <Achievement/>
         </div>
       );
     }
