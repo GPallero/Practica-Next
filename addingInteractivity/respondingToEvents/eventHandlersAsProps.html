@@ -21,7 +21,7 @@
         <div>
           <h1>Passing Event Handlers as Props</h1>
           <p>Often I'll want the parent component to specify a child's event handler. Consider Buttons:
-            depending on I'm using a 'Button' component, I might want to execute a different function--perhaps one makes a front flip and another lands with a rol (If you reach here, these are <b>parkour moves</b>. I practice parkour, so I'm trying to apply something I like in the examples other than just copy the documentation).
+            depending on I'm using a 'Button' component, I might want to execute a different function--perhaps one makes a parkour move and another makes a reception (If you reach here, I'm trying to made examples with things that I know. I practice parkour, so I'm trying to apply that in here other than just copy the documentation.
           </p>
           <p>To do this, pass a prop the component receives from its parent as the event handler like so:</p>
           <p>Check the html of this page or visit: <a href="https://react.dev/learn/responding-to-events#passing-event-handlers-as-props">Passing Event Handlers as Props</a></p>
@@ -29,7 +29,42 @@
       )
     }
 
+    function Button({ onClick, children }){
+      return(
+        <button onClick={onClick}>
+          {children}
+        </button>
+      )
+    }
 
+    function ParkourMove({ parkourMove }){
+      function handleParkourMove(){
+        alert(`Making ${parkourMove}!`);
+      }
+
+      return (
+        <Button onClick={handleParkourMove}>
+          Make {parkourMove}!
+        </Button>
+      )
+    }
+
+    function MoveReception({ reception }){
+      return (
+        <Button onClick={ () => alert(`${reception}`)}>Reception!</Button>
+      )
+    }
+
+    function Toolbar(){
+      return(
+        <div>
+          <ParkourMove parkourMove="Front flip"/>
+          <MoveReception reception="Rol"/>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Toolbar/>, main)
   </script>
 </body>
 </html>
