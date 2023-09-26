@@ -15,6 +15,18 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General script -->
-  <script type="text/jsx"></script>
+  <script type="text/jsx">
+    function Intro(){
+      const form = "<form>"
+      return(
+        <div>
+          <h1>Preventing Default Behavior</h1>
+          <p>Some browser events have default behavior associated with them. For example, a <code>{form}</code> submit event, wich happens when a button inside of it is clicked, will reload the whole page by default</p>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
+  </script>
 </body>
 </html>
