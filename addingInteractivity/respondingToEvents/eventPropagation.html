@@ -25,6 +25,15 @@
         </div>
       )
     }
+
+    function Toolbar(){
+      return(
+        <div className="Toolbar" onClick={ () => {alert('You clicked the Toolbar')}}>
+          <button onClick={ () => {Alert('You clicked Button A')} }>Button A</button>
+          <button onClick={ () => {Alert('You clicked Button B')} }>Button B</button>
+        </div>
+      )
+    }
   </script>
 </body>
 </html>
