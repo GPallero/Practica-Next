@@ -29,11 +29,13 @@
     function Toolbar(){
       return(
         <div className="Toolbar" onClick={ () => {alert('You clicked the Toolbar')}}>
-          <button onClick={ () => {Alert('You clicked Button A')} }>Button A</button>
-          <button onClick={ () => {Alert('You clicked Button B')} }>Button B</button>
+          <button onClick={ () => alert('You clicked Button A') }>Button A</button>
+          <button onClick={ () => alert('You clicked Button B') }>Button B</button>
         </div>
       )
     }
+
+    ReactDOM.render(<Toolbar/>, main)
   </script>
 </body>
 </html>
