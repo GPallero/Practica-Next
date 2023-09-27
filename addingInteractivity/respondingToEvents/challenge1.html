@@ -25,6 +25,36 @@
         </div>
       )
     }
+
+    function LightSwitch(){
+      function handleClick(){
+        let bodyStyle = document.body.style;
+        if(bodyStyle.backgroundColor === 'black'){
+          bodyStyle.backgroundColor = 'white';
+          bodyStyle.color = 'black'
+        } else {
+          bodyStyle.backgroundColor = 'black'
+          bodyStyle.color = 'withe'
+        }
+      }
+
+      return (
+        <div>
+          <Intro/>
+          <button onClick={e => {
+            handleClick;
+            alert("Uhhhh ... I'm broken. I have the function but I don't call it");
+          }}>
+            Toggle the lights
+          </button>
+          <button onClick={handleClick}>
+            Toggle the lights
+          </button>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<LightSwitch/>, main)
   </script>
 </body>
 </html>
