@@ -31,10 +31,10 @@
         let bodyStyle = document.body.style;
         if(bodyStyle.backgroundColor === 'black'){
           bodyStyle.backgroundColor = 'white';
-          bodyStyle.color = 'black'
+          bodyStyle.color= 'black'
         } else {
           bodyStyle.backgroundColor = 'black'
-          bodyStyle.color = 'withe'
+          bodyStyle.color = 'white';
         }
       }
 
@@ -43,7 +43,7 @@
           <Intro/>
           <button onClick={e => {
             handleClick;
-            alert("Uhhhh ... I'm broken. I have the function but I don't call it");
+            alert("Uhhhh ... I'm broken. I have the function but I don't call it didn't work");
           }}>
             Toggle the lights
           </button>
