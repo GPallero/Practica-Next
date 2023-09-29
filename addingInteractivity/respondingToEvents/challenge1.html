@@ -26,6 +26,16 @@
       )
     }
 
+    function Outro(){
+      return (
+        <div>
+          <h3>Some aditional comments:</h3>
+          <p>In this challenge I wanted to keep the broken button and the working button. I added another line of code in the broken button (or the 'not working properly button').</p>
+          <p>In the 'Button A' I use an anonymous function, is because of that that I pass the 'handleClick' function instead of call it just like it was in the statement of the challenge.</p>
+        </div>
+      )
+    }
+
     function LightSwitch(){
       function handleClick(){
         let bodyStyle = document.body.style;
@@ -43,7 +53,7 @@
           <Intro/>
           <button onClick={e => {
             handleClick;
-            alert("Uhhhh ... I'm broken. I have the function but I don't call it didn't work");
+            alert("Uhhhh ... I'm broken.");
           }}>
             Toggle the lights
           </button>
