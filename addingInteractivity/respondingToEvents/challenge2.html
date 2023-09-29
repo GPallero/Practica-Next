@@ -16,6 +16,9 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    //This line allows me to use 'useState' hook
+    const { useState } =  React
+
     function Intro(){
       return (
         <div>
@@ -28,6 +31,43 @@
         </div>
       )
     }
+
+    function ChangeColor({ onChangeColor }){
+      return(
+        <button>
+          Change Color
+        </button>
+      )
+    }
+
+    function App(){
+      const [clicks, setClicks] = useState(0);
+      
+      function handleClickOutside(){
+        setClicks(c => c + 1);
+      }
+
+      function getRandomLightColor(){
+        let r = 150 + Math.round(100 + Math.random());
+        let g = 150 + Math.round(100 + Math.random());
+        let b = 150 + Math.round(100 + Math.random());
+        return `rgb(${r}, ${g}, ${b})`;
+      }
+
+      function handleChangeColor(){
+        let bodyStyle = document.body.style;
+        bodyStyle.backgroundColor = getRandomLightColor();
+      }
+
+      return (
+        <div onClick={handleClickOutside}>
+          <ChangeColor onClick={handleChangeColor}/>
+          <h2>Clicks on this page: {clicks}</h2>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<App/>, main)
   </script>
 </body>
 </html>
