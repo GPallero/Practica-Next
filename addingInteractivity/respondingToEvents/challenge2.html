@@ -61,7 +61,10 @@
 
       return (
         <div onClick={handleClickOutside}>
-          <ChangeColor onChangeColor={handleChangeColor}/>
+          <ChangeColor onChangeColor={e => {
+            e.stopPropagation();
+            handleChangeColor();
+          }}/>
           <h2>Clicks on this page: {clicks}</h2>
         </div>
       )
