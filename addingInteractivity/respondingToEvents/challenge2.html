@@ -34,7 +34,7 @@
 
     function ChangeColor({ onChangeColor }){
       return(
-        <button>
+        <button onClick={onChangeColor}>
           Change Color
         </button>
       )
@@ -51,6 +51,7 @@
         let r = 150 + Math.round(100 + Math.random());
         let g = 150 + Math.round(100 + Math.random());
         let b = 150 + Math.round(100 + Math.random());
+        console.log(`rgb(${r}, ${g}, ${b})`)
         return `rgb(${r}, ${g}, ${b})`;
       }
 
@@ -61,7 +62,7 @@
 
       return (
         <div onClick={handleClickOutside}>
-          <ChangeColor onClick={handleChangeColor}/>
+          <ChangeColor onChangeColor={handleChangeColor}/>
           <h2>Clicks on this page: {clicks}</h2>
         </div>
       )
