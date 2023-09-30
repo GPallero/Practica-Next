@@ -128,11 +128,35 @@
       )
     }
 
+    function Outro(){
+      return (
+        <div>
+          <h2>Explanation:</h2>
+          <p>The <mark>'handleClick'</mark> event handler is updating a local variable, <mark>'index'</mark>. But two things prevent that change from being visible:</p>
+          <ul>
+            <li>Local variables don't persist between renders. When React renders this component a second time, it renders it from scratch -- It doesn't consider any changes to the local variables.</li>
+            <li>Changes to local variables won't trigger renders. React doesn't realize it needs to render the component again with the new data.</li>
+          </ul>
+          <p>To update a component with new data, two things need to happen:</p>
+          <ul>
+            <li>Retain the data between renders.</li>
+            <li>Trigger React to render the component with new data (re-rendering).</li>
+          </ul>
+          <p>The <mark>useState</mark> Hook provides those two things:</p>
+          <ul>
+            <li>A state variable to retain the data between renders.</li>
+            <li>A state setter function to update the variable and trigger React to render the component again.</li>
+          </ul>
+        </div>
+      )
+    }
+
     function Page(){
       return(
         <div>
           <Intro/>
           <Gallery/>
+          <Outro/>
         </div>
       )
     }
