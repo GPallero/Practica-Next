@@ -14,12 +14,30 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <!-- General Script -->
-  <script text="text/jsx">
+  <!-- General script -->
+  <script type="text/jsx">
+    //For useState Hook:
+    const { useState } = React
 
+    function Gallery(){
+      const [index, setIndex] = useState(0);
+
+      function handleClick(){
+        setIndex(index + 1);
+      }
+
+      let sculpture = sculptureList[index]
+      return(
+          <div>
+            <button onClick={handleClick}>Next</button>
+            <h1>{sculpture.name}</h1>
+          </div>
+      )
+    }
+
+    ReactDOM.render(<Gallery/>, main)
   </script>
 
-  <!-- Script with the array of sculptures -->
   <script src="sculptureList.js"></script>
 </body>
 </html>
