@@ -16,7 +16,40 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-    
+    const { useState } = React
+
+    function Intro(){
+      return (
+        <div>
+          <h1>A components Memory</h1>
+          <h2>Challenge 4 - Remove unnecessary state</h2>
+          <p>When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason it says only "Hello, !" the first time (the example always goes one step behind).</p>
+          <p>Can you explain why this state variable was unnecesary?</p>
+        </div>
+      )
+    }
+
+    function FeedbackForm(){
+      const [name, setName] = useState('');
+      
+      function handleClick(){
+        setName(prompt('What is your name?'));
+        alert(`Hello, ${name}!`);
+      }
+
+      return <button onClick={handleClick}>Greet</button>
+    }
+
+    function Outro(){
+      return(
+        <div>
+          <h3>Explanation: </h3>
+          <p>I think</p>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<FeedbackForm/>, main)
   </script>
 </body>
 </html>
