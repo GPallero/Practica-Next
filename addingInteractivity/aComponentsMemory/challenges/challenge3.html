@@ -29,11 +29,11 @@
 
     function FeedbackForm(){
       const [isSent, setIsSent] = useState(false);
+      const [message, setMessage] = useState('')
 
       if(isSent){
         return <h1>Thank you!</h1>
       } else {
-        const [message, setMessage] = useState('')
         return(
           <form onSubmit={e =>{
             e.preventDefault();
@@ -53,7 +53,15 @@
       }
     }
 
-    ReactDOM.render(<FeedbackForm/>, main)
+    function PageForm(){
+      return (
+        <div>
+          <Intro></Intro>
+          <FeedbackForm></FeedbackForm>
+        </div>
+      )
+    }
+    ReactDOM.render(<PageForm/>, main)
   </script>
 </body>
 </html>
