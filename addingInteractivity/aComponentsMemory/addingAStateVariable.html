@@ -19,6 +19,18 @@
     //For useState Hook:
     const { useState } = React
 
+    //Outro component will add some info of the document:
+    function Outro(){
+      return (
+        <div>
+          <h4>Note:</h4>
+          <p>If you click Next enough times the page will crush, I didn't handle errors or missing info yet.</p>
+        </div>
+      )
+    }
+    
+    //Gallery component will return an image of a sculpture, some information and a Next button for 
+    //the next sculpture
     function Gallery(){
       const [index, setIndex] = useState(0);
 
@@ -38,7 +50,16 @@
       )
     }
 
-    ReactDOM.render(<Gallery/>, main)
+    function Page(){
+      return (
+        <div>
+          <Gallery/>
+          <Outro/>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Page/>, main)
   </script>
 
   <script src="sculptureList.js"></script>
