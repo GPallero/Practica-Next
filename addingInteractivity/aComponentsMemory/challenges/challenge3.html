@@ -16,6 +16,7 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const {useState} = React
     function Intro(){
       return(
         <div>
@@ -26,7 +27,33 @@
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    function FeedbackForm(){
+      const [isSent, setIsSent] = useState(false);
+
+      if(isSent){
+        return <h1>Thank you!</h1>
+      } else {
+        const [message, setMessage] = useState('')
+        return(
+          <form onSubmit={e =>{
+            e.preventDefault();
+            alert(`Sending "${message}"`);
+            setIsSent(true);  
+          }}>
+            <textarea 
+              placeholder="Message" 
+              value={message} 
+              onChange={e => setMessage(e.target.value)}
+              cols="30" rows="10"
+            />
+            <br/>
+            <button type="submit">Send</button>
+          </form>
+        )
+      }
+    }
+
+    ReactDOM.render(<FeedbackForm/>, main)
   </script>
 </body>
 </html>
