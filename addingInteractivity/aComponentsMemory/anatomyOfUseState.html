@@ -15,7 +15,28 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General Script -->
-  <script type="text/jsx"></script>
+  <script type="text/jsx">
+    function Intro(){
+      return (
+        <div>
+          <h1>Anatomy of <mark>useState</mark></h1>
+          <p>When you call <mark>useState</mark>, you are telling React that you want this component to remember something:</p>
+          <p><b>const</b>[index, setIndex] = <b>useState(0)</b></p>
+          <p>In this case, you want React to remember <mark>index</mark></p>
+          <p>The only argument to <mark>useState</mark> is the initial value of your state variable. In this example, the <mark>index</mark>'s initial value is set to <mark>0</mark> with <mark>useState(0)</mark>.</p>
+          <p>Every time your component renders, <mark>useState</mark> gives you an array containing two values:</p>
+          <ul>
+            <li>The state variable (<mark>index</mark>) with the value you stored.</li>
+            <li>The state setter function (<mark>setIndex</mark>) wich can update the state variable and trigger React to render the component again.</li>
+          </ul>
+          <h2>Giving a component multiple state variables</h2>
+          <p>The next component has two state variables, a number <mark>index</mark> and a boolean <mark>showMore</mark> that's toggled when you click "Show details":</p>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
+  </script>
 
   <!-- Script containing sculptureList -->
   <script src="sculptureList.js"></script>
