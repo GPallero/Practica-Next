@@ -53,11 +53,21 @@
       }
     }
 
+    function Outro(){
+      return(
+        <div>
+          <h3>Note:</h3>
+          <p>The problem was that the Hook wasn't called at the top level of the component, once you move the hook to the top level the component works just fine.</p>
+        </div>
+      )
+    }
+
     function PageForm(){
       return (
         <div>
-          <Intro></Intro>
-          <FeedbackForm></FeedbackForm>
+          <Intro/>
+          <FeedbackForm/>
+          <Outro/>
         </div>
       )
     }
