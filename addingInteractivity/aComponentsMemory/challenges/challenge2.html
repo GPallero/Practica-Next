@@ -16,7 +16,46 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-    
+    const input = "<input>"
+    function Intro(){
+      return (
+        <div>
+          <h1>A Components memory - Challenge 2</h1>
+          <h2>Fix stuck form inputs</h2>
+          <p>When you type into the input fields, nothing appears. It's like the input values are "stuck" with empty strings. The <mark>value</mark> of the first <mark>{input}</mark> is set to always match the <mark>firstName</mark> variable and the <mark>value</mark> for the second <mark>{input}</mark> is set to always match the <mark>lastName</mark> variable. This is correct. Both inputs have <mark>onChange</mark> event handlers, wich try to update the variables based on the latest user input (<mark>e.target.value</mark>). However, the variables don't seem to "remember" their values between re-renders. Fix this by using state variables instead.
+          </p>
+        </div>
+      )
+    }
+
+    function Form(){
+      let firstName = '';
+      let lastName = '';
+
+      function handleFirstNameChange(e){
+        firstName = e.target.value;
+      }
+
+      function handleLastNameChange(e){
+        lastName = e.target.value;
+      }
+
+      function handleReset(){
+        firstName = '';
+        lastName = '';
+      }
+
+      return(
+        <form onSubmit={ e => e.preventDefault() }>
+          <input type="text" placeholder='First name' value={firstName} onChange={handleFirstNameChange}/>
+          <input type="text" placeholder='Last name' value={lastName} onChange={handleLastNameChange}/>
+          <h2>Hi, {firstName} {lastName}</h2>
+          <button onClick={handleReset}>Reset</button>
+        </form>
+      )
+    }
+
+    ReactDOM.render(<Form/>, main)
   </script>
 </body>
 </html>
