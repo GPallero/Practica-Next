@@ -16,6 +16,8 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    const {useState} = React
+
     const input = "<input>"
     function Intro(){
       return (
@@ -29,20 +31,20 @@
     }
 
     function Form(){
-      let firstName = '';
-      let lastName = '';
+      let [firstName, setFirstName] = useState('')
+      let [lastName, setLastName] = useState('');
 
       function handleFirstNameChange(e){
-        firstName = e.target.value;
+        setFirstName(firstName = e.target.value);
       }
 
       function handleLastNameChange(e){
-        lastName = e.target.value;
+        setLastName(lastName = e.target.value);
       }
 
       function handleReset(){
-        firstName = '';
-        lastName = '';
+        setFirstName( firstName = '' );
+        setLastName( lastName = '' );
       }
 
       return(
