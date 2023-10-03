@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Components Memory - Challenge 3</title>
+</head>
+<body>
+  <!-- Div for rendering -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, React DOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General script -->
+  <script type="text/jsx">
+    function Intro(){
+      return(
+        <div>
+          <h1>A Components Memory</h1>
+          <h2>Challenge 3 - Fix a crash</h2>
+          <p>Here is a small form that is supposed to let the user leave some feedback. When the feedback is submitted, it's supposed to display a thank-you message. However, it crashes with an error message saying "Rendered fewer hooks than expected". Can you spot the mistake and fix it ?</p>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
+  </script>
+</body>
+</html>
