@@ -16,6 +16,8 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const {useState} = React
+
     function Intro(){
       return(
         <div>
@@ -27,9 +29,44 @@
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    function Gallery (){
+      const [index, setIndex] = useState(0);
+      const [showMore, setShowMore] = useState(false);
+
+      function handleNextClick(){
+        setIndex(index + 1);
+      }
+
+      function handlePreviousClick(){
+        setIndex(index - 1);
+      }
+
+      function handleShowMore(){
+        setShowMore(!showMore)
+      }
+
+      let sculpture = sculptureList[index]
+
+      return(
+        <div>
+          <h3>{sculpture.name} by {sculpture.artist}</h3>
+          <h4>({index + 1} of {sculptureList.length})</h4>
+          <img src={sculpture.url} alt={sculpture.alt}/>
+          <div>
+            <button onClick={handleShowMore}>{showMore ? "Show More" : "Hide details"}</button>
+            {showMore ? <p>{sculpture.description}</p> : "" }
+          </div>
+          <div>
+            <button onClick={handlePreviousClick}>Previous</button>
+            <button onClick={handleNextClick}>Next</button>
+          </div>
+        </div>
+      )
+    }
+    
+    ReactDOM.render(<Gallery/>, main)
   </script>
 
-  <script src="/addingInteractivity/aComponentsMemory/sculptureList.js"></script>
+  <script src="../sculptureList.js"></script>
 </body>
 </html>
