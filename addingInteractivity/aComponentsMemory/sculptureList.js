@@ -50,6 +50,8 @@ const sculptureList = [{
   name: 'Terracota Army',
   artist: 'Unknown Artist',
   description: 'The Terracota Army is a collection of terracota sculptures depicting the armies of Qin Shi Huang, the first Emperor of China. The army consisted of more than 8,000 soldiers, 130 chariots with 520 horses, and 150 cavalry horses.',
+  url: 'https://i.imgur.com/HMFmH6m.jpg',
+  alt: '12 terracota sculptures of solemn warriors, each with a unique facial expression and armor.'
 }, {
   name: 'Lunar Landscape',
   artist: 'Louise Nevelson',
