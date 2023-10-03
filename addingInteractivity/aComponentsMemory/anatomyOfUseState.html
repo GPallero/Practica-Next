@@ -16,6 +16,8 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    const {useState} = React
+    
     function Intro(){
       return (
         <div>
@@ -35,7 +37,30 @@
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    function Gallery(){
+      const [index, setIndex] = useState(0);
+      const [showMore, setShowMore] = useState(false);
+
+      function handleClick(){
+        setIndex(index + 1);
+      }
+
+      function handleShowMore(){
+        setShowMore(!showMore);
+      }
+      
+      let sculpture = sculptureList[index]
+      return(
+        <div>
+          <button onClick={handleClick}>Next</button>
+          <h3>{index}</h3>
+          <button onClick={handleShowMore}>{!showMore ? "Hide" : "Show more"}</button>
+          {!showMore ? <p>{sculpture.description}</p> : "" }
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Gallery/>, main)
   </script>
 
   <!-- Script containing sculptureList -->
