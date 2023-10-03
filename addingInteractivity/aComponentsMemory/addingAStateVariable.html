@@ -19,6 +19,29 @@
     //For useState Hook:
     const { useState } = React
 
+    //Intro component:
+    function Intro(){
+      let useStateDeclaration = "const {useState} = React"
+      let handleClickLines = ["function handleClick(){", "  setIndex( index + 1)", "}"]
+      return (
+        <div>
+          <h1>Adding a State variable</h1>
+          <p>To add a state variable, import <mark>useState</mark> from React at the top of the file (In this case, I declared <mark>useState</mark> and did it at the top of the script): </p>
+          <p><b>{useStateDeclaration}</b></p>
+          <p>Then inside the Gallery component I replaced the declaration I made in the previous 'StateAComponentsMemory.html' document with:</p>
+          <p><b>const [index, setIndex] = useState(0)</b></p>
+          <p><b>index</b> is a state variable and <b>setIndex</b> is a setter function.</p>
+          <p>And this is how they work together in <mark>handleClick</mark></p>
+          <pre>
+            <p>{handleClickLines[0]}</p>
+            <p>{handleClickLines[1]}</p>
+            <p>{handleClickLines[2]}</p>
+          </pre>
+          <p>Now clicking the Next button switches the current sculpture:</p>
+        </div>
+      )
+    }
+
     //Outro component will add some info of the document:
     function Outro(){
       return (
@@ -43,7 +66,7 @@
           <div>
             <button onClick={handleClick}>Next</button>
             <h2><i>{sculpture.name}</i> by {sculpture.artist}</h2>
-            <h3>({index} of {sculptureList.length})</h3>
+            <h3>({index + 1} of {sculptureList.length})</h3>
             <img src={sculpture.url} alt={sculpture.alt}/>
             <p>{sculpture.description}</p>
           </div>
@@ -53,6 +76,7 @@
     function Page(){
       return (
         <div>
+          <Intro/>
           <Gallery/>
           <Outro/>
         </div>
