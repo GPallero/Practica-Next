@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Render and Commit</title>
+</head>
+<body>
+  <!-- Div for rendering -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, React DOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General script -->
+  <script type="text/jsx">
+    //string variables to use ase text:
+    let createRootLine = "import { createRoot } from 'react-dom/client'";
+    let imageLine = "<Image/>"
+    
+    function Intro(){
+      return (
+        <div>
+          <h1>Render and Commit</h1>
+          <p>Before your components are displayed on screen, they must be rendered by React</p>
+          <p>Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario,. React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and servin UI has three steps:</p>
+          <ul>
+            <li>Triggering a render (delivering the guest's order to the kitchen)</li>
+            <li>Rendering the component (preparing the order in the kitchen)</li>
+            <li>Commiting to the DOM (placing the order on the table)</li>
+          </ul>
+          <section>
+            <h3>Step 1: Triggering a render</h3>
+            <p>There are two reasons for component to render:</p>
+            <ul>
+              <li>It's the component's initial render.</li>
+              <li>The component's (or one of its ancestor's) state has been updated.</li>
+            </ul>
+            <h4>Initial render</h4>
+            <p>When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it's done by calling <mark>createRoot</mark> with the target DOM node, and then calling its <mark>render</mark> method with your component.</p>
+            <div>
+              <p>import Image from './Image.js';</p>
+              <p>{createRootLine}</p>
+              <p>const root = createRoot(document.getElementById('root'))</p>
+              <p>root.render({imageLine})</p>
+            </div>
+            <h4>Re-renders when state updates</h4>
+            <p>Once the component has been initially rendered, you can trigger further renders by updating its state with <mark>set function.</mark> Updating your component's state automatically queues a render.</p>
+          </section>
+          <section>
+            <h3>Step 2: React renders your components</h3>
+            <p>After you trigger a render, React calls your components to figure out what to display on screen. "Rendering" is React calling your components.</p>
+            <ul>
+              <li>On initial render, React will call the root component.</li>
+              <li>For subsequent renders, React will call the function component whose state update triggered the render.</li>
+            </ul>
+            <p>This process is recursive: if the updated component returns some other component, React will render that component next, and if that component also returns something, it will render that component next, and so on.</p>
+          </section>
+          <section>
+            <h3>Step 3: React commits changes to the DOM</h3>
+            <p>After rendering (calling) your components, React will modify the DOM.</p>
+            <ul>
+              <li>For the initial render, React will use the <mark>appendChild()</mark> DOM API to put all the DOM nodes it has created on screen.</li>
+              <li>For re-renders, React will apply the minimal necessary operations (calculated while rendering!) to make DOM match the latest rendering output.</li>
+            </ul>
+            <p>React only changes the DOM nodes if there's a difference between renders.</p>
+          </section>
+          <section>
+            <h3>Epilogue: Browser paint</h3>
+            <p>After rendering is done and React updated the DOM, the browser will repaint the screen. Although this process is known as "browser rendering", we'll refer to it as "painting" to avoid confusion throughout the docs.</p>
+          </section>
+        </div>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
+  </script>
+</body>
+</html>
