@@ -16,6 +16,8 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    const {useState} = React
+
     function Intro(){
       return(
         <div>
@@ -24,6 +26,42 @@
         </div>
       )
     }
+
+    <!-- Setting States triggers Renders: start -->
+    function TriggerRender(){
+      const [isSent, setIsSent] = useState(false);
+      const [message, setMessage] = useState('Hi!');
+
+      if(isSent){
+        return <h1>Your message is on its way!</h1>
+      }
+      return (
+      <form onSubmit = {(e) =>
+        {
+          e.preventDefault();
+          setIsSent(true);
+          setMessage(message);
+        }}>
+        <textarea 
+          placeholder="Message" 
+          value={message}
+          cols="30" 
+          rows="10"
+          onChange = { e => setMessage(e.target.value)}
+        />
+        <div>
+          <button type="submit">Send</button>
+        </div>
+      </form>
+      )
+    }
+    
+    function sendMessage(){
+      //..
+    }
+    <!-- Setting States triggers Renders: start -->
+    
+    ReactDOM.render(<TriggerRender/>, main)
   </script>
 </body>
 </html>
