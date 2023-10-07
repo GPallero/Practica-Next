@@ -27,13 +27,18 @@
       )
     }
 
-    <!-- Setting States triggers Renders: start -->
+    //Setting States triggers Renders: start
     function TriggerRender(){
       const [isSent, setIsSent] = useState(false);
       const [message, setMessage] = useState('Hi!');
 
       if(isSent){
-        return <h1>Your message is on its way!</h1>
+        return (
+          <div>
+            <h1>Your message is on its way!</h1>
+            <p>You pressed "Send", <mark>setIsSent(true)</mark> telled React to re-render the UI</p>
+          </div>
+        )
       }
       return (
       <form onSubmit = {(e) =>
@@ -52,6 +57,7 @@
         <div>
           <button type="submit">Send</button>
         </div>
+        <p>In this example, when you press "Send", <mark>setIsSent(true)</mark> tells React to re-render the UI</p>
       </form>
       )
     }
@@ -59,7 +65,7 @@
     function sendMessage(){
       //..
     }
-    <!-- Setting States triggers Renders: start -->
+    //Setting States triggers Renders: start
     
     ReactDOM.render(<TriggerRender/>, main)
   </script>
