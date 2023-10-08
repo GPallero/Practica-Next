@@ -135,8 +135,29 @@
       )
     }
     //State Over Time: ends
+
+    //State whit a timer: starts
+    function WithATimer(){
+      const [number, setNumber] = useState(0);
+
+      return(
+        <>
+          <h2>{number}</h2>
+          <button onClick={(e) => {
+            setNumber(number + 5);
+            setTimeout(()=>{alert(number);
+            }, 3000);
+          }}>
+            +5
+          </button>
+          <p>The state stored in React may have changed by the time the alert runs, but it was <b>scheduled using a snapshot of the state at the time the user interacted with</b></p>
+          <p>A state variable's value never changes within a render, even if its event handler's code is asynchronous.</p>
+        </>
+      )
+    }
+    //State with a timer: ends
     
-    ReactDOM.render(<OverTime/>, main)
+    ReactDOM.render(<WithATimer/>, main)
   </script>
 </body>
 </html>
