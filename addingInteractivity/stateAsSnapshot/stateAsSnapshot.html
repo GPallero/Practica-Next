@@ -117,8 +117,26 @@
     //Rendering takes a snapshot in time: ends
     
     //State Over Time: starts
+    function OverTime(){
+      const [number, setNumber] = useState(0);
+
+      return(
+        <div>
+          <h2>State over time</h2>
+          <h3>{number}</h3>
+          <button onClick={(e) =>{ 
+            setNumber(number +5);
+            alert(number);
+          }}>
+          + 5
+          </button>
+          <p>If we use a 'substitution' method to guess the result, we can see the snapshot (the first time) setNumber(0 + 5); alert(0). The second time: setNumber(5 + 5); alert(5) and so on.</p>
+        </div>
+      )
+    }
     //State Over Time: ends
-    ReactDOM.render(<SameDOM/>, main)
+    
+    ReactDOM.render(<OverTime/>, main)
   </script>
 </body>
 </html>
