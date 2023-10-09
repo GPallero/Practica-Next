@@ -20,10 +20,10 @@
 
     function Intro(){
       return(
-        <div>
+        <>
           <h1>State as snapshot</h1>
           <p>State variables might look like regular JavaScript variables that you can read and write to. However, state behaves more like a snapshot. <b>Setting it does not change the state variable you already have</b>, but <b>insatead triggers a re-render</b></p>
-        </div>
+        </>
       )
     }
 
@@ -34,31 +34,35 @@
 
       if(isSent){
         return (
-          <div>
+          <>
             <h2>Your message is on its way!</h2>
             <p>You pressed "Send", <mark>setIsSent(true)</mark> telled React to re-render the UI</p>
-          </div>
+            <hr/>
+          </>
         )
       }
       return (
-      <form onSubmit = {(e) =>
-        {
-          e.preventDefault();
-          setIsSent(true);
-          setMessage(message);
-        }}>
-        <textarea 
-          placeholder="Message" 
-          value={message}
-          cols="30" 
-          rows="10"
-          onChange = { e => setMessage(e.target.value)}
-        />
-        <div>
-          <button type="submit">Send</button>
-        </div>
-        <p>In this example, when you press "Send", <mark>setIsSent(true)</mark> tells React to re-render the UI</p>
-      </form>
+      <>
+        <form onSubmit = {(e) =>
+          {
+            e.preventDefault();
+            setIsSent(true);
+            setMessage(message);
+          }}>
+          <textarea 
+            placeholder="Message" 
+            value={message}
+            cols="30" 
+            rows="10"
+            onChange = { e => setMessage(e.target.value)}
+          />
+          <div>
+            <button type="submit">Send</button>
+          </div>
+          <p>In this example, when you press "Send", <mark>setIsSent(true)</mark> tells React to re-render the UI</p>
+        </form>
+        <hr/>
+      </>
       )
     }
     
@@ -68,14 +72,15 @@
 
     function FirstExplanation(){
       return(
-        <div>
+        <>
           <p>Heres what happens when you press "Send":</p>
           <ul>
             <li>The <mark>onSubmit</mark> event handler executes.</li>
             <li><mark>setIsSent()</mark> sets <mark>isSent</mark> to <mark>true</mark> and queues a new render.</li>
             <li>React re-renders the component according to the new <mark>isSent</mark> value.</li>
           </ul>
-        </div>
+          <hr/>
+        </>
       )
     }
     //Setting States triggers Renders: ends
@@ -83,25 +88,26 @@
     //Rendering takes a snapshot in time: starts
     function SnapshotInTime(){
       return(
-        <div>
+        <>
           <h2>Rendering takes a snapshot in time</h2>
           <p>Rendering means that React is calling your component, wich is a function. The JSX you return from that function is like a snapshot of the UI in time. Its props, event handlers, and local variables were all calculated using its state at the time of the render</p>
-          <p>Unlike a photograph or a movie frame, the UI "snapshot" you return is interactive. It includes logic like event handlers that specify what happens in response to inputs. React updates the scren to match this snapshot and connects the event handlers. As a result, pressing a button will trigger the click handler from your JSX.</p>
+          <p>Unlike a photograph or a movie frame, the UI "snapshot" you return is interactive. It includes logic like event handlers that specify what happens in response to inputs. React updates the screen to match this snapshot and connects the event handlers. As a result, pressing a button will trigger the click handler from your JSX.</p>
           <p>When React re-renders a component:</p>
           <ul>
-            <li>Reat calls your function again.</li>
+            <li>React calls your function again.</li>
             <li>Your function returns a new JSX snapshot.</li>
             <li>React then updates the screen to match the snapshot your function returned.</li>
           </ul>
           <p>As a component's memory, state is not like a regular variable that disappears after your function returns. State actually "lives" in React Itself -- as if on a shelf! -- outside of your function. When React calls your component, it gives you a snapshot of the state for that particular render. Your component returns a snapshot of the UI with a fresh set of props and event handlers in its JSX, all calculated using the state values from that render!</p>
-        </div>
+          <hr/>
+        </>
       )
     }
 
     function SameDOM(){
       const [counter, setCounter] = useState(0)
       return(
-        <div>
+        <>
           <h2>A little experiment</h2>
           <p>Buton "+3" ?</p>
           <h3>{counter}</h3>
@@ -111,7 +117,8 @@
               setCounter(counter + 1);
           }}>+3</button>
           <p><b>- React does not touch the DOM if the rendering result is the same as last time.</b></p>
-        </div>
+          <hr/>
+        </>
       )
     }
     //Rendering takes a snapshot in time: ends
@@ -121,7 +128,7 @@
       const [number, setNumber] = useState(0);
 
       return(
-        <div>
+        <>
           <h2>State over time</h2>
           <h3>{number}</h3>
           <button onClick={(e) =>{ 
@@ -131,7 +138,8 @@
           + 5
           </button>
           <p>If we use a 'substitution' method to guess the result, we can see the snapshot (the first time) setNumber(0 + 5); alert(0). The second time: setNumber(5 + 5); alert(5) and so on.</p>
-        </div>
+          <hr/>
+        </>
       )
     }
     //State Over Time: ends
@@ -152,6 +160,7 @@
           </button>
           <p>The state stored in React may have changed by the time the alert runs, but it was <b>scheduled using a snapshot of the state at the time the user interacted with</b></p>
           <p>A state variable's value never changes within a render, even if its event handler's code is asynchronous.</p>
+          <hr/>
         </>
       )
     }
@@ -199,8 +208,23 @@
       )
     }
     //State whit a timer 2: ends
+
+    function Group(){
+      return(
+        <>
+          <Intro/>
+          <FirstExplanation/>
+          <TriggerRender/>
+          <SnapshotInTime/>
+          <SameDOM/>
+          <OverTime/>
+          <WithATimer/>
+          <MessageWithTimer/>
+        </>
+      )
+    }
     
-    ReactDOM.render(<MessageWithTimer/>, main)
+    ReactDOM.render(<Group/>, main)
   </script>
 </body>
 </html>
