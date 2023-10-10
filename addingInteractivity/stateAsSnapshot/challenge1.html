@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State as Snapshot - Challenge 1</title>
+</head>
+<body>
+  <!-- Div for rendering  -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, React DOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General script -->
+  <script type="text/jsx">
+    const {useState} = React
+
+    function Intro(){
+      return(
+        <>
+          <h1>State as snapshot</h1>
+          <h2>Challenge 1 - Implement Traffic Light</h2>
+          <p>Next comes a crosswalk light component that toggles when the button is pressed (use your imagination).</p>
+          <p><b>Add an <mark>alert</mark> to the click handler. When the light is green and says "Walk", clicking the button should say "Stop is next". When the light is red and says "Stop", clicking the button should say "Walk is next".</b></p>
+          <p>Note: try to add the <mark>alert</mark> before and then after the <mark>setWalk</mark> call</p>
+        </>
+      )
+    }
+
+    function CrosswalkLight(){
+      const [walk, setWalk] = useState(true);
+
+      function handleClick(){
+        setWalk(!walk);
+      }
+
+      return(
+        <>
+          <button onClick={e => {
+            alert(walk ? 'Stop is next' : "Walk is next");
+            handleClick();
+          }}>
+            {walk ? "Change to stop" : "Change to walk" }
+          </button>
+          <h1 style={{color: walk ? "Darkgreen" : "Darkred"}}>{walk ? "Walk" : "Stop"}</h1>
+        </>
+      )
+    }
+    ReactDOM.render(<CrosswalkLight/>, main)
+  </script>
+</body>
+</html>
