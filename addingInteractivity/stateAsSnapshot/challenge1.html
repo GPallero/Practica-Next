@@ -49,7 +49,27 @@
         </>
       )
     }
-    ReactDOM.render(<CrosswalkLight/>, main)
+
+    function Outro(){
+      return(
+        <>
+          <p><b>Note:</b> Whether you put the it (the alert) before or after the <mark>setWalk</mark> call makes no difference. That render's value of <mark>walk</mark> is fixed.</p>
+        </>
+      )
+    }
+
+    function Solved(){
+      return(
+        <>
+          <Intro/>
+          <hr/>
+          <CrosswalkLight/>
+          <hr/>
+          <Outro/>
+        </>
+      )
+    }
+    ReactDOM.render(<Solved/>, main)
   </script>
 </body>
 </html>
