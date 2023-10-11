@@ -113,12 +113,22 @@
             <div className="item11"><p>6 (unused)</p></div>
             <div className="item12"><p>42</p></div>
           </div>
-          <p>Then React stores <p>42</p> as the final result and returns it from <mark>useState</mark></p>
+          <p>Then React stores <mark>42</mark> as the final result and returns it from <mark>useState</mark></p>
         </>
       )
     }
 
-    ReactDOM.render(<UpdateReplace/>, main)
+    function GroupComponents(){
+      return(
+        <>
+          <Intro/>
+          <Updating/>
+          <ReplaceUpdate/>
+          <UpdateReplace/>
+        </>
+      )
+    }
+    ReactDOM.render(<GroupComponents/>, main)
   </script>
 </body>
 </html>
