@@ -65,7 +65,30 @@
         </>
       )
     }
-    ReactDOM.render(<Updating/>, main)
+
+    function ReplaceUpdate(){
+      return(
+        <>
+          <h2>What happens if you update state after replacing it?</h2>
+          <p>In the queue React first replace <mark>number</mark> and then adds the updater function.</p>
+          <p>For example:</p>
+          <div className="wrapper">
+            <div className="item1"><p>queued update</p></div>
+            <div className="item2"><p>n</p></div>
+            <div className="item3"><p>returns</p></div>
+            <div className="item4"><p>setNumber(5)</p></div>
+            <div className="item5"><p>0 (unused)</p></div>
+            <div className="item6"><p>5</p></div>
+            <div className="item7"><p>n => n + 1</p></div>
+            <div className="item8"><p>5</p></div>
+            <div className="item9"><p>5 + 1 = 6</p></div>
+          </div>
+          <p>React stores <mark>6</mark> as the final result and returns it from <mark>useState()</mark></p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<ReplaceUpdate/>, main)
   </script>
 </body>
 </html>
