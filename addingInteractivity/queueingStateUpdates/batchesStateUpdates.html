@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Queueing a series of state updates</title>
+  <link rel="stylesheet" href="batchesStateUpdates.css">
 </head>
 <body>
   <!-- Div for rendering -->
@@ -46,17 +47,25 @@
             <li><mark>setNumber(n => n + 1)</mark> : <mark> n => n + 1</mark> is a function. React adds it to a queue</li>
           </ul>
           <p>When you call <mark>useState</mark> during the next render, React goes through the queue. The previous <mark>number</mark> state was <mark>0</mark>, so that's what React passes to the first updater function as the <mark>n</mark> argument. Then React takes the return value of your previous updater function and passes it to the next updater as <mark>n</mark>, and so on:</p>
-          <div>
-            <div><p>queued update</p><mark>n</mark><p>returns</p></div>
-            <div><mark>n => n + 1</mark><mark>0</mark><mark>0 + 1 = 1</mark></div>
-            <div><mark>n => n + 1</mark><mark>1</mark><mark>1 + 1 = 2</mark></div>
-            <div><mark>n => n + 1</mark><mark>2</mark><mark>2 + 1 = 3</mark></div>
+          <div className="wrapper">
+            <div className="item1"><p>queued update</p></div>
+            <div className="item2"><p>n</p></div>
+            <div className="item3"><p>returns</p></div>
+            <div className="item4"><p>n => n + 1</p></div>
+            <div className="item5"><p>0</p></div>
+            <div className="item6"><p>0 + 1 = 1</p></div>
+            <div className="item7"><p>n => n + 1</p></div>
+            <div className="item8"><p>1</p></div>
+            <div className="item9"><p>1 + 1 = 2</p></div>
+            <div className="item10"><p>n => n + 1</p></div>
+            <div className="item11"><p>2</p></div>
+            <div className="item12"><p>2 + 1 = 3</p></div>
           </div>
           <p>React stores <mark>3</mark> as the final result and returns it from <mark>useState</mark>.</p>
         </>
       )
     }
-    ReactDOM.render(<Intro/>, main)
+    ReactDOM.render(<Updating/>, main)
   </script>
 </body>
 </html>
