@@ -1,0 +1,12 @@
+.wrapper{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: auto;
+  width: 400px;
+}
+
+.wrapper > div {
+  text-align: center;
+  border: 1px solid rgb(25, 25, 25);
+}
+
