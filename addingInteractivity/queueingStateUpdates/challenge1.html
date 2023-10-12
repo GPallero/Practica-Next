@@ -56,7 +56,27 @@
       });
     }
     
-    ReactDOM.render(<RequestTracker/>, main)
+    function Outro(){
+      return(
+        <>
+          <h3>Explanation:</h3>
+          <p>The problem here was that in the handler function there were all replacement functions, instead of that I used updater functions.</p>
+        </>
+      )
+    }
+
+    function Group(){
+      return(
+        <>
+          <Intro/>
+          <hr/>
+          <RequestTracker/>
+          <hr/>
+          <Outro/>
+        </>
+      )
+    }
+    ReactDOM.render(<Group/>, main)
   </script>
 </body>
 </html>
