@@ -16,7 +16,43 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    const site = "https://react.dev/learn/queueing-a-series-of-state-updates#"
     
+    function Intro(){
+      return(
+        <>
+          <h1>Challenge 2: Implement the state queue yourself</h1>
+          <p>In this challenge, I'm gonna reimplement a tiny part of React from scratch! I'ts not as hard as it sounds.</p>
+          <p>Scroll Through the preview. Notice that it shows four test cases. They correspond to the examples
+          I've seen earlier on the page <a href={site}>Queueing a series of state updates</a>. My task is to 
+          implement the <mark>getFinalState</mark> function so that it returns the correct result for each of 
+          those cases. If you implement it correctly, all of your test should pass.</p>
+          <p>You will receive two arguments: <mark>baseState</mark> is the initial state (like <mark>0</mark>), and the <mark>queue</mark> is an array wich contains a mix of numbers (like <mark>5</mark>) and updater functions (like <mark>n => n + 1</mark>) in the order they were added.</p>
+          <p>Your task is to return the final state, just like the tables on this page show!</p>
+        </>
+      )
+    }
+
+    function ownGetFinalState(baseState, queue){
+      let finalState = baseState;
+      
+      queue.forEach(e=>{
+        if(typeof e == "number"){
+          finalState = e;
+        } else {
+          finalState = finalState + 1;
+        }
+      })
+
+      return finalState
+    }
+
+    function increment(n){
+      return n + 1;
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
+
 </body>
 </html>
