@@ -73,6 +73,15 @@
 
     increment.toString = () => 'n => n + 1';
 
+    function Outro(){
+      return(
+        <>
+          <h2>Note:</h2>
+          <p>In this challenge my function works fine, because the queue is composed just of numbers and/or 'n => n + 1' function if there were another increment function like 'n => n + 2' my solution is not gonna work.</p>
+          <p>Now I learned something new, thats why I keeped both solutions in this document.</p>
+        </>
+      )
+    }
     function App(){
       return(
         <>
@@ -89,6 +98,7 @@
           <TestCase baseState={0} queue={[increment, increment, increment,]} expected={3} own={false}/>
           <hr/>
           <TestCase baseState={0} queue={[5, increment, 42,]} expected={42} own={false}/>
+          <Outro/>
         </>
       );
     }
