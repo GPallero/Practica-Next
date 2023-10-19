@@ -50,6 +50,23 @@
       return finalState
     }
 
+    //This is the function used in the site, I will use it to show in another component the challenge solved as it was on the site.
+    function siteGetFinalState(baseState, queue){
+      let finalState = baseState;
+
+      for(let update of queue){
+        if( typeof update === 'function'){
+          //apply the updater function:
+          finalState = update(finalState);
+        } else {
+          //Replace the next state:
+          finalState = update;
+        }
+      }
+
+      return finalState
+    }
+
     function increment(n){
       return n + 1;
     }
@@ -59,17 +76,29 @@
     function App(){
       return(
         <>
-          <TestCase baseState={0} queue={[1, 1, 1,]} expected={1}/>
+          <Intro/>
+          <h2>Test cases with the function I created to solve the challenge:</h2>
+          <TestCase baseState={0} queue={[1, 1, 1,]} expected={1} own={true}/>
           <hr/>
-          <TestCase baseState={0} queue={[increment, increment, increment,]} expected={3}/>
+          <TestCase baseState={0} queue={[increment, increment, increment,]} expected={3} own={true}/>
           <hr/>
-          <TestCase baseState={0} queue={[5, increment, 42,]} expected={42}/>
+          <TestCase baseState={0} queue={[5, increment, 42,]} expected={42} own={false}/>
+          <h2>Test cases with the function the site created to solve the challenge:</h2>
+          <TestCase baseState={0} queue={[1, 1, 1,]} expected={1} own={false}/>
+          <hr/>
+          <TestCase baseState={0} queue={[increment, increment, increment,]} expected={3} own={false}/>
+          <hr/>
+          <TestCase baseState={0} queue={[5, increment, 42,]} expected={42} own={false}/>
         </>
       );
     }
 
-    function TestCase({baseState, queue, expected}){
-      const actual = ownGetFinalState(baseState, queue);
+    function TestCase({baseState, queue, expected, own}){
+      let actual = siteGetFinalState(baseState, queue);
+
+      if (own == false){
+        actual = siteGetFinalState(baseState, queue);
+      }
 
       return(
         <>
