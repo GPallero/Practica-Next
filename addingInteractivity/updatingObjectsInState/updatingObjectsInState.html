@@ -16,7 +16,17 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    function Intro(){
+      return(
+        <>
+          <h1>Updating Objects in State</h1>
+          <p>State can hold any kind of JavaScript value, including objects. But you shouldn't change objects that you hold in the React state directly. Instead, when you want to update an object, you need to create a new one (or make a copy of an existing one), and then set the state to use that copy.</p>
+          <h2>What's a mutation?</h2>
+          <p>You can store any kind of JavaScript value in state.</p>
+          <p><span className="blue">const</span> [x, setX] = <span className="turquoise">useState</span>(<span className="red">0</span>);</p>
+        </>
+      )
+    }
   </script>
 </body>
 </html>
