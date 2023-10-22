@@ -32,6 +32,7 @@
           <p><span className="blue">const</span> [position, setPosition] = <span className="turquoise">useState</span>( {curlyBracket[0]}<span className="blue">x</span>: <span className="red">0</span>, <span className="blue">y</span>: <span className="red">0 </span>{curlyBracket[1]});</p>
           <p>Techically, it's possible to change the contents of the object itself. This is called a <b>mutation</b>:</p>
           <p>position.<span className="blue">x </span>= <span className="red">5</span>;</p>
+          <p>However, although objects in React state are technically mutable, you should treat them as if  they were immutable--like numbers, booleans, and strings. Instead of mutating them, you should always replace them.</p>
         </>
       )
     }
