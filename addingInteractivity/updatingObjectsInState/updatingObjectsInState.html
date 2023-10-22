@@ -17,6 +17,7 @@
   <!-- General script -->
   <script type="text/jsx">
     function Intro(){
+      const curlyBracket = ["{", "}"]
       return(
         <>
           <h1>Updating Objects in State</h1>
@@ -24,9 +25,18 @@
           <h2>What's a mutation?</h2>
           <p>You can store any kind of JavaScript value in state.</p>
           <p><span className="blue">const</span> [x, setX] = <span className="turquoise">useState</span>(<span className="red">0</span>);</p>
+          <p>So far I been working with numbers, strings, and booleans. These kind of JavaScript values are "immutable", meaning unchangeable or "read-only". You can trigger a re-render to replace a value:</p>
+          <p><span className="turquoise">setX(<span className="red">5</span>)</span>;</p>
+          <p>The <mark>x</mark> state changed from <mark>0</mark> to <mark>5</mark>, but <mark>0</mark> itself did not change. It's not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JavaScript.</p>
+          <p>Now consider an object in state:</p>
+          <p><span className="blue">const</span> [position, setPosition] = <span className="turquoise">useState</span>( {curlyBracket[0]}<span className="blue">x</span>: <span className="red">0</span>, <span className="blue">y</span>: <span className="red">0 </span>{curlyBracket[1]});</p>
+          <p>Techically, it's possible to change the contents of the object itself. This is called a <b>mutation</b>:</p>
+          <p>position.<span className="blue">x </span>= <span className="red">5</span>;</p>
         </>
       )
     }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
