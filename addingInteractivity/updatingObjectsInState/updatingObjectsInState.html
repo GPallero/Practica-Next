@@ -16,8 +16,8 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const curlyBracket = ["{", "}"]
     function Intro(){
-      const curlyBracket = ["{", "}"]
       return(
         <>
           <h1>Updating Objects in State</h1>
@@ -41,7 +41,6 @@
     }
 
     function LocalMutation(){
-      const curlyBracket = ["{", "}"];
       return(
         <>
           <h2>Local mutation is fine</h2>
@@ -82,7 +81,55 @@
       )
     }
 
-    ReactDOM.render(<LocalMutation/>, main)
+    function SpreadSyntax(){
+      const spreadSyntax = "https://react.dev/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax"
+      return(
+        <>
+          <h2>Copying objects with the spread syntax</h2>
+          <p>Sometimes you will want to include existing data as a part of the new object you're creating. For example, you may want to update only one field in a form, but keep the previous values for all other fields.</p>
+          <p>For example, this line mutates the state from a past render (Imagin some render or take a look at the code in <a href="https://react.dev/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax">copying objects with spread syntax</a>):</p>
+          <div className="box">
+            <p>person.<span className="blue">firstName</span> = e.<span className="blue">target</span>.<span className="blue">value</span></p>
+          </div>
+          <p>The reliable way to get the behaivor you're looking for is to create a new object and pass it to <span className="greyBackground">setPerson</span>. But here, you want also copy the existing data into it because only one of the fields has changed:</p>
+          <div className="box">
+            <span className="turquoise">setPerson</span>({curlyBracket[0]}
+            <br/>
+            <span className="tab">
+              <span className="blue">firstName</span>: e.<span className="blue">target</span>.<span className="blue">value</span>, <span className="grey">// New first name from the input</span>
+            </span>
+            <br/>
+            <span className="tab">
+              <span className="blue">lastName</span>: person.<span className="blue">lastName</span>
+            </span>
+            <br/>
+            <span className="tab">
+              <span className="blue">email</span>: person.<span className="blue">email</span>
+            </span>
+            <br/>
+            {curlyBracket[1]});
+          </div>
+          <p>You can use the <span className="greyBackground">...</span> <span className="blue">object spread</span> syntax so that you don't need to copy every property separately.</p>
+          <div className="box">
+            <span className="turqouise">setPerson</span>({curlyBracket[0]}
+            <br/>
+            <span className="tab">...person, <span className="grey">// Copy the old fields</span></span>
+            <br/>
+            <span className="tab blue">firstName</span>
+            : e.
+            <span className="blue">target</span>
+            .
+            <span className="blue">value </span>
+            <span className="grey">// But override this one</span>
+            <br/>
+            {curlyBracket[1]});
+          </div>
+          <p>Keeping all data grouped in an object is very convenient -- as long as you update it correctly!</p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<SpreadSyntax/>, main)
   </script>
 </body>
 </html>
