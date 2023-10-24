@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="updatingObjectsInState.css">
   <title>Updating Objects in State</title>
 </head>
 <body>
@@ -26,8 +27,8 @@
           <p>You can store any kind of JavaScript value in state.</p>
           <p><span className="blue">const</span> [x, setX] = <span className="turquoise">useState</span>(<span className="red">0</span>);</p>
           <p>So far I been working with numbers, strings, and booleans. These kind of JavaScript values are "immutable", meaning unchangeable or "read-only". You can trigger a re-render to replace a value:</p>
-          <p><span className="turquoise">setX(<span className="red">5</span>)</span>;</p>
-          <p>The <mark>x</mark> state changed from <mark>0</mark> to <mark>5</mark>, but <mark>0</mark> itself did not change. It's not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JavaScript.</p>
+          <p><span className="turquoise">setX</span>(<span className="red">5</span>);</p>
+          <p>The <span className="greyBackground">x</span> state changed from <span className="greyBackground">0</span> to <span className="greyBackground">5</span>, but <span className="greyBackground">0</span> itself did not change. It's not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JavaScript.</p>
           <p>Now consider an object in state:</p>
           <p><span className="blue">const</span> [position, setPosition] = <span className="turquoise">useState</span>( {curlyBracket[0]}<span className="blue">x</span>: <span className="red">0</span>, <span className="blue">y</span>: <span className="red">0 </span>{curlyBracket[1]});</p>
           <p>Techically, it's possible to change the contents of the object itself. This is called a <b>mutation</b>:</p>
@@ -166,6 +167,7 @@
             <p className="tab">{curlyBracket[1]}</p>
             <p>{curlyBracket[1]});</p>
           </div>
+          <br/>
           <div className="box">
             <p><b>Note:</b> Objects are not really nested.</p>
             <p>An object appears "nested" in code.</p>
@@ -187,7 +189,7 @@
         </>
       )
     }
-    
+
     ReactDOM.render(<Page/>, main)
   </script>
 </body>
