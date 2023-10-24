@@ -55,24 +55,79 @@
 
       return(
         <>
+          <h2>This form won't work, is the form taken as it was in the challenge:</h2>
           <label>
             Score: <b>{player.score}</b>
             {' '}
             <button onClick={handlePlusClick}>+1</button>
           </label>
+          <p><b>The problem</b> with the button is that it's not using a setter function, that's why the score updates only when you change something in the first name.</p>
           <label>
             First Name: {' '} 
             <input value={player.firstName} onChange={handleFirstNameChange}/>
           </label>
+          <p><b>The handler when you change something in the first name works fine.</b></p>
           <label>
             Last Name: {' '}
+            <input value={player.lastName} onChange={handleLastNameChange}/>
+          </label>
+          <p><b>The problem</b> with last name is that it tries to mutate an object in state and you need to trigger a render with a copy of the object.</p>
+        </>
+      )
+    }
+
+    function MyScoreboard(){
+      const [player, setPlayer] = useState({
+        firstName: 'Lupin',
+        lastName: 'Diop',
+        score: 10
+      });
+
+      function handlePlusClick(){
+        setPlayer({
+          ...player,
+          score: player.score + 1
+        });
+      }
+
+      function handleFirstNameChange(e){
+        setPlayer({
+          ...player,
+          firstName: e.target.value,
+        });
+      }
+      
+      function handleLastNameChange(e){
+        setPlayer({
+          ...player,
+          lastName: e.target.value,
+        });
+      }
+
+      return(
+        <>
+          <h2>This is the fixed form:</h2>
+          <label>
+            Score:
+            {' '}
+            <b>{player.score}</b>
+            <button onClick={handlePlusClick}>+1</button>
+          </label>
+          <label>
+            First Name:
+            {' '}
+            <input value={player.firstName} onChange={handleFirstNameChange}/>
+          </label>
+          <label>
+            Last Name:
+            {' '}
             <input value={player.lastName} onChange={handleLastNameChange}/>
           </label>
         </>
       )
     }
 
-    ReactDOM.render(<Scoreboard/>, main)
+    ReactDOM.render(<MyScoreboard/>, main)
   </script>
 </body>
 </html>
