@@ -1,0 +1,34 @@
+.box{
+  padding-left: 16px;
+  border: 1px solid black;
+  background-color: #0000007c;
+}
+
+.greyBackground{
+  background-color: grey;
+}
+
+.blue{
+  color: blue;
+}
+
+.turquoise{
+  color: turquoise;
+}
+
+.red{
+  color: red;
+}
+
+.purple{
+  color: purple;
+}
+
+.tab{
+  margin-left: 16px;
+}
+
+.doubleTab{
+  margin-left: 32px;
+}
+
