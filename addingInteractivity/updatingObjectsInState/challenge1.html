@@ -7,7 +7,7 @@
 </head>
 <body>
   <!-- Div for rendering -->
-  <div class="main"></div>
+  <div id="main"></div>
 
   <!-- Scripts for React, React DOM & Babel -->
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
@@ -16,6 +16,8 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const {useState} = React
+
     function Intro(){
       return(
         <>
@@ -26,6 +28,51 @@
         </>
       )
     }
+
+    function Scoreboard(){
+      const [player, setPlayer] = useState({
+        firstName: 'Ranjani',
+        lastName: 'Shettar',
+        score: 10,
+      });
+
+      function handlePlusClick(){
+        player.score++;
+      }
+
+      function handleFirstNameChange(e){
+        setPlayer({
+          ...player,
+          firstName: e.target.value,
+        });
+      }
+
+      function handleLastNameChange(e){
+        setPlayer({
+          lastName: e.target.value
+        });
+      }
+
+      return(
+        <>
+          <label>
+            Score: <b>{player.score}</b>
+            {' '}
+            <button onClick={handlePlusClick}>+1</button>
+          </label>
+          <label>
+            First Name: {' '} 
+            <input value={player.firstName} onChange={handleFirstNameChange}/>
+          </label>
+          <label>
+            Last Name: {' '}
+            <input value={player.lastName} onChange={handleLastNameChange}/>
+          </label>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Scoreboard/>, main)
   </script>
 </body>
 </html>
