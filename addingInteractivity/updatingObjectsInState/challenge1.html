@@ -25,6 +25,7 @@
           <h2>Fix incorrect state updates</h2>
           <p>The for has a few bugs. Click the button that increases the score a few times. Notice that it does not increase. Then edit the first name, and notice that the score has suddenly "caught up" with your changes. Finally, edit the last name, and notice that score has dissapeared completely.</p>
           <p>Your task is to fix all of these bugs. As you fix them, explain why each of them happens.</p>
+          <hr/>
         </>
       )
     }
@@ -72,6 +73,7 @@
             <input value={player.lastName} onChange={handleLastNameChange}/>
           </label>
           <p><b>The problem</b> with last name is that it tries to mutate an object in state and you need to trigger a render with a copy of the object.</p>
+          <hr/>
         </>
       )
     }
@@ -127,7 +129,17 @@
       )
     }
 
-    ReactDOM.render(<MyScoreboard/>, main)
+    function Page(){
+      return(
+        <>
+          <Intro/>
+          <Scoreboard/>
+          <MyScoreboard/>
+        </>
+      )
+    }
+    
+    ReactDOM.render(<Page/>, main)
   </script>
 </body>
 </html>
