@@ -125,11 +125,70 @@
             {curlyBracket[1]});
           </div>
           <p>Keeping all data grouped in an object is very convenient -- as long as you update it correctly!</p>
+          <p>Note that <span className="greyBackground">...</span> is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once.</p>
         </>
       )
     }
 
-    ReactDOM.render(<SpreadSyntax/>, main)
+    function UpdatingNestedObject(){
+      const notReallyNested = "https://react.dev/learn/updating-objects-in-state#objects-are-not-really-nested"
+      return(
+        <>
+          <h2>Updating a nested object</h2>
+          <p>Consider a nested object structure like this:</p>
+          <div className="box">
+            <p><span className="blue">const</span> [person, setPerson] = <span className="turquoise">useState</span>({curlyBracket[0]}</p>
+            <p className="tab"><span className="blue">name</span>: <span className="purple">'Niki de Saint Phalle'</span>,</p>
+            <p className="tab"><span className="blue">artwork</span>: {curlyBracket[0]}</p>
+            <p className="doubleTab"><span className="blue">title</span>: <span className="purple">'Blue Nana'</span>,</p>
+            <p className="doubleTab"><span className="blue">city</span>: <span className="purple">'Hamburg'</span>,</p>
+            <p className="doubleTab"><span className="blue">image</span>: <span className="purple">'https://i.imgur.com/Sd1AgUOm.jpg'</span>,</p>
+            <p className="tab">{curlyBracket[1]}</p>
+            <p>{curlyBracket[1]});</p>
+          </div>
+          <p>If you wanted to update <span className="greyBackground">person.artwork.city</span>, it's clear how to do it with mutation:</p>
+          <div className="box">
+            <p>person.<span className="blue">artwork</span>.<span className="blue">city</span> = <span className="purple">'New Delhi</span>;</p>
+          </div>
+          <p>But in React, you treat state as immutable! In order to change city, you would first need to produce the new <span className="geyBackground">artwork</span> object (pre-populated with data from the previous one), and then produce the new <span className="greyBackground">person</span> object wich points to the new <span className="greyBackground">artwork</span>:</p>
+          <div className="box">
+            <p><span className="blue">const</span> next Artwork  = {curlyBracket[0]} ...person.<span className="blue">artwork</span>, <span className="blue">city</span>: <span className="purple">'New Delhi'</span>{curlyBracket[1]};</p>
+            <p><span className="blue">const</span> nextPerson = {curlyBracket[0]} ...person, <span className="blue">artwork</span>: nextArtwork {curlyBracket[1]};</p>
+            <p><span className="turquoise">setPerson</span>(nextPerson)</p>
+          </div>
+          <p>Or, written as a single function call:</p>
+          <div className="box">
+            <p><span className="turquoise">setPerson</span>({curlyBracket[0]}</p>
+            <p className="tab">...person, <span className="grey">// Copy other fields</span></p>
+            <p className="Tab"><span className="blue">artwork</span>: {curlyBracket[0]} <span className="grey"> // but replace the artwork</span></p>
+            <p className="doubleTab">...person.<span className="blue">artwork</span>, <span className="grey">// with the same one</span></p>
+            <p className="doubleTab"><span className="blue">city</span>: <span className="purple">'New Delhi'</span> <span className="grey"> // but in New Delhi!</span></p>
+            <p className="tab">{curlyBracket[1]}</p>
+            <p>{curlyBracket[1]});</p>
+          </div>
+          <div className="box">
+            <p><b>Note:</b> Objects are not really nested.</p>
+            <p>An object appears "nested" in code.</p>
+            <p>However, "nesting" is an inaccurate way to think about how objects behave. When the code executes, there is no such thing as a "nested" object. You are really looking at two different objects ( imagine two objects or take a look at: <a href={notReallyNested}>"Objects are not really nested"</a> ).</p>
+            <p>One object is not inside the other. A third object could point to the first object too. </p>
+            <p>They are separate objects "pointing" at each other with properties.</p>
+          </div>
+        </>
+      )
+    }
+
+    function Page(){
+      return(
+        <>
+          <Intro/>
+          <LocalMutation/>
+          <SpreadSyntax/>
+          <UpdatingNestedObject/>
+        </>
+      )
+    }
+    
+    ReactDOM.render(<Page/>, main)
   </script>
 </body>
 </html>
