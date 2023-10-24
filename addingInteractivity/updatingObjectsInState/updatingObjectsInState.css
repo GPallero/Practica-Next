@@ -1,7 +1,12 @@
+body{
+  margin: 16px;
+}
 .box{
   padding-left: 16px;
   border: 1px solid black;
-  background-color: #0000007c;
+  border-radius: 10px;
+  background-color: #16181d;
+  color: whitesmoke;
 }
 
 .greyBackground{
@@ -9,19 +14,23 @@
 }
 
 .blue{
-  color: blue;
+  color: #77b7d7;
 }
 
 .turquoise{
-  color: turquoise;
+  color: #86d9ca;
 }
 
 .red{
-  color: red;
+  color: #c64640;
 }
 
 .purple{
-  color: purple;
+  color: #710e71;
+}
+
+.grey{
+  color: #757575;
 }
 
 .tab{
