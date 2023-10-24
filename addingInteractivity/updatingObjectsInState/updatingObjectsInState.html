@@ -25,14 +25,22 @@
           <p>State can hold any kind of JavaScript value, including objects. But you shouldn't change objects that you hold in the React state directly. Instead, when you want to update an object, you need to create a new one (or make a copy of an existing one), and then set the state to use that copy.</p>
           <h2>What's a mutation?</h2>
           <p>You can store any kind of JavaScript value in state.</p>
-          <p><span className="blue">const</span> [x, setX] = <span className="turquoise">useState</span>(<span className="red">0</span>);</p>
+          <div className="box">
+            <p><span className="blue">const</span> [x, setX] = <span className="turquoise">useState</span>(<span className="red">0</span>);</p>
+          </div>
           <p>So far I been working with numbers, strings, and booleans. These kind of JavaScript values are "immutable", meaning unchangeable or "read-only". You can trigger a re-render to replace a value:</p>
-          <p><span className="turquoise">setX</span>(<span className="red">5</span>);</p>
+          <div class="box">
+            <p><span className="turquoise">setX</span>(<span className="red">5</span>);</p>
+          </div>
           <p>The <span className="greyBackground">x</span> state changed from <span className="greyBackground">0</span> to <span className="greyBackground">5</span>, but <span className="greyBackground">0</span> itself did not change. It's not possible to make any changes to the built-in primitive values like numbers, strings, and booleans in JavaScript.</p>
           <p>Now consider an object in state:</p>
-          <p><span className="blue">const</span> [position, setPosition] = <span className="turquoise">useState</span>( {curlyBracket[0]}<span className="blue">x</span>: <span className="red">0</span>, <span className="blue">y</span>: <span className="red">0 </span>{curlyBracket[1]});</p>
+          <div class="box">
+            <p><span className="blue">const</span> [position, setPosition] = <span className="turquoise">useState</span>( {curlyBracket[0]}<span className="blue">x</span>: <span className="red">0</span>, <span className="blue">y</span>: <span className="red">0 </span>{curlyBracket[1]});</p>
+          </div>
           <p>Techically, it's possible to change the contents of the object itself. This is called a <b>mutation</b>:</p>
-          <p>position.<span className="blue">x </span>= <span className="red">5</span>;</p>
+          <div className="box">
+            <p>position.<span className="blue">x </span>= <span className="red">5</span>;</p>
+          </div>
           <p>However, although objects in React state are technically mutable, you should treat them as if  they were immutable--like numbers, booleans, and strings. Instead of mutating them, you should always replace them.</p>
           <h2>Treat state as read-only</h2>
           <p>In other words, you should treat any JavaScript object that you put into state as read-only.</p>
@@ -48,31 +56,31 @@
           <p>Code like this is a problem it modifies an existing object in state:</p>
           <div className="box">
             <pre>
-              position.x = e.clientX;
+              position.<span className="blue">x</span> = e.<span className="blue">clientX</span>;
               <br/>
-              position.y = e.clientY;
+              position.<span className="blue">y</span> = e.<span className="blue">clientY</span>;
             </pre>
           </div>
           <p>But code like this is absolutly fine because you're mutating a fresh object you have just created:</p>
           <div className="box">
             <pre>
-              const nextPosition = {curlyBracket[0]} {curlyBracket[1]};
+              <span className="blue">const</span> nextPosition = {curlyBracket[0]} {curlyBracket[1]};
               <br/>
-              nextPosition.x = e.clientX;
+              position.<span className="blue">x</span> = e.<span className="blue">clientX</span>;
               <br/>
-              nextPosition.y = e.clientY;
+              position.<span className="blue">y</span> = e.<span className="blue">clientY</span>;
               <br/>
-              setPosition(nextPosition);
+              <span className="turquoise">setPosition</span>(nextPosition);
             </pre>
           </div>
           <p>In fact, it is completly equivalent to writing this:</p>
           <div className="box">
             <pre>
-              setPosition({curlyBracket[0]}
+              <span class="turquoise">setPosition</span>({curlyBracket[0]}
                 <br/>
-                <span className="tab">x: e.clientX,</span>
+                <span className="tab"><span className="blue">x</span>: e.<span className="blue">clientX</span>,</span>
                 <br/>
-                <span className="tab">y: e.clientY,</span>
+                <span className="tab"><span className="blue">x</span>: e.<span className="blue">clientY</span>,</span>
                 <br/>
               {curlyBracket[1]});
             </pre>
@@ -112,7 +120,7 @@
           </div>
           <p>You can use the <span className="greyBackground">...</span> <span className="blue">object spread</span> syntax so that you don't need to copy every property separately.</p>
           <div className="box">
-            <span className="turqouise">setPerson</span>({curlyBracket[0]}
+            <span className="turquoise">setPerson</span>({curlyBracket[0]}
             <br/>
             <span className="tab">...person, <span className="grey">// Copy the old fields</span></span>
             <br/>
