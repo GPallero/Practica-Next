@@ -1,5 +1,7 @@
 body{
   margin: 16px;
+  color: #ffffff;
+  background-color: #171c25e4;
 }
 .box{
   padding-left: 16px;
@@ -10,7 +12,9 @@ body{
 }
 
 .greyBackground{
-  background-color: grey;
+  background-color: #99a1b31a;
+  padding: 0 3px;
+  border-radius: 3px;
 }
 
 .blue{
@@ -26,7 +30,7 @@ body{
 }
 
 .purple{
-  color: #710e71;
+  color: #977cdc;
 }
 
 .grey{
