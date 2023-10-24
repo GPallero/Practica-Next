@@ -109,18 +109,18 @@
       return(
         <>
           <h2>This is the fixed form:</h2>
-          <label>
+          <label className="block">
             Score:
             {' '}
             <b>{player.score}</b>
             <button onClick={handlePlusClick}>+1</button>
           </label>
-          <label>
+          <label className="block">
             First Name:
             {' '}
             <input value={player.firstName} onChange={handleFirstNameChange}/>
           </label>
-          <label>
+          <label className="block">
             Last Name:
             {' '}
             <input value={player.lastName} onChange={handleLastNameChange}/>
@@ -138,7 +138,7 @@
         </>
       )
     }
-    
+
     ReactDOM.render(<Page/>, main)
   </script>
 </body>
