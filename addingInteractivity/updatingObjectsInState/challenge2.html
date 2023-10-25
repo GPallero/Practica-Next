@@ -16,7 +16,19 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    function Intro(){
+      return(
+        <>
+          <h1>Updating objects in state - challenge 2</h1>
+          <h2>Find and fix the mutation</h2>
+          <p>There is a draggable box on a static background. You can change the box's color using the select input.</p>
+          <p>But there is a bug. If you move the box first, and then change its color, the background (which isn't supposed to move!) will "jump" to the box position. But this should not happen: the <span claasName="greyBackground">Background</span>'s <span className="greyBackground">position</span> prop is set to <span classname="greyBackground">initialPosition</span>, wich is <span className="greyBackground">{"{x: 0, y: 0}"}</span>. Why is the background moving after the color change?</p>
+          <p>Find the bug and fix it.</p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
