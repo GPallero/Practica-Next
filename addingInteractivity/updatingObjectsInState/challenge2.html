@@ -17,6 +17,13 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const {useState} = React
+    
+    const initialPosition = {
+      x: 0,
+      y: 0,
+    };
+    
     function Intro(){
       return(
         <>
@@ -28,6 +35,23 @@
         </>
       )
     }
+
+    function Background({position}){
+      return(
+        <div style={{
+          position: 'absolute',
+          transform: `translate(
+            ${position.x}px,
+            ${position.y}px
+          )`,
+          width: 250,
+          height: 250,
+          backgroundColor: 'rgba(200, 200, 0, 0.4)',
+        }}/>
+      );
+    };
+
+    
 
     ReactDOM.render(<Intro/>, main)
   </script>
