@@ -44,19 +44,21 @@
               <div className="item">Replacing</div>
               <div className="item">Sorting</div>
             </div>
+
             <div className="column">
               <div className="item"><b>Avoid</b> (mutates the array)</div>
               <div className="item"><span className="greyBackground">push</span>, <span className="greyBackground">unshift</span></div>
               <div className="item"><span className="greyBackground">pop</span>, <span className="greyBackground">shift</span>, <span className="greyBackground">splice</span></div>
               <div className="item"><span className="greyBackground">splice</span>, <span className="greyBackground">arr[i] = ... </span><b>assignment</b></div>
               <div className="item"><span className="greyBackground">reverse</span>, <span className="greyBackground">sort</span>,</div>
-              <div className="column">
-                <div className="item"><b>Prefer</b> (returns a new array)</div>
-                <div className="item"><span className="greyBackground">concat</span>, <span className="greyBackground">[...arr]</span> spread syntax (<a href="">Example</a>)</div>
-                <div className="item"><span className="greyBackground">filter</span>, <span className="greyBackground">slice</span> (<a href="">Example</a>)</div>
-                <div className="item"><span className="greyBackground">map</span> (<a href="">Example</a>)</div>
-                <div className="item"><b>Copy the array first</b> (<a href="">Example</a>)</div>
-              </div>
+            </div>
+
+            <div className="column">
+              <div className="item"><b>Prefer</b> (returns a new array)</div>
+              <div className="item"><span className="greyBackground">concat</span>, <span className="greyBackground">[...arr]</span> spread syntax (<a href="">Example</a>)</div>
+              <div className="item"><span className="greyBackground">filter</span>, <span className="greyBackground">slice</span> (<a href="">Example</a>)</div>
+              <div className="item"><span className="greyBackground">map</span> (<a href="">Example</a>)</div>
+              <div className="item"><b>Copy the array first</b> (<a href="">Example</a>)</div>
             </div>
           </div>
           <p>Alternatively, you can <a href={immerLink}>use Immer</a> wich lets you use methods from both columns.</p>
