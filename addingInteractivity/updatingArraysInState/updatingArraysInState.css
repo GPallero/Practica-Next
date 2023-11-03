@@ -9,3 +9,7 @@ body{
   padding: 0 3px;
   border-radius: 3px;
 }
+
+.table{
+  display: flex;
+}
