@@ -1,0 +1,11 @@
+body{
+  margin: 16px;
+  color: #ffffff;
+  background-color: #171c25e4;
+}
+
+.greyBackground{
+  background-color: #99a1b31a;
+  padding: 0 3px;
+  border-radius: 3px;
+}
