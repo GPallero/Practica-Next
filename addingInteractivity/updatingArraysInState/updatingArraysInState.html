@@ -16,6 +16,8 @@
 
   <script type="text/jsx">
     const objectLink = "https://react.dev/learn/updating-objects-in-state"
+    const immerLink = "https://react.dev/learn/updating-arrays-in-state#write-concise-update-logic-with-immer"
+
     function UpdatingArraysInState(){
       return(
         <>
@@ -30,7 +32,33 @@
       return(
         <>
           <h2>Updating Arrays Without Mutation</h2>
-          <p>In JavaScript, arrays are just another kind of object. <a href={objectLink}>Like with objects</a>, you should treat arrays in React state as read-only. This means that you shouldn't reassign items inside an array like <span class="greyBacground">arr[0] = 'bird'</span> and you also shouldn't use methods that mutate the array, such as <span class="greyBacground">push()</span> and <span class="greyBacground">pop()</span>.</p>
+          <p>In JavaScript, arrays are just another kind of object. <a href={objectLink}>Like with objects</a>, you should treat arrays in React state as read-only. This means that you shouldn't reassign items inside an array like <span className="greyBacground">arr[0] = 'bird'</span> and you also shouldn't use methods that mutate the array, such as <span className="greyBacground">push()</span> and <span className="greyBacground">pop()</span>.</p>
+          <p>Instead, every time you want to update an array, you'll want to pass a new array to your state setting function. To do that, <b>you can create a new array from the original array in your state by calling its non-mutating methods</b> like <span className="greyBackground">filter()</span> and <span className="greyBackground">map()</span>. Then you can set your state to the resulting new array.</p>
+          <p>Here is a reference table of common array operations. When dealing with arrays inside React state, you will need to avoid the methods in the left column, and instead prefer the metods in the right column:</p>
+          <div className="table">
+            <div className="column">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+            <div className="column">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+            <div className="column">
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+              <div class="item"></div>
+            </div>
+          </div>
+          <p>Alternatively, you can <a href={immerLink}>use Immer</a> wich lets you use methods from both columns.</p>
         </>
       )
     }
