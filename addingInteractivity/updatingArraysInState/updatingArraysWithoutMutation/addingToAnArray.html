@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="addingToAnArray.css">
   <title>Adding to an Array</title>
 </head>
 <body>
@@ -41,14 +42,14 @@
           <h2>Adding to an Array</h2>
           <p>There are multiple ways to do this, but the easiest one is to use the <span className="greyBackground">...</span> <a href="">array spread</a> syntax:</p>
           <h3>Type item, then use the buttons to add at the beginnig or the end</h3>
-          <div className="table2">
             <ul className="item1">
               {list.map(el => ( <li key={itemId++}>{el}</li> ))}
             </ul>
-            <input className="item2" type="text" value={item} onChange={handleItem}/>
-            <button className="item3" onClick={addToEnd}>Add to End</button>
-            <button className="item4" onClick={addToBeginning}>Add to Beginning</button>
-          </div>
+            <div className="flex">
+              <input className="item1" type="text" value={item} onChange={handleItem}/>
+              <button className="btn1" onClick={addToEnd}>Add to End</button>
+              <button className="btn2" onClick={addToBeginning}>Add to Beginning</button>
+            </div>
         </>
       )
     }
