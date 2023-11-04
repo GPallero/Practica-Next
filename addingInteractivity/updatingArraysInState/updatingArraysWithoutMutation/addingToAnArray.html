@@ -28,11 +28,12 @@
         setItem(e.target.value);
       }
 
-      function handleClick({name}){
-        if (name === "add"){
-          setLista([...lista, item]);
-        }
-        setLista([item, ...lista])
+      function addToBeginning(){
+        setLista([item, ...lista]);
+      }
+
+      function addToEnd(){
+        setLista([...lista, item]);
       }
 
       return (
@@ -41,8 +42,8 @@
           <p>There are multiple ways to do this, but the easiest one is to use the <span className="greyBackground">...</span> <a href="">array spread</a> syntax:</p>
           <h3>Type item, then use the buttons to add at the beginnig or the end</h3>
           <input type="text" value={item} onChange={handleItem}/>
-          <button name="add" onClick={handleClick}>Add</button>
-          <button onClick={handleClick}>Add before</button>
+          <button onClick={addToEnd}>Add to End</button>
+          <button onClick={addToBeginning}>Add to Beginning</button>
           <ul>
             {lista.map(el => ( <li key={itemId++}>{el}</li> ))}
           </ul>
