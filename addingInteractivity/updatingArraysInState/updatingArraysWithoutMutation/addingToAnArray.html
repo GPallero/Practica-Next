@@ -29,12 +29,12 @@
         setItem(e.target.value);
       }
 
-      function addToBeginning(){
-        setList([item, ...list]);
-      }
-
-      function addToEnd(){
-        setList([...list, item]);
+      function addItem(addBefore: false){
+        if(addBefore){
+          setList([item, ...list]);
+        } else {
+          setList([...list, item]);
+        }
       }
 
       return (
@@ -52,11 +52,10 @@
             </div>
             <div className="column2">
               <input type="text" value={item} onChange={handleItem}/>
-              <button className="btn1" onClick={addToEnd}>Add to End</button>
-              <button className="btn2" onClick={addToBeginning}>Add to Beginning</button>
+              <button className="btn1" onClick={() => {addItem(true)}}>Add before</button>
+              <button className="btn2" onClick={() => {addItem()}}>Add after</button>
             </div>
           </div>
-
         </>
       )
     }
