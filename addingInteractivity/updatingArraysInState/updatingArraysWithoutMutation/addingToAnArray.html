@@ -15,6 +15,17 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General Script -->
-  <script type="text/jsx"></script>
+  <script type="text/jsx">
+    function AddingToAnArray(){
+      return (
+        <>
+          <h2>Adding to an Array</h2>
+          <p>There are multiple ways to do this, but the easiest one is to use the <span className="greyBackground">...</span> <a href="">array spread</a> syntax:</p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<AddingToAnArray/>, main)
+  </script>
 </body>
 </html>
