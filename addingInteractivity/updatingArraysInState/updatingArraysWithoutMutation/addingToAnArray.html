@@ -42,14 +42,20 @@
           <h2>Adding to an Array</h2>
           <p>There are multiple ways to do this, but the easiest one is to use the <span className="greyBackground">...</span> <a href="">array spread</a> syntax:</p>
           <h3>Type item, then use the buttons to add at the beginnig or the end</h3>
-            <ul className="item1">
-              {list.map(el => ( <li key={itemId++}>{el}</li> ))}
-            </ul>
-            <div className="flex">
-              <input className="item1" type="text" value={item} onChange={handleItem}/>
+            
+          <div className="table">
+            <div className="column1">
+              <ul>
+                {list.map(el => ( <li key={itemId++}>{el}</li> ))}
+              </ul>
+            </div>
+            <div className="column2">
+              <input type="text" value={item} onChange={handleItem}/>
               <button className="btn1" onClick={addToEnd}>Add to End</button>
               <button className="btn2" onClick={addToBeginning}>Add to Beginning</button>
             </div>
+          </div>
+
         </>
       )
     }
