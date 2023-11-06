@@ -30,11 +30,12 @@
       }
 
       function addItem(addBefore: false){
-        if(addBefore){
-          setList([item, ...list]);
-        } else {
-          setList([...list, item]);
-        }
+        if( (item.trim()).length > 0 )
+          if(addBefore){
+            setList([item.trim(), ...list]);
+          } else {
+            setList([...list, item.trim()]);
+          }
       }
 
       return (
