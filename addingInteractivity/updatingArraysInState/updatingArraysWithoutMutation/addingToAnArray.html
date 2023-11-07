@@ -29,7 +29,7 @@
         setItem(e.target.value);
       }
 
-      function addItem(addBefore: false){
+      function addItem( addBefore = false ){
         if( (item.trim()).length > 0 )
           if(addBefore){
             setList([item.trim(), ...list]);
