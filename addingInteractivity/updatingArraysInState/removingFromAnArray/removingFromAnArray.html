@@ -16,12 +16,57 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    const { useState } = React
+
+    let characterList = [
+      {id: 0, name: 'Yuji Itadori'},
+      {id: 1, name: 'Megumi Fushigoro'},
+      {id: 2, name: 'Nobara Kugisaki'},
+      {id: 3, name: "Maki Zen'in"},
+      {id: 4, name: 'Toge Inumaki'},
+      {id: 5, name: 'Panda'},
+      {id: 6, name: 'Satoru Gojo'},
+    ];
+
     function Intro(){
       return(
-        <h1>Removing from an Array</h1>
-        <p>The easiest way to remove an item from an array is to filter it out. In other words, you will produce a new array that will not contain that item. To do this , use the <span className="greyBackground">filter</span> method, for example:</p>
+        <>
+          <h1>Removing from an Array</h1>
+          <p>The easiest way to remove an item from an array is to filter it out. In other words, you will produce a new array that will not contain that item. To do this , use the <span className="greyBackground">filter</span> method, for example:</p>
+        </>
       )
     }
+
+    function List(){
+      const [characters, setCharacters] = useState(
+        characterList
+      );
+
+      return(
+        <>
+          <Intro/>
+          <h2>Jujutsu Kaisen students and staff list:</h2>
+          <ul>
+            {characters.map(character =>(
+              <li key={character.id}>
+                {character.name}{' '}
+                <button onClick={()=>{
+                  setCharacters(
+                    characters.filter(a=>
+                      a.id !== character.id
+                    )
+                  );
+                }}>
+                  Delete
+                </button>
+              </li>
+            ))}
+          </ul>
+        </>
+      );
+    }
+
+    ReactDOM.render(<List/>, main)
   </script>
 </body>
 </html>
