@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../updatingArraysInState.css">
   <title>Transforming an Array</title>
 </head>
 <body>
@@ -62,7 +63,7 @@
           <button onClick={handleClick}>
             Move circles down!
           </button>
-          <div style={{position: 'absolute', width: '80%', height: 490}}>
+          <div style={{position: 'absolute', width: '80%', height: 490, background: '#171c25e4', margin: 8}}>
             { shapes.map( shape => (
               <div
                 key={shape.id}
