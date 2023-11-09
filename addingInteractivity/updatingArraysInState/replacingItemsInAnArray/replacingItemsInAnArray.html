@@ -16,7 +16,15 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    function Intro(){
+      return(
+        <>
+          <h1>Replacing Items in an Array</h1>
+          <p>It is particularly common to want to replace one ore more items in an array. Assignments like <span className="greyBackground">arr[0] = 'bird'</span> are mutating the original array, so instead you'll want to use <span className="greyBackground">map</span> for this as well.</p>
+          <p>To replace an item, create a new array with <span className="greyBackground">map</span>. Inside your <span className="greyBackground">map</span> call, you will receive the item index as the second argument. Use it to decide whether to return the original item (the first argument) or something else:</p>
+        </>
+      )
+    }
   </script>
 </body>
 </html>
