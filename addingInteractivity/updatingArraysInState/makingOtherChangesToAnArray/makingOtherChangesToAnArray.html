@@ -6,6 +6,17 @@
   <title>Making other changes to an Array</title>
 </head>
 <body>
-  
+  function Intro(){
+    return(
+      <>
+        <h1>Making other changes to an Array</h1>
+        <p>There are some things you can't do with the spread syntax and non-mutating methods like <span className="greyBackground">map()</span> and <span className="greyBackground">filter()</span> alone. For example, you may want to reverse or sort an array. The JavaScript <span className="greyBackground">reverse</span> and <span className="greyBackground">sort()</span> methods are mutating the original array, so you can't use them directly.</p>
+        <p>However, you can copy the array first, and then make changes to it.</p>
+        <p>For example:</p>
+      </>
+    )  
+  }
+
+  ReactDOM.render(<Intro/>, main)
 </body>
 </html>
