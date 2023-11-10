@@ -16,7 +16,18 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    function Intro(){
+      return(
+        <>
+          <h1>Updating Objects inside Arrays</h1>
+          <p>Objects are not <i>really</i> "inside" arrayys. They might appear to be "inside" in code, but each object in an array is a separate value, to wich the array "points". This is why you need to be careful when changing nested fields like <span className="greyBackground">list[0]</span>. Another person's artwork list may point to the same element of the array!</p>
+          <p>When updating nested state, you need to create copies from the point where you want to update, and all the way up to the top level. Let's see how this works.</p>
+          <p>In this example, two separate artwork lists have the same initial state. They are supposed to be isolated, but because of mutation, their state is accidentally shared, and checking a box in one list affects the other list:</p>
+        </>
+      );
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
