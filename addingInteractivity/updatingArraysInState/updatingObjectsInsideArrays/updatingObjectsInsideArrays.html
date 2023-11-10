@@ -16,6 +16,15 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const { useState } = React
+
+    const initialList = [
+      {id: 0, name: 'Big Bellies', seen: false},
+      {id: 1, name: 'Lunar Landscape', seen: false},
+      {id: 2, name: 'Floralis Generica', seen: true},
+      {id: 3, name: 'Terracota Army', seen: false},
+    ]
+
     function Intro(){
       return(
         <>
@@ -27,7 +36,66 @@
       );
     }
 
-    ReactDOM.render(<Intro/>, main)
+    function BucketList(){
+      const [myList, setMyList] = useState(initialList);
+      const [othersList, setOthersList] = useState(initialList);
+
+      function handleToggleMyList(artworkId, nextSeen){
+        const myNextList = [...myList];
+        const artwork = myNextList.find( a => a.id === artworkId);
+        artwork.seen = nextSeen;
+        setMyList(myNextList);
+      }
+
+      function handleToggleOtherList(artworkId, nextSeen){
+        const otherNextList = [...othersList];
+        const artwork = othersNextList.find( a => a.id === artworkId);
+        artwork.seen = nextSeen;
+        setOthersList(othersNextList);
+      }
+
+      return(
+        <>
+          <h2>Art Bucket List</h2>
+          <h3>My list of art to see:</h3>
+          <ItemList
+            artworks={myList}
+            onToggle={handleToggleMyList} />
+          <h3>Others list of art to see:</h3>
+          <ItemList
+          artworks={othersList}
+          onToggle={handleToggleOtherList} />
+        </>
+      );
+    }
+
+    function ItemList({ artworks, onToggle }){
+      return(
+        <>
+          <ul>
+            {artworks.map( artwork => (
+              <li key={artwork.id}>
+                <label>
+                  <input 
+                    type="checkbox"
+                    checked={artwork.seen}
+                    onChange={ e => {
+                      onToggle(
+                        artwork.id,
+                        e.target.checked
+                      );
+                    }}
+                  />
+                  {artwork.name}
+                </label>
+              </li>
+            ))}
+          </ul>
+        </>
+      );
+    }
+
+    ReactDOM.render(<BucketList/>, main)
   </script>
 </body>
 </html>
