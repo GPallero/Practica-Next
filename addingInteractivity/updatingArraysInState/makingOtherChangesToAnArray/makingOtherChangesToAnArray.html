@@ -16,6 +16,15 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const { useState } = React
+
+    let nextId = 3;
+    const initialList = [
+      {id: 0, name: 'Big Bellies'},
+      {id: 1, name: 'Lunar Landscape'},
+      {id: 2, name: 'Terracota Army'},
+    ];
+
     function Intro(){
       return(
         <>
@@ -27,7 +36,25 @@
       )  
     }
 
-    ReactDOM.render(<Intro/>, main)
+    function List(){
+      const [list, setList] = useState(initialList)
+
+      function handleClick(){
+        const nextList = [...list];
+        nextList.reverse();
+        setList(nextList);
+      }
+
+      return(
+        <>
+          <button onClick={handleClick}>Reverse</button>
+          {list.map( artwork => (
+            <li key={artwork.id}>{artwork.name}</li>
+          ))}
+        </>
+      )
+    }
+    ReactDOM.render(<List/>, main)
   </script>
 </body>
 </html>
