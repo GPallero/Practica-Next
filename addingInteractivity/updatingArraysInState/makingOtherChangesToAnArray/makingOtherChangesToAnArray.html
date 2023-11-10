@@ -18,11 +18,11 @@
   <script type="text/jsx">
     const { useState } = React
 
-    let nextId = 3;
     const initialList = [
       {id: 0, name: 'Big Bellies'},
       {id: 1, name: 'Lunar Landscape'},
       {id: 2, name: 'Terracota Army'},
+      {id: 3, name: 'Floralis Generica'},
     ];
 
     function Intro(){
@@ -47,6 +47,7 @@
 
       return(
         <>
+          <Intro/>
           <button onClick={handleClick}>Reverse</button>
           {list.map( artwork => (
             <li key={artwork.id}>{artwork.name}</li>
