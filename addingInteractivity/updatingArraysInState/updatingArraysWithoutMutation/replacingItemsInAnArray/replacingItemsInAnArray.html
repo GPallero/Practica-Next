@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../updatingArraysInState.css">
+  <title>Replacing items in an Array</title>
+</head>
+<body>
+  <!-- Div for rendering -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, ReactDOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General script -->
+  <script type="text/jsx">
+    const { useState } = React
+
+    let initialCounters = [
+      0, 0, 0
+    ];
+
+    function Intro(){
+      return(
+        <>
+          <h1>Replacing Items in an Array</h1>
+          <p>It is particularly common to want to replace one ore more items in an array. Assignments like <span className="greyBackground">arr[0] = 'bird'</span> are mutating the original array, so instead you'll want to use <span className="greyBackground">map</span> for this as well.</p>
+          <p>To replace an item, create a new array with <span className="greyBackground">map</span>. Inside your <span className="greyBackground">map</span> call, you will receive the item index as the second argument. Use it to decide whether to return the original item (the first argument) or something else:</p>
+        </>
+      )
+    }
+
+    function CounterList(){
+      const [counters, setCounters] = useState(initialCounters);
+
+      function handleIncrementClick( index ){
+        const nextCounters = counters.map((c, i) => {
+          if ( i===index ) {
+            // Increment the clicked counter
+            return c + 1;
+          } else {
+            // Keep the rest without change
+            return c;
+          }
+        })
+        setCounters(nextCounters);
+      }
+
+      return(
+        <>
+          <Intro/>
+          <ul>
+            {counters.map((counter, i) => 
+              <li key={i}>
+                {counter} {' '}
+                <button onClick={() => {handleIncrementClick(i)}}>+1</button>
+              </li>
+            )}
+          </ul>
+        </>
+      );
+    }
+
+    ReactDOM.render(<CounterList/>, main)
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../updatingArraysInState.css">
+  <title>Making other changes to an Array</title>
+</head>
+<body>
+  <!-- Div for rendering -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, ReactDOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General script -->
+  <script type="text/jsx">
+    const { useState } = React
+
+    const initialList = [
+      {id: 0, name: 'Big Bellies'},
+      {id: 1, name: 'Lunar Landscape'},
+      {id: 2, name: 'Terracota Army'},
+      {id: 3, name: 'Floralis Generica'},
+    ];
+
+    function Intro(){
+      return(
+        <>
+          <h1>Making other changes to an Array</h1>
+          <p>There are some things you can't do with the spread syntax and non-mutating methods like <span className="greyBackground">map()</span> and <span className="greyBackground">filter()</span> alone. For example, you may want to reverse or sort an array. The JavaScript <span className="greyBackground">reverse</span> and <span className="greyBackground">sort()</span> methods are mutating the original array, so you can't use them directly.</p>
+          <p>However, you can copy the array first, and then make changes to it.</p>
+          <p>For example:</p>
+        </>
+      )  
+    }
+
+    function List(){
+      const [list, setList] = useState(initialList)
+
+      function handleClick(){
+        const nextList = [...list];
+        nextList.reverse();
+        setList(nextList);
+      }
+
+      return(
+        <>
+          <Intro/>
+          <button onClick={handleClick}>Reverse</button>
+          {list.map( artwork => (
+            <li key={artwork.id}>{artwork.name}</li>
+          ))}
+        </>
+      )
+    }
+    ReactDOM.render(<List/>, main)
+  </script>
+</body>
+</html>

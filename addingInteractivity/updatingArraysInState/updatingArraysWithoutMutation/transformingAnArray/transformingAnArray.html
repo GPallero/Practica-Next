@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../updatingArraysInState.css">
+  <title>Transforming an Array</title>
+</head>
+<body>
+  <!-- Div for rendering -->
+  <div id="main"></div>
+
+  <!-- Scripts for React, ReactDOM & Babel -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- General Script -->
+  <script type="text/jsx">
+    const { useState } = React;
+
+    let initialShapes = [
+      { id: 0, type: 'circle', x: 50, y: 25},
+      { id: 1, type: 'square', x: 150, y: 25},
+      { id: 2, type: 'circle', x: 250, y: 25},
+    ];
+
+    function Intro(){
+      return(
+        <>
+          <h1>Transforming an Array</h1>
+          <p>If you want to change some or all items of the array, you can use <span className="greyBacground">map()</span> to create a new array. The function you will pass to <span className="greyBackground">map</span> can decide what to do with each item, based on its data or its index (or both).</p>
+          <p>In the next example, an array holds coordinates of two circles and a square. When you press the button, it moves only the circles down by 50 pixels. It does this by producing a new array of data using <span className="greyBackground">map()</span>:</p>
+        </>
+      )
+    }
+
+    function ShapeEditor(){
+      const [shapes, setShapes] = useState(
+        initialShapes
+      );
+
+      function handleClick(){
+        const nextShapes = shapes.map(shape => {
+          if(shape.type === 'square'){
+            //No change:
+            return shape;
+          } else {
+            //return a new circle 50 pixels below
+            return {
+              ...shape,
+              y: shape.y + 50,
+            };
+          }
+        });
+        //Re-render with the new array:
+        setShapes(nextShapes)
+      }
+
+      return(
+        <>
+          <Intro/>  
+          <button onClick={handleClick}>
+            Move circles down!
+          </button>
+          <div style={{position: 'absolute', width: '80%', height: 490, background: '#171c25e4', margin: 8}}>
+            { shapes.map( shape => (
+              <div
+                key={shape.id}
+                style={{
+                background: 'purple',
+                position: 'absolute',
+                left: shape.x,
+                top: shape.y,
+                borderRadius:
+                  shape.type === 'circle'
+                    ? '50%' : '',
+                width: 20,
+                height: 20,
+              }}/>
+            ))}
+            </div>
+        </>
+      )
+    }
+
+    ReactDOM.render(<ShapeEditor/>, main)
+  </script>
+</body>
+</html>
