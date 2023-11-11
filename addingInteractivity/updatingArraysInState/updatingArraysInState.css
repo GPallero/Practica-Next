@@ -41,6 +41,14 @@ a{
   line-height: 24px;
 }
 
+.tab1{
+  padding-left: 16px;
+}
+
+.tab2{
+  padding-left: 32px;
+}
+
 .table{
   display: grid;
   grid-template-columns: 1fr 3fr 3fr ;
