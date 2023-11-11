@@ -30,6 +30,17 @@ a{
   color: #757575;
 }
 
+.container{
+  border-radius: 10px;
+  background-color: #16181d;
+  padding: 8px;
+}
+
+.container p{
+  margin: 0;
+  line-height: 24px;
+}
+
 .table{
   display: grid;
   grid-template-columns: 1fr 3fr 3fr ;
