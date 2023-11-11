@@ -97,7 +97,25 @@
       );
     }
 
-    ReactDOM.render(<BucketList/>, main)
+    function Problem(){
+      return (
+        <>
+          <p>The problem (if you look in BucketList component with the inspector tool) is in code like this:</p>
+          <p><span className="blue">const</span> myNextList = [...myList]</p>
+          <p>
+            <span className="blue">const </span>
+            artwork = myNextList.
+            <span className="blue">find</span>( a => a.
+            <span className="blue">id</span>
+            === artworkId);
+          </p>
+          <p>artwork.<span className="blue">seen</span> = nextSeen</p>
+          <p><span className="turquoise">setMyList</span>(myNextList);</p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Problem/>, main)
   </script>
 </body>
 </html>
