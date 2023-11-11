@@ -18,6 +18,7 @@
   <!-- General script -->
   <script type="text/jsx">
     const { useState } = React
+    const copyAnObject = "https://react.dev/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax"
 
     const initialList = [
       {id: 0, name: 'Big Bellies', seen: false},
@@ -137,8 +138,39 @@
             <p className="tab1">{"}"}</p>
             <p>{"}"}));</p>
           </div>
+          <p>Here, <span className="greyBackground">...</span> is the object spread syntax used to <a href={copyAnObject}>create a copy of an object.</a></p>
+          <p>With this approach, none of the existing state items are being mutated, and the bug is fixed:</p>
         </>
       )
+    }
+
+    function FixedBucketList(){
+      const [ myList, setMyList ] = useState( initialList );
+      const [ othersList, setOthersList ] = useState( initialList)
+
+      function handleToggleMyList( artworkId, nextSeen ){
+        setMyList(myList.map(artwork =>{
+          if(artwork.id === artworkId){
+            //Creates a *new* object with the changes:
+            return {...artwork, seen: nextSeen};
+          } else {
+            //No changes
+            return  artwork;
+          }
+        }));
+      }
+
+      function handleToggleOthersList( artworkId, nextSeen ){
+        setOthersList(othersList.map(arttwork => {
+          if (artwork.id === artworkId){
+            //Creates a *new* object with the changes:
+            return {...artwork, seen: nextSeen};
+          } else {
+            //No changes
+            return artwork;
+          }
+        }));
+      }
     }
 
     ReactDOM.render(<BucketList/>, main)
