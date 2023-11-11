@@ -18,6 +18,18 @@ a{
   border-radius: 3px;
 }
 
+.blue{
+  color: #77b7d7;
+}
+
+.turquoise{
+  color: #86d9ca;
+}
+
+.grey{
+  color: #757575;
+}
+
 .table{
   display: grid;
   grid-template-columns: 1fr 3fr 3fr ;
