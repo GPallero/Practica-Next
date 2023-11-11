@@ -108,14 +108,35 @@
               <span className="blue">const </span>
               artwork = myNextList.
               <span className="blue">find</span>( a => a.
-              <span className="blue">id</span>
+              <span className="blue">id </span>
               === artworkId);
             </p>
             <p>artwork.<span className="blue">seen</span> = nextSeen <span className="grey">// Problem: mutates an existing item</span></p>
             <p><span className="turquoise">setMyList</span>(myNextList);</p>
           </div>
           <p>Although the <span className="greyBackground">myNextList</span> array itself is new, the items themselves are the same as in the original <span className="greyBackground">myList</span> array. So changing <span className="greyBackground">artwork.seen</span> changes the original artwork item. That artwork item is also in <span className="greyBackground">othersList</span>, wich causes the bug. Bugs like this can be difficult to think about, but thankfully they dissapear if you avoid mutating state.</p>
-          <p>you can use <span className="greyBackground">map</span> to substitute an old item with its updated version without mutation.</p>
+          <p>You can use <span className="greyBackground">map</span> to substitute an old item with its updated version without mutation.</p>
+          <div className="container">
+            <p>
+              <span className="turquoise">setMyList</span>
+              ( myList.
+              <span className="blue">map</span>
+              ( artwork => {"{ "}
+            </p>
+            <p className="tab1">
+              <span className="blue">if</span>
+              ( artwork.
+              <span className="blue">id </span>
+              === artworkId ){"{"}
+            </p>
+            <p className="tab2"><span className="grey">//Create a *new* object with changes</span></p>
+            <p className="tab2"><span className="blue">return</span> {"{"} ...artwork, <span className="blue">seen</span>: nextSeen {"}"};</p>
+            <p className="tab1">{"}"} <span className="blue"> else </span> {"{"}</p>
+            <p className="tab2"><span className="grey">//No changes</span></p>
+            <p className="tab2"><span className="blue">return</span> artwork;</p>
+            <p className="tab1">{"}"}</p>
+            <p>{"}"}));</p>
+          </div>
         </>
       )
     }
