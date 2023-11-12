@@ -145,11 +145,12 @@
     }
 
     function FixedBucketList(){
-      const [ myList, setMyList ] = useState( initialList );
-      const [ othersList, setOthersList ] = useState( initialList)
+      /* Used JSON.parse & JSON.stringify together to make a 'deep copy' of initialList in order to fix the wrong behaivor of the lists */
+      const [ firstList, setFirstList ] = useState( JSON.parse(JSON.stringify(initialList)) );
+      const [ secondList, setSecondList ] = useState( JSON.parse(JSON.stringify(initialList)) );
 
-      function handleToggleMyList( artworkId, nextSeen ){
-        setMyList(myList.map(artwork =>{
+      function handleToggleFirstList( artworkId, nextSeen ){
+        setFirstList(firstList.map(artwork =>{
           if(artwork.id === artworkId){
             //Creates a *new* object with the changes:
             return {...artwork, seen: nextSeen};
@@ -160,8 +161,8 @@
         }));
       }
 
-      function handleToggleOthersList( artworkId, nextSeen ){
-        setOthersList(othersList.map(artwork => {
+      function handleToggleSecondList( artworkId, nextSeen ){
+        setSecondList(secondList.map(artwork => {
           if (artwork.id === artworkId){
             //Creates a *new* object with the changes:
             return {...artwork, seen: nextSeen};
@@ -177,13 +178,13 @@
           <h2>Fixed List:</h2>
           <h3>My fixed list:</h3>
           <ItemList
-            artworks={myList}
-            onToggle={handleToggleMyList}
+            artworks={firstList}
+            onToggle={handleToggleFirstList}
           />
           <h3>Others fixed list:</h3>
           <ItemList
-            artworks={othersList}
-            onToggle={handleToggleOthersList}
+            artworks={secondList}
+            onToggle={handleToggleSecondList}
           />
         </>
       )
