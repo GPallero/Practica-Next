@@ -49,8 +49,8 @@
         setMyList(myNextList);
       }
 
-      function handleToggleOtherList(artworkId, nextSeen){
-        const otherNextList = [...othersList];
+      function handleToggleOthersList(artworkId, nextSeen){
+        const othersNextList = [...othersList];
         const artwork = othersNextList.find( a => a.id === artworkId);
         artwork.seen = nextSeen;
         setOthersList(othersNextList);
@@ -67,7 +67,7 @@
           <h3>Others list of art to see:</h3>
           <ItemList
           artworks={othersList}
-          onToggle={handleToggleOtherList} />
+          onToggle={handleToggleOthersList} />
           <Problem/>
         </>
       );
@@ -161,7 +161,7 @@
       }
 
       function handleToggleOthersList( artworkId, nextSeen ){
-        setOthersList(othersList.map(arttwork => {
+        setOthersList(othersList.map(artwork => {
           if (artwork.id === artworkId){
             //Creates a *new* object with the changes:
             return {...artwork, seen: nextSeen};
@@ -171,9 +171,34 @@
           }
         }));
       }
+
+      return(
+        <>
+          <h2>Fixed List:</h2>
+          <h3>My fixed list:</h3>
+          <ItemList
+            artworks={myList}
+            onToggle={handleToggleMyList}
+          />
+          <h3>Others fixed list:</h3>
+          <ItemList
+            artworks={othersList}
+            onToggle={handleToggleOthersList}
+          />
+        </>
+      )
     }
 
-    ReactDOM.render(<BucketList/>, main)
+    function BucketLists(){
+      return(
+        <>
+          <BucketList/>
+          <FixedBucketList/>
+        </>
+      )
+    }
+
+    ReactDOM.render(<BucketLists/>, main)
   </script>
 </body>
 </html>
