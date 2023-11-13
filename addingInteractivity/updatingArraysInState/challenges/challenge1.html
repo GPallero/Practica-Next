@@ -16,7 +16,20 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const updatingArraysInStateChallenges = "https://react.dev/learn/updating-arrays-in-state#challenges"
     
+    function Intro(){
+      return(
+        <>
+          <h1>Updating arrays in state - Challenge 1</h1>
+          <h2>Update an item in this shopping cart</h2>
+          <p>Fill in the <span className="greyBackground">handleIncreaseClick</span> logic so that pressing "+" increases the corresponding number: </p>
+          <p>See original code <a href={updatingArraysInStateChallenges}>Updating Arrays in State - Challenges</a></p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
