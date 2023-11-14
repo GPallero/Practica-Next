@@ -16,7 +16,17 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    function Intro () {
+      return(
+        <>
+          <h1>Updating arrays in state - Challenge 2</h1>
+          <h2>Rimove an item from the shopping cart</h2>
+          <p>This shopping cart has a working "+" button, but the "-" button doesn't do anything. You need to add an event handler to it so that pressing  it decreases the <span className="greyBackground">count</span> of the corresponding product. If you press "-" when the count is 1, the product should automatically get removed from the cart. Make sure it never shows 0.</p>
+        </>
+      )
+    }
     
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
