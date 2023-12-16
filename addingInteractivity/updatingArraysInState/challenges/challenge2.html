@@ -70,6 +70,7 @@
       return(
         <ul>
           {products.map(product => (
+            product.count ?
             <li key={product.id}>
               {product.name}
               {' '}
@@ -84,7 +85,7 @@
               }}>
                 -
               </button>
-            </li>
+            </li> : ""
           ))}
         </ul>
       );
