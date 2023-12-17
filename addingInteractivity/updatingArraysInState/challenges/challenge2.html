@@ -68,26 +68,29 @@
       }
 
       return(
-        <ul>
-          {products.map(product => (
-            product.count ?
-            <li key={product.id}>
-              {product.name}
-              {' '}
-              (<b>{product.count}</b>)
-              <button onClick={() => {
-                handleIncreaseClick(product.id);
-              }}>
-                +
-              </button>
-              <button onClick={() => {
-                handleDecreaseClick(product.id);
-              }}>
-                -
-              </button>
-            </li> : ""
-          ))}
-        </ul>
+        <>
+          <Intro/>  
+          <ul>
+            {products.map(product => (
+              product.count ?
+              <li key={product.id}>
+                {product.name}
+                {' '}
+                (<b>{product.count}</b>)
+                <button onClick={() => {
+                  handleIncreaseClick(product.id);
+                }}>
+                  +
+                </button>
+                <button onClick={() => {
+                  handleDecreaseClick(product.id);
+                }}>
+                  -
+                </button>
+              </li> : ""
+            ))}
+          </ul>
+        </>
       );
     }
 
