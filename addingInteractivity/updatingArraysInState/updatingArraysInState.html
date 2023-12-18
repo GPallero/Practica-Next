@@ -18,7 +18,14 @@
   <script type="text/jsx">
     const objectLink = "https://react.dev/learn/updating-objects-in-state"
     const immerLink = "https://react.dev/learn/updating-arrays-in-state#write-concise-update-logic-with-immer"
-    const addingLinkExample = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/updatingArraysInState/updatingArraysWithoutMutation/addingToAnArray.html"
+    
+    const addingPath = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/updatingArraysInState/updatingArraysWithoutMutation/addingToAnArray.html"
+    
+    const removingPath = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/updatingArraysInState/updatingArraysWithoutMutation/removingFromAnArray/removingFromAnArray.html"
+    
+    const replacingPath = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/updatingArraysInState/updatingArraysWithoutMutation/replacingItemsInAnArray/replacingItemsInAnArray.html"
+
+    const sortingPath = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/updatingArraysInState/updatingArraysWithoutMutation/makingOtherChangesToAnArray/makingOtherChangesToAnArray.html"
 
     function UpdatingArraysInState(){
       return(
@@ -49,14 +56,14 @@
             <div className="cell div9"><span className="greyBackground">splice</span>, <span className="greyBackground">arr[i] = ... </span><b>assignment</b></div>
             <div className="cell div10"><span className="greyBackground">reverse</span>, <span className="greyBackground">sort</span>,</div>
             <div className="cell div11"><b>Prefer</b> (returns a new array)</div>
-            <div className="cell div12"><span className="greyBackground">concat</span>, <span className="greyBackground">[...arr]</span> spread syntax (<a href="">Example</a>)</div>
-            <div className="cell div13"><span className="greyBackground">filter</span>, <span className="greyBackground">slice</span> (<a href="">Example</a>)</div>
-            <div className="cell div14"><span className="greyBackground">map</span> (<a href="">Example</a>)</div>
-            <div className="cell div15"><b>Copy the array first</b> (<a href="">Example</a>)</div>
+            <div className="cell div12"><span className="greyBackground">concat</span>, <span className="greyBackground">[...arr]</span> spread syntax (<a href={addingPath}>Example</a>)</div>
+            <div className="cell div13"><span className="greyBackground">filter</span>, <span className="greyBackground">slice</span> (<a href={removingPath}>Example</a>)</div>
+            <div className="cell div14"><span className="greyBackground">map</span> (<a href={replacingPath}>Example</a>)</div>
+            <div className="cell div15"><b>Copy the array first</b> (<a href={sortingPath}>Example</a>)</div>
           </div>
           <p>Alternatively, you can <a href={immerLink}>use Immer</a> wich lets you use methods from both columns.</p>
           <ul>
-            <li><a href={addingLinkExample}>Adding</a></li>
+            <li><a href={addingPath}>Adding</a></li>
           </ul>
         </>
       )
