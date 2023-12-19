@@ -17,11 +17,33 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    <!-- This line allows me to use the hook -->
+    const { useState } = React;
+
     function Intro(){
       return(
         <>
           <h1>Challenge 3 - Fixing the mutations using non-mutative methods</h1>
           <p>In this example, all of the event handlers in <span className="greyBackground">App.js</span> use mutation. As a result, editing, editing and deleting todos doesn't work. Rewrite <span className="greyBackground">handleAddTodo</span>, <span className="greyBackground">handleChangeTodo</span>, and <span className="greyBackground">handleDeleteTodo</span> to use the non-mutative methods: </p>
+        </>
+      )
+    }
+
+    <!-- AddTodo component -->
+    function AddTodo ({ onAddTodo }){
+      const [title, setTitle] = useState('');
+      return(
+        <>
+          <input 
+            placeholder="Add todo"
+            value={title}
+            onChange={e => setTitle(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              setTitle('');
+              onAddTodo(title)
+            }}>Add</button>
         </>
       )
     }
