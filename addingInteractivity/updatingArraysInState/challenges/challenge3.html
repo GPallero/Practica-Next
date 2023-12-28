@@ -67,19 +67,20 @@
               value={todo.title}
               onChange={e => {
                 onChange({
-                  ...todo,
-                  title: e.target.value
+                ...todo,
+                title: e.target.value
                 });
-              }} />
-              <button onClick={() => setIsEditing(false)}>
-                Save
-              </button>
+              }} 
+            />
+            <button onClick={() => setIsEditing(false)}>
+              Save
+            </button>
           </>
         );
       } else {
         todoContent = (
           <>
-            {todo.title}
+            <h4>{todo.title}</h4>
             <button onClick={() => setIsEditing(true)}>
               Edit
             </button>
@@ -99,9 +100,9 @@
             }}
           />
           {todoContent}
-          <button onClick={() => onDelete(todo.id)}>
-            Delete
-          </button>
+            <button onClick={() => onDelete(todo.id)}>
+              Delete
+            </button>
         </label>
       );
     }
