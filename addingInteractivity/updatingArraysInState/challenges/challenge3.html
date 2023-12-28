@@ -11,13 +11,14 @@
   <div id="main"></div>
 
   <!-- (CDNs) Scripts for React, React DOM & Babel -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General Script -->
   <script type="text/jsx">
-    <!-- This line allows me to use the hook -->
+
+    /* This line allows me to use the hook */
     const { useState } = React;
 
     function Intro(){
@@ -29,7 +30,7 @@
       )
     }
 
-    <!-- AddTodo component -->
+    /* AddTodo component */
     function AddTodo ({ onAddTodo }){
       const [title, setTitle] = useState('');
       return(
@@ -48,7 +49,7 @@
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    ReactDOM.render(<Intro/>, main)    
   </script>
 </body>
 </html>
