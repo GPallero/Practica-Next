@@ -41,14 +41,14 @@
       onChangeTodo,
       onDeleteTodo
     }) {
-      return(
+      return (
         <ul>
-          {todos.map(todo =>(
+          {todos.map(todo => (
             <li key={todo.id}>
               <Task
-              todo={todo}
-              onChange={onChangeTodo}
-              onDelete={onDeleteTodo}
+                todo={todo}
+                onChange={onChangeTodo}
+                onDelete={onDeleteTodo}
               />
             </li>
           ))}
@@ -64,8 +64,8 @@
         todoContent = (
           <>
             <input
-              value = {todo.title}
-              onChange = {e => {
+              value={todo.title}
+              onChange={e => {
                 onChange({
                   ...todo,
                   title: e.target.value
@@ -77,7 +77,7 @@
           </>
         );
       } else {
-        todoContent =  (
+        todoContent = (
           <>
             {todo.title}
             <button onClick={() => setIsEditing(true)}>
@@ -98,8 +98,8 @@
               });
             }}
           />
-          {todo.content}
-          <button onClick={() => onDelete(todo.id)}
+          {todoContent}
+          <button onClick={() => onDelete(todo.id)}>
             Delete
           </button>
         </label>
@@ -131,7 +131,7 @@
         initialTodos
       );
 
-      function handleAddTodos(title) {
+      function handleAddTodo(title) {
         todos.push({
           id: nextId++,
           title: title,
@@ -161,14 +161,14 @@
           />
           <TaskList
             todos={todos}
-            onChangeTodo={handleOnChangeTodo}
-            onDeleteTodo={handleOnDeleteTodo}
+            onChangeTodo={handleChangeTodo}
+            onDeleteTodo={handleDeleteTodo}
           />
         </>
       );
     }
 
-    ReactDOM.render(<Intro/>, main)    
+    ReactDOM.render(<TaskApp/>, main)    
   </script>
 </body>
 </html>
