@@ -79,3 +79,23 @@ a{
 .div13 { grid-area: 3 / 3 / 4 / 4; }
 .div14 { grid-area: 4 / 3 / 5 / 4; }
 .div15 { grid-area: 5 / 3 / 6 / 4; }
+
+/* This styles are (for now) for updatingArraysInState - Challenge 3  */
+
+li{
+  line-height: 0px;
+}
+
+/* input{
+  line-height: 0px;
+  padding: 0 0;
+} */
+
+h4{
+  display: inline-block;
+  width: 169.6px;
+}
+
+button{
+  margin-right: 6px;
+}
