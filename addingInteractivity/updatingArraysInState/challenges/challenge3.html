@@ -17,9 +17,14 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-
     /* This line allows me to use the hook */
     const { useState } = React;
+    let nextId = 3;
+    const initialTodos = [
+      {id: 0, title: 'Buy milk', done: true},
+      {id: 1, title: 'Eat tacos', done: false},
+      {id: 2, title: 'Brew tea', done: false},
+    ];
 
     function Intro(){
       return(
@@ -28,6 +33,77 @@
           <p>In this example, all of the event handlers in <span className="greyBackground">App.js</span> use mutation. As a result, editing, editing and deleting todos doesn't work. Rewrite <span className="greyBackground">handleAddTodo</span>, <span className="greyBackground">handleChangeTodo</span>, and <span className="greyBackground">handleDeleteTodo</span> to use the non-mutative methods: </p>
         </>
       )
+    }
+
+    /* TaskList Component*/
+    function TaskList({
+      todos,
+      onChangeTodo,
+      onDeleteTodo
+    }) {
+      return(
+        <ul>
+          {todos.map(todo =>(
+            <li key={todo.id}>
+              <Task
+              todo={todo}
+              onChange={onChangeTodo}
+              onDelete={onDeleteTodo}
+              />
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    /* Task component */
+    function Task({ todo, onChange, onDelete }) {
+      const [isEditing, setIsEditing] = useState(false);
+      let todoContent;
+      if (isEditing) {
+        todoContent = (
+          <>
+            <input
+              value = {todo.title}
+              onChange = {e => {
+                onChange({
+                  ...todo,
+                  title: e.target.value
+                });
+              }} />
+              <button onClick={() => setIsEditing(false)}>
+                Save
+              </button>
+          </>
+        );
+      } else {
+        todoContent =  (
+          <>
+            {todo.title}
+            <button onClick={() => setIsEditing(true)}>
+              Edit
+            </button>
+          </>
+        );
+      }
+      return(
+        <label>
+          <input
+            type="checkbox"
+            checked={todo.done}
+            onChange={e => {
+              onChange({
+                ...todo,
+                done: e.target.checked
+              });
+            }}
+          />
+          {todo.content}
+          <button onClick={() => onDelete(todo.id)}
+            Delete
+          </button>
+        </label>
+      );
     }
 
     /* AddTodo component */
@@ -47,6 +123,49 @@
             }}>Add</button>
         </>
       )
+    }
+
+    /* TaskApp component */
+    function TaskApp() {
+      const [todos, setTodos] = useState(
+        initialTodos
+      );
+
+      function handleAddTodos(title) {
+        todos.push({
+          id: nextId++,
+          title: title,
+          done: false
+        });
+      }
+
+      function handleChangeTodo(nextTodo) {
+        const todo = todos.find(t => 
+          t.id === nextTodo.id
+        );
+        todo.title = nextTodo.title;
+        todo.done = nextTodo.done;
+      }
+
+      function handleDeleteTodo(todoId) {
+        const index = todos.findIndex(t =>
+          t.id === todoId
+        );
+        todos.splice(index, 1);
+      }
+
+      return(
+        <>
+          <AddTodo
+            onAddTodo={handleAddTodo}
+          />
+          <TaskList
+            todos={todos}
+            onChangeTodo={handleOnChangeTodo}
+            onDeleteTodo={handleOnDeleteTodo}
+          />
+        </>
+      );
     }
 
     ReactDOM.render(<Intro/>, main)    
