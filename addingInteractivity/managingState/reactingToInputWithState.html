@@ -8,14 +8,26 @@
 <body>
   <!-- Div for rendering -->
   <div id="main"></div>
+  
   <!-- Scripts for React, React DOM & Babel -->
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General Script -->
-  <script type="text/JSX">
+  <script type="text/jsx">
     
+    function Intro() {
+      return(
+        <>
+          <h1>Reacting To Input With State</h1>
+          <p>With React, you won't modify the UI from code directly. For example, you won't write commands like "disable the button", "enable the button", "show the succes message", etc. Instead, you will describe the UI you want to see for the different visual states of your component ("initial state", "typing state", "succes state"), and then trigger the state changes in response to user input. This is similar to how designers think about UI.</p>
+          <p>Here is a quiz from built using React. Note how it uses the <span className="grey-bg">status</span> state variable to determine whether to enable or disable the submit button, and  whether to show the succes message instead.</p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
