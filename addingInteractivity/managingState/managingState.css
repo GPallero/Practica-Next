@@ -13,3 +13,7 @@ body{
   background-color: #99a1b31a;
   border-radius: 6px;
 }
+
+.Error{
+  color: #ff0000;
+}
