@@ -67,6 +67,47 @@
       )
     }
 
+    /* This is imperative UI programming for our form: */
+    async function handleFormSubmit(e){
+      e.preventDefault();
+      disable(textarea);
+      disable(button);
+      show(loadingMessage);
+      hide(errorMessage);
+      try{
+        await submitForm(textarea.value);
+        show(succesMessage);
+        hide(form);
+      } catch(err) {
+        show(errorMessage);
+        errorMesage.textContent = err.message;
+      } finally {
+        hide(loadingMessage);
+        enable(textarea);
+        enable(button);
+      }
+    }
+
+    function handleTextareaChange(){
+      if (textarea.value.length === 0){
+        disable(button);
+      } else {
+        enable(button);
+      }
+    }
+
+    function hide(el){
+      el.style.display = 'none';
+    }
+
+    function show(el){
+      el.style.display= '';
+    }
+
+    function enable(el){
+      el.disabled=true;
+    }
+
     ReactDOM.render(<Intro/>, main)
   </script>
 </body>
