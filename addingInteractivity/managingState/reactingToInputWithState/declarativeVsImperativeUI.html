@@ -16,7 +16,35 @@
 
   <!-- General script -->
   <script type="text/jsx">
-
+    const mozillaDOM = "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"
+    
+    function Intro(){
+      return (
+        <>
+          <h1>Reacting to input with state</h1>
+          <p>React provides a declarative way to manipulate the UI. Instead of manipulating individual pieces of the UI directly, you describe the different states that your component can be in, and switch between them in response to the user input. This is similar to how designers think about the UI</p>
+          <div className="learn">
+            <h3>You will learn (or ... I will learn)</h3>
+            <ul>
+              <li>How declarative UI programming differs from imperative UI programming</li>
+              <li>How to enumerate the different visual states your component can be in</li>
+              <li>How to trigger the changes between the different visual states from code</li>
+            </ul>
+          </div>
+          <h2>How declarative UI compares to imperative</h2>
+          <p>When you design UI interactions, you probably think about how the UI changes in response to user actions. Consider a form that lets the user submit an answer:</p>
+          <ul>
+            <li>When you type something into the form, the "Submit" button becomes enabled.</li>
+            <li>When you press "Submit", both the form and the button become disabled, and a spinner appears.</li>
+            <li>If the network request succeeds, the form gets hidden, and the "Thank you" message appears.</li>
+            <li>If the network request fails, an error message appears, and the form becomes enabled again.</li>
+          </ul>
+          <p>In imperative programming, the above corresponds directly to how you implement interaction. You have to write the exact instructions to manipulate the UI depending on what just happened. Here's another way to think about this: imagin riding next to someone in a car and telling them turn by turn where to go.</p>
+          <p>They don't know where you want to go, they just follow your commands. (And if you get the directions wrong, you end up in the wrong place!) It's called imperative because you have to "command" each element, from the spinner to the button, telling the computer how to update the UI.</p>
+          <p>In this example of imperative UI programming, the form is built without React. It only uses the browser <a href={ mozillaDOM }>DOM</a></p>
+        </>
+      )
+    }
   </script>
 </body>
 </html>
