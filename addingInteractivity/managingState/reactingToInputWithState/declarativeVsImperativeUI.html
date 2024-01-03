@@ -37,7 +37,7 @@
   <!-- General script -->
   <script type="text/jsx">
     const mozillaDOM = "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"
-    
+
     function Intro(){
       return (
         <>
@@ -80,7 +80,7 @@
         hide(form);
       } catch(err) {
         show(errorMessage);
-        errorMesage.textContent = err.message;
+        errorMessage.textContent = err.message;
       } finally {
         hide(loadingMessage);
         enable(textarea);
@@ -101,11 +101,15 @@
     }
 
     function show(el){
-      el.style.display= '';
+      el.style.display = '';
     }
 
     function enable(el){
-      el.disabled=true;
+      el.disabled = false;
+    }
+
+    function disable(el){
+      el.disabled = true;
     }
 
     function submitForm(answer){
@@ -120,7 +124,18 @@
         }, 1500);
       });
     }
-    
+
+    /* Here we get the elements in the html */
+    let form = document.getElementById('form');
+    let textarea = document.getElementById('textarea');
+    let button = document.getElementById('button');
+    let loadingMessage = document.getElementById('loading');
+    let errorMessage = document.getElementById('error');
+    let succesMessage = document.getElementById('succes');
+
+    form.onsubmit = handleFormSubmit;
+    textarea.oninput = handleTextareaChange;
+
     ReactDOM.render(<Intro/>, main)
   </script>
 </body>
