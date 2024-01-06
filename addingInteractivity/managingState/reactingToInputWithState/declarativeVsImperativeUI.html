@@ -6,7 +6,7 @@
   <title>Reacting to Input With State - How declarative UI compares to Imperative</title>
 </head>
 <body>
-  <!-- Div for rendering -->
+  <!-- Div for rendering (pre-form) -->
   <div id="main"></div>
 
   <!-- Form only with html -->
@@ -22,7 +22,10 @@
     <p id="error" style="display: none; color: red">Loading...</p>
   </form>
   <h1 id="succes" style="display: none">That's right!</h1>
-  
+
+  <!-- Div for rendering (post-form) -->
+  <div id="postForm"></div>
+
   <!-- Some styles -->
   <style>
     *{box-sizing: border-box;}
@@ -64,6 +67,18 @@
           <p>next there is an example of imperative UI programming, the form is built without React. It only uses the browser <a href={ mozillaDOM }>DOM</a></p>
           <hr/>
         </>
+      )
+    }
+
+    function Conclution(){
+      return(
+      <>
+        <br/>
+        <hr/>
+        <p>Manipulating the UI imperatively works well enough for isolated examples, but it gets exponentially more difficult to manage in more complex systems. Imagine updating a page full of different forms like this one. Adding a new UI element or a new interaction would require carefully checking all existing code to make sure you haven't introduced a bug (for example, forgetting to show or hide something).</p>
+        <p>React was built to solve this problem.</p>
+        <p>In React, you don't directly manipulate UI--meaning you don't enable, disable, show, or hide components directly. Instead, you declare what you want to show, and React figures out how to update de UI. Think of getting into a taxi and telling the driver where you want to go instead of telling them exactly where to turn. It's the driver's job to get you there, and they might even know some shortcuts you haven't considered!</p>
+      </>
       )
     }
 
@@ -137,6 +152,7 @@
     textarea.oninput = handleTextareaChange;
 
     ReactDOM.render(<Intro/>, main)
+    ReactDOM.render(<Conclution/>, postForm)
   </script>
 </body>
 </html>
