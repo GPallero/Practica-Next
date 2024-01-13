@@ -17,6 +17,7 @@
 
   <script type="text/jsx">
     const stateMachine = "https://en.wikipedia.org/wiki/Finite-state_machine"
+    
     function Intro(){
       return(
         <>
@@ -35,7 +36,30 @@
       )
     }
 
-    ReactDOM.render(<Intro/>, main)
+    function Form({ 
+      status='empty'
+    }){
+      if (status === 'succes') {
+        return <h1>That's right!</h1>
+      }
+      return (
+        <>
+          <h2>City quiz</h2>
+          <p>
+            In wich city is there a billboard that turns air into drinkable water?
+          </p>
+          <form>
+            <textarea/>
+            <br/>
+            <button>
+              Submit
+            </button>
+          </form>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Form/>, main)
   </script>
 </body>
 </html>
