@@ -15,6 +15,45 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <!-- General script -->
-  <script type="text/jsx"></script>
+  <script type="text/jsx">
+    function Intro(){
+      return (
+        <>
+          <h1>Displaying many visual states at once</h1>
+          <hr/>
+          <p>If a component has a lot of visual states, it can be convenient to show them all at one page:</p>
+        </>
+      )
+    }
+
+    function Form({status}){
+      if (status === 'success'){
+        return <h2>That's right !</h2>
+      }
+      return (
+        <>
+          <form>
+            <textarea disabled={
+              status === 'submitting'
+            } />
+            <br/>
+            <button disabled={
+              status === 'empty' ||
+              status === 'submitting'
+            }>
+              Submit
+            </button>
+            {status === 'error' && 
+              <p className='Error'>
+                Good guess but a wrong answer. Try again!
+              </p>
+            }
+          </form>
+        </>
+      );
+    }
+
+    ReactDOM.render(<Form/>, main)
+  </script>
 </body>
 </html>
