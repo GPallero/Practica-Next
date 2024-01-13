@@ -30,14 +30,14 @@
         <>
           <h1>Displaying many visual states at once</h1>
           <hr/>
-          <p>If a component has a lot of visual states, it can be convenient to show them all at one page:</p>
+          <h2>If a component has a lot of visual states, it can be convenient to show them all at one page:</h2>
         </>
       )
     }
 
     function Form({status}){
       if (status === 'success'){
-        return <h2>That's right !</h2>
+        return <h3>That's right !</h3>
       }
       return (
         <>
@@ -65,6 +65,7 @@
     function App(){
       return(
         <>
+          <Intro/>
           {statuses.map(status => (
             <section key={status}>
               <h4>Form ({status}):</h4>
