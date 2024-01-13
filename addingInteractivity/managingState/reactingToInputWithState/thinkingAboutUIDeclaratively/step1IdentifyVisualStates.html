@@ -59,7 +59,17 @@
       )
     }
 
-    ReactDOM.render(<Form/>, main)
+    function Outro(){
+      return (
+        <>
+          <p>
+            You could call that prop anything you like, the naming is not important. Try editing <span className="grey-bg">status = 'empty'</span> to <span className="grey-bg">status = 'succes'</span> to see the succes message appear. Mocking lets you quickly iterate on the UI before you wire up any logic. Here is a more fleshed out prototype of the same component, still "controlled" by the <span className="grey-bg">prop</span>:
+          </p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Outro/>, main)
   </script>
 </body>
 </html>
