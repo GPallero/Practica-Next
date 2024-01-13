@@ -68,6 +68,7 @@
             <section key={status}>
               <h4>Form ({status}):</h4>
               <Form status={status} />
+              {status != 'error' && <hr/>}
             </section>
           ))}
         </>
