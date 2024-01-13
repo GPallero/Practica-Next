@@ -15,7 +15,26 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/jsx">
-    
+    const stateMachine = "https://en.wikipedia.org/wiki/Finite-state_machine"
+    function Intro(){
+      return(
+        <>
+          <h1>Step 1: identify your component's different visual states</h1>
+          <p>In computer science, you may hear about a <a href={stateMachine}>"State Machine"</a> being in one of several "states". If you work with a designer, you may have seen mockups for different "visual states". React stands at the intersection of design and computer science, so both of these ideas are sources of inspiration.</p>
+          <p>First, you need to visualize all the different "states" of the UI the user might see:</p>
+          <ul>
+            <li>Empty: Form has a disabled "Submit" button.</li>
+            <li>Typing: Form has an enabled "Submit" button.</li>
+            <li>Submiting: Form is completely disabled. Spinner is shown.</li>
+            <li>Succes: "Thank you" message is shown instead of a form.</li>
+            <li>Error: Same as Typing state, but with an extra error message.</li>
+          </ul>
+          <p>Just like a designer, you'll want to "mock up" or create "mocks" for the different states before you add logic. For example, here is a mock for just the visual part of the form. This mock is controlled by a prop called <span className="grey-bg">status</span> with a defaylt value of <span className="grey-bg">'empty'</span>:</p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
