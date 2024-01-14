@@ -38,5 +38,28 @@ img{
 }
 
 a{
+  text-decoration: none;
   color: #19799A;
+}
+
+.box{
+  background-color: #16181D;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 15px;
+  p{
+    padding-left: 24px;
+  }
+  .blue{
+    color: #2cc2f4;
+  }
+  .turquoise{
+    color:#40e0d0
+  }
+  .purple{
+    color: #977cdc;
+  }
+  .red{ 
+    color: #c64640;
+  }
 }
