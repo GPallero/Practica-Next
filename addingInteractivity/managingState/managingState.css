@@ -16,3 +16,9 @@
 .Error{
   color: #ff0000;
 }
+
+img{
+  display: block;
+  margin: auto;
+  padding-bottom: 16px;
+}
