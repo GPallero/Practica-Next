@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="../../managingState.css">
   <title>Step 4 - Remove any non-essential state variables</title>
 </head>
-<body>
+<body class="body">
   <!-- Div for rendering -->
   <div id="main"></div>
 
@@ -17,7 +17,38 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    function Intro(){
+      return (
+        <>
+          <h1>Step 4 - Remove any non-essential state variables</h1>
+          <p>
+            You want to avoid duplication in the state content so you're only tracking what is essential.
+            Spending a little time on refactoring your state structure will make your components easier to understand, reduce duplication, and avoid unintended meanings. Your goal is to prevent the cases where the state in memory doesn't represent any valid UI that you'd want a user to see. (For example, you never want to show an error message and disable the input at the same time, or the user won't be able to correct the error!)
+          </p>
+          <p>Here are some questions you can ask about your state variables:</p>
+          <ul>
+            <li>
+              <p><b>Does this state cause a paradox?</b> For example <span className="grey-bg">isTyping</span> and <span className="grey-bg">isSubmitting</span> can't both be <span className="grey-bg">true</span>. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a <span className="grey-bg">status</span> that must be one of three values: <span className="grey-bg">'typing'</span>, <span className="grey-bg">'submitting'</span>, or <span className="grey-bg">'success'</span>.</p>
+            </li>
+            <li>
+              <p><b>Is the same information available in another state variable already?</b> Another paradox: <span className="grey-bg">isEmpty</span> and <span className="grey-bg">isTyping</span> can't be <span className="grey-bg">true</span> at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove <span className="grey-bg">isEmpty</span> and instead check <span className="grey-bg">answer.length === 0</span>.</p>
+            </li>
+            <li>
+              <p><b>Can you get the same information from the inverse of another state variable?</b> <span className="grey-bg">isError</span> is not needed because you can check <span className="grey-bg">error !== null</span> instead.</p>
+            </li>
+          </ul>
+          <p>After all this clean-up, you're left with 3 (down from 7!) essential state variables:</p>
+          <div className="box">
+            <p><span class="blue">const</span> [answer, setAnswer] = <span class="turqoise">useState</span> (<span class="purple">''</span>);</p>
+            <p><span class="blue">const</span> [error, setError] = <span class="turqoise">useState</span>(<span class="blue">null</span>);</p>
+            <p><span class="blue">const</span> [status, setStatus] = <span class="turqoise">useState</span>(<span class="purple">'typing'</span>); <span className="grey"> // 'typing', 'submitting', or 'success'</span></p>
+          </div>
+          <p>You know they are essential, because you can't remove any of them without breaking the funcionality.</p>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
