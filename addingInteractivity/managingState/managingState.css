@@ -22,3 +22,21 @@ img{
   margin: auto;
   padding-bottom: 16px;
 }
+
+.note{
+  background-color: #25353A;
+  border-radius: 20px;
+  padding: 2px 5px;
+  
+  h2, h3{
+    margin-left: 20px;
+  }
+
+  h2{
+    color: #41A291;
+  }
+}
+
+a{
+  color: #19799A;
+}
