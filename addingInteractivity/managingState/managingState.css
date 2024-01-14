@@ -7,6 +7,10 @@
   margin: auto;
 }
 
+p{
+  line-height: 24px;
+}
+
 .grey-bg{
   padding: 1px 5px;
   background-color: #99a1b31a;
