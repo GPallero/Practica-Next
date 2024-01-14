@@ -9,6 +9,7 @@
 
 p{
   line-height: 24px;
+  font-size: 17px;
 }
 
 .grey-bg{
@@ -54,6 +55,7 @@ a{
   p{
     padding-left: 24px;
   }
+  /* text color */
   .blue{
     color: #2cc2f4;
   }
@@ -65,5 +67,8 @@ a{
   }
   .red{ 
     color: #c64640;
+  }
+  .grey{
+    color: #757575;
   }
 }
