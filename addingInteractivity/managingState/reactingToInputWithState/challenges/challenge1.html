@@ -19,6 +19,17 @@
   <script type="text/jsx">
     const { useState } = React
 
+    function Intro(){
+      return(
+        <>
+          <h1>Challenge 1: Add and remove a CSS class</h1>
+          <p>Make it so that clicking on the picture removes the <span className="grey-bg">background--active</span> CSS class from the outer <span class="grey-bg">{"<div>"}</span>, but adds the <span className="greybg">picture--active</span> class to the <span class="grey-bg">{"<img>"}</span>. Clicking the background again should restore the original CSS classes.</p>
+          <p>Visually, you should expect that clicking on the picture removes the purple background and highlights the picture border. Clicking outside the picture highlights the background, but removes the picture border highlight.</p>
+          <Picture/>
+        </>
+      )
+    }
+
     function Picture(){
       const [isActive, setIsActive] = useState(false)
       let backgroundClassName = "background"
@@ -45,7 +56,7 @@
       )
     }
 
-    ReactDOM.render(<Picture/>, main)
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
