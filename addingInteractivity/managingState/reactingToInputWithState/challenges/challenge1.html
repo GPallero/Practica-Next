@@ -16,37 +16,7 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    // PRIMERA APROXIMACION A LA SOLUCION DEL CHALLENGE
-    // ["background background--active", "background"]
-    // ["picture", "picture--active"]
-    // States: active, !active
-    // triggers: Click the picture, click the background
-    // const [isBackgroundActive, setActive] = useState('background background--active')
-    // onClick={setActive}
-
-    const { useState } = React;
-
-    function Picture() {
-      const [isBackgroundActive, setBackgroundActive] = useState('background background--active')
-      return (
-        <div className={isBackgroundActive}>
-          <img
-            className="picture"
-            onClick={handleActive}
-            alt="Rainbow houses in Kampung Pelangi, Indonesia"
-            src="https://i.imgur.com/5qwVYb1.jpeg"
-          />
-        </div>
-      );
-
-      function handleActive(){
-        if(isBackgroundActive === "background background--active"){
-          setBackgroundActive("background")
-        } else {
-          setBackgroundActive("background background--active")
-        }
-      }
-    }
+    
   </script>
 </body>
 </html>
