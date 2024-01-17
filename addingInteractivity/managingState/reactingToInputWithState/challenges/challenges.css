@@ -3,14 +3,16 @@
 }
 
 body{
-  margin: 0;
+  margin: auto;
   padding: 0;
-  height: 250px;
+  width: 80%;
+  background-color: #23272f;
+  color: #f6f7f9;
 }
 
 .background{
-  width: 100vw;
-  height: 100vh;
+  width: 80vw;
+  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,4 +31,12 @@ body{
 
 .picture--active{
   border: 5px solid #a6b5ff;
+}
+
+.grey-bg{
+  padding: 1px 4px;
+  background-color: #99a1b31a;
+  border-radius: 6px;
+  
+  
 }
