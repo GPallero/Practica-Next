@@ -16,7 +16,17 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    const challenge2 = "challenge2.html"
+    function Intro(){
+      return (
+        <>
+          <h1>Challenge 3 - Refactor the imperative solution without React</h1>
+          <p>In the challenge statement we can find the original sandbox from the previous challenge (<a href={challenge2}>Challenge 2</a>), written imperatively without React.</p>
+          <p>Imagine React didn't exist. Can you refactor that code in a way that makes the logic less fragile and more similar to the React version? what would it look like if the state was explicit, like in React?</p>
+          <p>If you're struggling to think where to start, the stub (in the challenge 3 section) has most of the structure in place. If you start here, fill in the missing logic in the <span className="grey-bg">updateDOM</span> function. (Refer to the original code where needed.)</p>
+        </>
+      )
+    }
   </script>
 </body>
 </html>
