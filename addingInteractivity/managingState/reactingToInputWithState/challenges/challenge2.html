@@ -60,7 +60,10 @@
               e.preventDefault();
               setShow(!show);
             }}>
-              Edit Profile
+              { show ?
+                "Edit Profile" :
+                "Save Profile"
+              }
             </button>
             <p><i>Hello, Jane Jacobs</i></p>
           </form>
