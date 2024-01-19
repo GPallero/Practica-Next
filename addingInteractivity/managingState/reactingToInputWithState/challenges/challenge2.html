@@ -34,6 +34,8 @@
 
     function EditProfile(){
     const [show, setShow] = useState(true);
+    const [firstName, setFirstName] = useState('Jane');
+    const [lastName, setLastName] = useState('Jacobs')
 
       return(
         <>
@@ -41,8 +43,8 @@
             <label>
               First Name: {' '}
               { show ?
-                <b>Jane</b> :
-                <input/>
+                <b>{firstName}</b> :
+                <input onChange={(e) => setFirstName(e.target.value)}/>
               }
             </label>
             <br/>
@@ -50,8 +52,8 @@
             <label>
               Last Name: {' '}
               { show ?  
-                <b>Jacobs</b> :
-                <input/>
+                <b>{lastName}</b> :
+                <input onChange={(e) => setLastName(e.target.value)}/>
               }
             </label>
             <br/>
@@ -65,7 +67,7 @@
                 "Save Profile"
               }
             </button>
-            <p><i>Hello, Jane Jacobs</i></p>
+            <p><i>Hello, {firstName} {lastName} !</i></p>
           </form>
         </>
       );
