@@ -16,6 +16,7 @@
 
   <!-- General script -->
   <script type="text/jsx">
+    const databaseNormalizationBasics = "https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description"
     function Intro(){
       return(
         <>
@@ -36,11 +37,18 @@
             <li>Avoid contradictions in state. When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.</li>
             <li>Avoid redundant state. If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.</li>
             <li>Avoid duplication in state. When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.</li>
-            <li></li>
+            <li>Avoid deeply nested state. Deeply hierarchical state is not very convenient to update. When possible, prefer prefer to structure state in a flat way.</li>
           </ul>
+          <p>The goal behind these principles is to make state easy to update without introducing mistakes.
+            Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync.
+            This is similar to how a database engineer might want to <a href={databaseNormalizationBasics}>"normalize" the database structure</a> to reduce the chance of bugs. To paraphrase Albert Einstein, "Make your state as simple as it can be - but no simpler."
+          </p>
+          <p>Now let's see how these principles apply in action.</p>
         </>
       )
     }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
