@@ -1,0 +1,28 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  width: 80%;
+  margin: auto;
+  color: #f6f7f9;
+  background-color: #23272f;
+  ;
+}
+
+.grey-card{
+  background-color: #343a46;
+  border-radius: 10px;
+  padding: 24px;
+  padding-bottom: 16px;
+}
+
+.grey-card>h3{
+  padding: 0;
+  margin: 0;
+}
+
+a{
+  color: #149eca;
+  text-decoration-line: none;
+}
