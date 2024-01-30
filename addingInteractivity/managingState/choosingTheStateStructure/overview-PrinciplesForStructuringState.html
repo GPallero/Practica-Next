@@ -16,7 +16,31 @@
 
   <!-- General script -->
   <script type="text/jsx">
-    
+    function Intro(){
+      return(
+        <>
+          <h1>Choosing the State Structure</h1>
+          <p>Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. Here are some tips you should consider when structuring state.</p>
+          <div className="grey-card">
+            <h3>You will learn</h3>
+            <ul>
+              <li>When to use a single vs multiple state variables</li>
+              <li>What to avoid when organizing state</li>
+              <li>How to fix common issues with the state structure</li>
+            </ul>
+          </div>
+          <h2>Principles for structuring state</h2>
+          <p>When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:</p>
+          <ul>
+            <li>Group related state. If you always update two or more state variables at the same time, consider merging them into a single state variable.</li>
+            <li>Avoid contradictions in state. When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.</li>
+            <li>Avoid redundant state. If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.</li>
+            <li>Avoid duplication in state. When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.</li>
+            <li></li>
+          </ul>
+        </>
+      )
+    }
   </script>
 </body>
 </html>
