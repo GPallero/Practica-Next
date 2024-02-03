@@ -17,6 +17,7 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    const updatingObjectsInState = "https://react.dev/learn/updating-objects-in-state"
     function Intro(){
       return (
         <>
@@ -25,7 +26,17 @@
           <p>You should do this?</p>
           <div className="card dark-card">
             <p><span className="blue">const</span> [x, setX] = <span className="sky-blue">useState</span>(<span className="red">0</span>)</p>
-            <p><span></span><span></span><span></span></p>
+            <p><span className="blue">const</span> [y, setY] = <span className="sky-blue">useState</span>(<span className="red">0</span>)</p>
+          </div>
+          <p>Or this?</p>
+          <div className="card dark-card">
+            <p><span className="blue">const</span> [position, setPosition] = <span className="sky-blue">useState</span>({"{"}<span className="blue">x</span>: <span className="red">0</span>, <span className="blue">y</span>: <span className="red">0</span>{"}"})</p>
+          </div>
+          <p>Technically, you can use either of these aproaches. But if some two state variables always change together, it might be a good idea to unify them into a single state variable. Then you won't forget to always keep them in sync, like some coordinates. See <a href={updatingObjectsInState}>Updating objects in state - Treat state as read-only</a></p>
+          <p>Another case where you'll group data into an object or an array is when you don't know how many pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.</p>
+          <div className="card brown-card">
+            <h3 className="brown">Pitfall</h3>
+            <p>If your state variable is an object, remember that <a href={updatingObjectsInState}>you can't update only one field in it</a> without explicitly copying the other fields. For example, you can't do <span className="bg-grey">setPosition({"{"}x: 100{"}"})</span> in the above example because it would not have the <span className="bg-grey">y</span> property at all! Instead, if you wanted to set <span className="bg-grey">x</span> alone, you would either do <span className="bg-grey">setPosition({"{"} ...position, x: 100{"}"})</span>, or split them into two state variables and do <span className="bg-grey">setX(100)</span>.</p>
           </div>
         </>
       )
