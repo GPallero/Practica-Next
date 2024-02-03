@@ -18,6 +18,8 @@
   <!-- General script -->
   <script type="text/jsx">
     const databaseNormalizationBasics = "https://learn.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description"
+    const groupRelatedState = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/managingState/choosingTheStateStructure/groupRelatedState.html"
+
     function Intro(){
       return(
         <>
@@ -34,7 +36,7 @@
           <h2>Principles for structuring state</h2>
           <p>When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:</p>
           <ul>
-            <li><a href="">Group related state</a>. If you always update two or more state variables at the same time, consider merging them into a single state variable.</li>
+            <li><a href={groupRelatedState}>Group related state</a>. If you always update two or more state variables at the same time, consider merging them into a single state variable.</li>
             <li><a href="">Avoid contradictions in state</a>. When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.</li>
             <li><a href="">Avoid redundant state</a>. If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.</li>
             <li><a href="">Avoid duplication in state</a>. When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.</li>
