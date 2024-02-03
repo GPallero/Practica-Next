@@ -17,7 +17,21 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-    
+    function Intro(){
+      return (
+        <>
+          <h1>Group Related State</h1>
+          <p>You might sometimes be unsure between using a single or multiple state variables.</p>
+          <p>You should do this?</p>
+          <div className="card dark-card">
+            <p><span className="blue">const</span> [x, setX] = <span className="sky-blue">useState</span>(<span className="red">0</span>)</p>
+            <p><span></span><span></span><span></span></p>
+          </div>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
