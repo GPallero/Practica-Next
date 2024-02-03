@@ -34,11 +34,11 @@
           <h2>Principles for structuring state</h2>
           <p>When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:</p>
           <ul>
-            <li>Group related state. If you always update two or more state variables at the same time, consider merging them into a single state variable.</li>
-            <li>Avoid contradictions in state. When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.</li>
-            <li>Avoid redundant state. If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.</li>
-            <li>Avoid duplication in state. When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.</li>
-            <li>Avoid deeply nested state. Deeply hierarchical state is not very convenient to update. When possible, prefer prefer to structure state in a flat way.</li>
+            <li><a href="">Group related state</a>. If you always update two or more state variables at the same time, consider merging them into a single state variable.</li>
+            <li><a href="">Avoid contradictions in state</a>. When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.</li>
+            <li><a href="">Avoid redundant state</a>. If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.</li>
+            <li><a href="">Avoid duplication in state</a>. When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.</li>
+            <li><a href="">Avoid deeply nested state</a>. Deeply hierarchical state is not very convenient to update. When possible, prefer prefer to structure state in a flat way.</li>
           </ul>
           <p>The goal behind these principles is to make state easy to update without introducing mistakes.
             Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync.
