@@ -5,9 +5,9 @@
 body{
   width: 80%;
   margin: auto;
+  margin-bottom: 24px;
   color: #f6f7f9;
   background-color: #23272f;
-  ;
 }
 
 
@@ -27,8 +27,20 @@ a{
 .red{
   color: #c64640;
 }
-/* Cards: */
 
+.brown{
+  color: #db7d27;
+}
+
+/* Backgrounds */
+.bg-grey{
+  background-color: #99a1b31a;
+  padding: 1px 4px;
+  border-radius: 6px;
+  line-height: 24px;
+}
+
+/* Cards: */
 .card{
   border-radius: 10px;
   padding: 18px;
@@ -41,6 +53,10 @@ a{
 
 .grey-card{
   background-color: #343a46;
+}
+
+.brown-card{
+  background-color: #b6570033;
 }
 
 .grey-card>h3{
