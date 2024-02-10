@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="choosingStateStructure.css">
   <title>Avoid Contradictions in State</title>
 </head>
 <body>
@@ -16,7 +17,32 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-    
+    const avoidContradictionsInState = "https://react.dev/learn/choosing-the-state-structure#avoid-contradictions-in-state"
+    const principlesForStructuringState = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/managingState/choosingTheStateStructure/overview-PrinciplesForStructuringState.html"
+
+    function Intro(){
+      return (
+        <>
+        <div>  
+          <h1>Avoid contradictions in State</h1>
+          <p>Here is a hotel form feedback form with <span className="bg-grey">isSending</span> and <span className="bg-grey">isSent</span> state variables: <a href={avoidContradictionsInState}>Avoid contradictions in state</a> first form feedback</p>
+          <p>While the code works, it leaves the door open for "impossible" states. For example, if you forget to call <span className="bg-grey">setIsSent</span> and <span className="bg-grey">setIsSending</span> together, you may end up in a situation where both <span className="bg-grey">isSending</span> and <span className="bg-grey">isSent</span> are <span className="bg-grey">true</span> at the same time. The more complex your component is, the harder it is to understand what happened.</p>
+          <p>Since <span className="bg-grey">isSending</span> and <span className="bg-grey">isSent</span> should never be <span className="bg-grey">true</span> at the same time, it is better to replace them with one <span className="bg-grey">status</span> state variable that may take one of three valid states: <span className="bg-grey">'typing'</span> (initial), <span className="bg-grey">'sending'</span>, and <span className="bg-grey">'sent'</span> see <a href={avoidContradictionsInState}>Avoid contradictions in state</a> second form feedback.</p>
+          <p>You can still declare some constants for readability:</p>
+          <div className="card dark-card">
+            <span className="blue">const</span> isSending = status === <span className="purple">'sending'</span>;
+            <br/>
+            <br/>
+            <span className="blue">const</span> isSent = status === <span className="purple">'sent'</span>;
+          </div>
+          <p>But they're not state variables, so you don't need to worry about them getting out of sync with each other.</p>
+        </div>
+          <footer>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></footer>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main)
   </script>
 </body>
 </html>
