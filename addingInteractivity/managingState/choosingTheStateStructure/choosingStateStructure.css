@@ -3,18 +3,27 @@
 }
 
 body{
-  width: 80%;
+  width: 60%;
   margin: auto;
   margin-bottom: 24px;
   color: #f6f7f9;
   background-color: #23272f;
 }
 
-
 a{
   color: #149eca;
   text-decoration-line: none;
 }
+
+/* #main */
+#main{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
 /* Text color: */
 .blue{
   color: #77b7d7;
@@ -30,6 +39,10 @@ a{
 
 .brown{
   color: #db7d27;
+}
+
+.purple{
+  color: #977cdc;
 }
 
 /* Backgrounds */
