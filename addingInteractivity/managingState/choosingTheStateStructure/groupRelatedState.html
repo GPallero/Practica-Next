@@ -39,7 +39,8 @@
             <h3 className="brown">Pitfall</h3>
             <p>If your state variable is an object, remember that <a href={updatingObjectsInState}>you can't update only one field in it</a> without explicitly copying the other fields. For example, you can't do <span className="bg-grey">setPosition({"{"}x: 100{"}"})</span> in the above example because it would not have the <span className="bg-grey">y</span> property at all! Instead, if you wanted to set <span className="bg-grey">x</span> alone, you would either do <span className="bg-grey">setPosition({"{"} ...position, x: 100{"}"})</span>, or split them into two state variables and do <span className="bg-grey">setX(100)</span>.</p>
           </div>
-          <p>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></p>
+          <br/>
+          <footer>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></footer>
         </>
       )
     }
