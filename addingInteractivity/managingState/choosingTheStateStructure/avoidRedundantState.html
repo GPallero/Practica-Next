@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="choosingStateStructure.css">
   <title>Avoid Redundant State</title>
 </head>
 <body>
@@ -16,7 +17,26 @@
 
   <!-- General Script -->
   <script type="text/jsx">
-    
+    const principlesForStructuringState = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/managingState/choosingTheStateStructure/overview-PrinciplesForStructuringState.html"
+    const avoidRedundantState = "https://react.dev/learn/choosing-the-state-structure#avoid-redundant-state"
+
+    function Intro(){
+      return(
+        <>
+          <div>
+            <h1>Avoid Redundant State</h1>
+            <p>If you can calculate some information from the component's props ot its existing state variables during rendering, you should not put that information into that component's state.</p>
+            <p>For example, take the first form in <a href={avoidRedundantState}>Avoid redundant state</a> . It works, but can you find any redundant state in it?</p>
+            <p>The form has three state variables: <span className="bg-grey">firstName</span>, <span className="bg-grey">lastName</span>, and <span className="bg-grey">fullName</span>. However <span className="bg-grey">fullName</span> is redundant. You can always calculate <span className="bg-grey">fullName</span> from <span className="bg-grey">firstName</span> and <span className="bg-grey">lastName</span> during render, so remove it from state.</p>
+            <p>See the second form in <a href={avoidRedundantState}>Avoid redundant state</a></p>
+            <p>Here <span class="grey">fullName</span> is not a state variable. Instead it's calculated during render:</p>
+          </div>
+          <footer>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></footer>
+        </>
+      )
+    }
+
+    ReactDOM.render(<Intro/>, main);
   </script>
 </body>
 </html>
