@@ -17,10 +17,18 @@
 
   <!-- General Script -->
   <script type="text/jsx">
+    const { useState } = React
+
     const principlesForStructuringState = "C:/Users/GAP/Desktop/DocumentationNext/addingInteractivity/managingState/choosingTheStateStructure/overview-PrinciplesForStructuringState.html"
     const avoidRedundantState = "https://react.dev/learn/choosing-the-state-structure#avoid-redundant-state"
 
     function Intro(){
+      const [show, setShow] = useState(false);
+
+      function handleShow(){
+        setShow(!show)
+      }
+
       return(
         <>
           <div>
@@ -29,7 +37,41 @@
             <p>For example, take the first form in <a href={avoidRedundantState}>Avoid redundant state</a> . It works, but can you find any redundant state in it?</p>
             <p>The form has three state variables: <span className="bg-grey">firstName</span>, <span className="bg-grey">lastName</span>, and <span className="bg-grey">fullName</span>. However <span className="bg-grey">fullName</span> is redundant. You can always calculate <span className="bg-grey">fullName</span> from <span className="bg-grey">firstName</span> and <span className="bg-grey">lastName</span> during render, so remove it from state.</p>
             <p>See the second form in <a href={avoidRedundantState}>Avoid redundant state</a></p>
-            <p>Here <span class="grey">fullName</span> is not a state variable. Instead it's calculated during render:</p>
+            <p>Here <span className="bg-grey">fullName</span> is not a state variable. Instead it's calculated during render:</p>
+            <div className="card dark-card">
+              <p><span className="blue">const</span> fullName = firstName + <span className="purple">' '</span> + lastName;</p>
+            </div>
+            <p>As a result, the change handlers don't need to do anything special to update it. When you call <span className="bg-grey">setFirstName</span> or <span className="bg-grey">setLastName</span>m you trigger a re-render, and then the next <span className="bg-grey">fullName</span> will be calculated from the fresh data.</p>
+            <div className="card purple-card">
+              <p className="purple">DEEP DIVE</p>
+              <h3>Don't mirror props in state</h3>
+              <button className="button" onClick={handleShow}>{show ? "Show Details" : "Hide Details"}</button>
+              {show ?
+                <div className="details">
+                  <h4>A common example of redundant state is code like this:</h4>
+                  <div className="card dark-card">
+                    <p><span className="blue">function</span> <span className="sky-blue">Message</span>({"{"} <span className="blue">messageColor</span> {"}"}) {"{"}</p>
+                    <p className="simple-tab"><span className="blue">const</span> [color, setColor] = <span className="sky-blue">useState</span>(messageColor);</p>
+                    <p>{"}"}</p>
+                  </div>
+                  <p>Here, a <span className="bg-grey">color</span> state variable is initialized to the <span className="bg-grey">messageColor</span> prop. The problem is that if the parent component passes a different value of <span className="bg-grey">messageColor</span> later (for example, <span className="bg-grey">'red'</span> instead of <span className="bg-grey">'blue'</span>) the color state variable would not be updated! The state is only initialized during the first render.</p>
+                  <p>This is why "mirroring" some prop in a state variable can lead to confusion. Instead, use the <span className="bg-grey">messageColor</span> prop directly in your code. If you want to give it a shorter name, use a constant:</p>
+                  <div className="card dark-card">
+                    <p><span className="blue">function</span> <span className="sky-blue">Message</span>({"{"} <span className="blue"> messageColor </span> {"}"}) {"{"}</p>
+                    <p className="simple-tab"><span className="blue">const</span> color = messageColor;</p>
+                    <p>{"}"}</p>
+                  </div>
+                  <p>This way it won't get out of sync with the prop passed from the parent component.</p>
+                  <p>"Mirroring" props into state only makes sense when you want to ignore all updates for a specific prop. By convention, start the prop with <span className="bg-grey">initial</span> or <span className="bg-grey">default</span> to clarify that its new values are ignored:</p>
+                  <div className="card dark-card">
+                    <p><span className="blue">function</span> <span className="sky-blue">Message</span>({"{"} <span className="blue">initialColor</span> {"}"}) {"{"}</p>
+                    <p className="grey simple-tab">// The `color` state variable holds the *first* value of `initialColor`.</p>
+                    <p className="grey simple-tab">// Further changes to the `ìnitialColor` prop are ignored.</p>
+                    <p className="simple-tab"> <span className="blue">const</span> [color, setColor] = <span className="sky-blue">useState</span>(initialColor);</p>
+                    <p>{"}"}</p>
+                  </div>
+                </div>: ""}
+            </div>
           </div>
           <footer>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a>.</footer>
         </>
