@@ -23,7 +23,6 @@ a{
   justify-content: space-between;
 }
 
-
 /* Text color: */
 .blue{
   color: #77b7d7;
@@ -43,6 +42,10 @@ a{
 
 .purple{
   color: #977cdc;
+}
+
+.grey{
+  color: #757575;
 }
 
 /* Backgrounds */
@@ -72,7 +75,36 @@ a{
   background-color: #b6570033;
 }
 
+.purple-card{
+  background-color: #2b349133;
+}
+
 .grey-card>h3{
   padding: 0;
   margin: 0;
+}
+
+/* Expand button */
+.button{
+  color: #f6f7f9;
+  background-color: #575FB7;
+  margin: 0px 0px 20px 0px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid;
+  font-size: 1.1em;
+}
+
+/* Indentations */
+.simple-tab{
+  padding-left: 16px;
+}
+
+/* Additional Content */
+.details{
+  border-top: solid 1px #2b3491;
+}
+
+footer{
+  margin-top: 16px;
 }
