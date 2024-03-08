@@ -16,8 +16,49 @@
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- General Script -->
-    <script type="text/jsx">
-        
+    <script type="text/jsx">            
+        const { useState } = React;
+
+        const initialItems = [
+            {title: 'pretzels', id: 0},
+            {title:'crispy seaweed', id: 1},
+            {title: 'granola bar', id: 2}
+        ];
+
+        function Intro(){
+            return(
+                <>
+                    <h1>Avoid duplication in state</h1>
+                    <p>The following menu list allows you to choose a single travel snack from several:</p>
+                    <MenuList/>
+                </>
+            )
+        }
+
+        function MenuList(){
+            const [items, setItems] = useState(initialItems);
+            const [selectedItem, setSelectedItem] = useState(items[0]);
+
+            return(
+                <>
+                    <h2>What is your travel snack?</h2>
+                    <ul>
+                        {items.map(item => (
+                            <li key={item.id}>
+                                {item.title}
+                                {' '}
+                                <button onClick={()=>{
+                                    setSelectedItem(item);
+                                }}>Select</button>
+                            </li>
+                        ))}
+                    </ul>
+                    <p>You selected {selectedItem.title}.</p>
+                </>
+            )
+        }
+
+        ReactDOM.render(<Intro/>, main)
     </script>
 </body>
 </html>
