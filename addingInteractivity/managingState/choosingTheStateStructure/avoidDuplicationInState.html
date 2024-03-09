@@ -40,7 +40,7 @@
             const [selectedItem, setSelectedItem] = useState(items[0]);
 
             return(
-                <>
+                <div>
                     <h2>What is your travel snack?</h2>
                     <ul>
                         {items.map(item => (
@@ -54,11 +54,18 @@
                         ))}
                     </ul>
                     <p>You selected {selectedItem.title}.</p>
-                </>
+                </div>
             )
         }
 
-        ReactDOM.render(<Intro/>, main)
+        function App(){
+            return(
+                <div>
+                    <Intro/>
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>, main)
     </script>
 </body>
 </html>
