@@ -31,6 +31,14 @@
                     <h1>Avoid duplication in state</h1>
                     <p>The following menu list allows you to choose a single travel snack from several:</p>
                     <MenuList/>
+                    <p>
+                        Currently, it stores the selected item as an object in the state variable
+                        <span className="bg-grey">selectedItem</span>. However, this is not right: the content of 
+                        <span className="bg-grey">selectedItem</span> is the same object as one of the elements within the list of 
+                        <span className="bg-grey">items</span>. This means that the information about the item itself is duplicated in two places.
+                    </p>
+                    <p>Why is this a problem? Let's make each element editable:</p>
+                    <EditableMenuList/>
                 </>
             )
         }
@@ -56,6 +64,47 @@
                     <p>You selected {selectedItem.title}.</p>
                 </div>
             )
+        }
+
+        function EditableMenuList(){
+            const [items, setItems] = useState(initialItems);
+            const [selectedItem, setSelectedItem] = useState(items[0]);
+
+            function handleItemChange(id, e){
+                setItems(items.map(item => {
+                    if(item.id === id){
+                        return{
+                            ...item,
+                            title: e.target.value,
+                        };
+                    } else {
+                        return item
+                    }
+                }));
+            }
+
+            return(
+                <>
+                    <h2>What's your travel snack?</h2>
+                    <ul>
+                        {items.map((item, index) => (
+                            <li key={item.id}>
+                                <input 
+                                    value={item.title}
+                                    onChange={e => {
+                                    handleItemChange(item.id, e)
+                                }}
+                                />
+                                {' '}
+                                <button onClick={() => {
+                                    setSelectedItem(item);
+                                }}>Choose</button>
+                            </li>
+                        ))}
+                    </ul>
+                    <p>You picked {selectedItem.title}.</p>
+                </>
+            );
         }
 
         function App(){
