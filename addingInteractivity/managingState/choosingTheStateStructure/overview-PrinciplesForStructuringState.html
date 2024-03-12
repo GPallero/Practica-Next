@@ -21,6 +21,7 @@
     const groupRelatedState = "D:/Practica-Next/addingInteractivity/managingState/choosingTheStateStructure/groupRelatedState.html"
     const avoidContradictionsInState = "D:/Practica-Next/addingInteractivity/managingState/choosingTheStateStructure/avoidContradictionsInState.html"
     const avoidRedundantState = "D:/Practica-Next/addingInteractivity/managingState/choosingTheStateStructure/avoidRedundantState.html"
+    const avoidDuplicationInState = "D:/Practica-Next/addingInteractivity/managingState/choosingTheStateStructure/avoidDuplicationInState.html"
 
     function Intro(){
       return(
@@ -41,7 +42,7 @@
             <li><a href={groupRelatedState}>Group related state</a>. If you always update two or more state variables at the same time, consider merging them into a single state variable.</li>
             <li><a href={avoidContradictionsInState}>Avoid contradictions in state</a>. When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.</li>
             <li><a href={avoidRedundantState}>Avoid redundant state</a>. If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.</li>
-            <li><a href="">Avoid duplication in state</a>. When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.</li>
+            <li><a href={avoidDuplicationInState}>Avoid duplication in state</a>. When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.</li>
             <li><a href="">Avoid deeply nested state</a>. Deeply hierarchical state is not very convenient to update. When possible, prefer prefer to structure state in a flat way.</li>
           </ul>
           <p>The goal behind these principles is to make state easy to update without introducing mistakes.
