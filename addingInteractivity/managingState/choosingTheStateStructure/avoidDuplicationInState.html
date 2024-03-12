@@ -19,6 +19,8 @@
     <script type="text/jsx">            
         const { useState } = React;
 
+        const principlesForStructuringState = "../choosingTheStateStructure/overview-PrinciplesForStructuringState.html"
+
         const initialItems = [
             {title: 'pretzels', id: 0},
             {title:'crispy seaweed', id: 1},
@@ -28,17 +30,37 @@
         function Intro(){
             return(
                 <>
-                    <h1>Avoid duplication in state</h1>
-                    <p>The following menu list allows you to choose a single travel snack from several:</p>
-                    <MenuList/>
-                    <p>
-                        Currently, it stores the selected item as an object in the state variable
-                        <span className="bg-grey">selectedItem</span>. However, this is not right: the content of 
-                        <span className="bg-grey">selectedItem</span> is the same object as one of the elements within the list of 
-                        <span className="bg-grey">items</span>. This means that the information about the item itself is duplicated in two places.
-                    </p>
-                    <p>Why is this a problem? Let's make each element editable:</p>
-                    <EditableMenuList/>
+                    <div>
+                        <h1>Avoid duplication in state</h1>
+                        <p>The following menu list allows you to choose a single travel snack from several:</p>
+                        <MenuList/>
+                        <p>
+                            Currently, it stores the selected item as an object in the state variable
+                            <span className="bg-grey">selectedItem</span>. However, this is not right: the content of 
+                            <span className="bg-grey">selectedItem</span> is the same object as one of the elements within the list of 
+                            <span className="bg-grey">items</span>. This means that the information about the item itself is duplicated in two places.
+                        </p>
+                        <p>Why is this a problem? Let's make each element editable:</p>
+                        <EditableMenuList/>
+                        <p>Notice how if you click "Choose" on an item and then edit it, the input updates but the label at the bottom does not reflect the edits. This is because I have duplicated state, and I forgot to update <span className="bg-grey">selectedItem</span>.</p>
+                        <p>
+                            Although you could update <span className="bg-grey">selectedItem</span> too, an easier fix is to remove duplication. In this example, instead of a <span className="bg-grey">selectedItem</span> object (wich creates duplication with objects inside <span className="bg-grey">items</span>), you hold the <span className="bg-grey">selectedId</span> in state, and then get the <span className="bg-grey">selectedItem</span> by searching the <span className="bg-grey">items</span> array for an item with that ID:
+                        </p>
+                        <NoDuplicationMenuList/>
+                        <p>The state used to be duplicated like this:</p>
+                        <ul>
+                            <li><span className="bg-grey">items = [{"{"}id: 0, title: 'pretzels'{"}"}, ...]</span></li>
+                            <li><span className="bg-grey">selectedItem = {"{"} id: 0, title: 'pretzels'{"}"}</span></li>
+                        </ul>
+                        <p>But after the change it's like this:</p>
+                        <ul>
+                            <li><span className="bg-grey">items = [{"{"}id: 0, title: 'pretzels'{"}"}, ...]</span></li>
+                            <li><span className="bg-grey">selectedId: 0</span></li>
+                        </ul>
+                    </div>
+                    <footer>
+                        <p>Back to <a href={principlesForStructuringState}>Principles for structuring State</a>.</p>
+                    </footer>
                 </>
             )
         }
@@ -105,6 +127,52 @@
                     <p>You picked {selectedItem.title}.</p>
                 </>
             );
+        }
+
+        function NoDuplicationMenuList(){
+            const [items, setItems] = useState(initialItems);
+            const [selectedId, setSelectedId] = useState(0); 
+
+            const selectedItem = items.find(item => 
+                item.id === selectedId
+            );
+
+            function handleItemChange(id, e) {
+                setItems(items.map(item => {
+                    if (item.id === id) {
+                        return {
+                            ...item,
+                            title: e.target.value,
+                        };
+                    } else {
+                        return item;
+                    }
+                }));
+            }
+
+            return (
+                <>
+                    <h2>What's your travel snack?</h2>
+                    <ul>
+                        {items.map((item, index) => (
+                            <li key={item.id}>
+                                <input 
+                                    value={item.title}
+                                    onChange={e => {
+                                        handleItemChange(item.id, e)
+                                    }}
+                                />
+                                {' '}
+                                <button 
+                                    onClick={() => {
+                                        setSelectedId(item.id)
+                                }}>Choose</button>
+                            </li>
+                        ))}
+                    </ul>
+                    <p>You picked {selectedItem.title}</p>
+                </>
+            )
         }
 
         function App(){
