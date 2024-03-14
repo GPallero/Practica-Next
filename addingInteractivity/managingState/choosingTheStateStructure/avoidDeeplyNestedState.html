@@ -220,11 +220,20 @@
         //Deeply nested plan data: end
 
         function Intro(){
+            const [show, setShow] = useState(false)
+            
+            function handleSetShow(){
+                setShow(!show)
+            }
+            
             return (
                 <>
-                    <h1>Avoid deeply nested state</h1>
-                    <p>Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:</p>
-                    <TravelPlan/>
+                    <div>
+                        <h1>Avoid deeply nested state</h1>
+                        <p>Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:</p>
+                        <button onClick={handleSetShow}>{!show ? 'Show Travel Plan' : 'Hide Travel Plan'}</button>
+                        {!show ? <TravelPlan/> : ''}
+                    </div>
                 </>
             )
         }
@@ -254,7 +263,6 @@
             
             return(
                 <>
-                    <h2>Places to visit</h2>
                     <ol>
                         {planets.map(place => (
                             <PlaceTree key={place.id} place={place}/>
