@@ -219,8 +219,11 @@
         }
         //Deeply nested plan data: end
 
+        //Path to 'overview-PrinciplesForStructuringState.html'
+        const principlesForStructuringState = "../choosingTheStateStructure/overview-PrinciplesForStructuringState.html"
+
         function Intro(){
-            const [show, setShow] = useState(false)
+            const [show, setShow] = useState(true)
             
             function handleSetShow(){
                 setShow(!show)
@@ -230,10 +233,11 @@
                 <>
                     <div>
                         <h1>Avoid deeply nested state</h1>
-                        <p>Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:</p>
-                        <button onClick={handleSetShow}>{!show ? 'Show Travel Plan' : 'Hide Travel Plan'}</button>
+                        <p>Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example: (check code, general script tag, section: 'Deeply nested plan data')</p>
+                        <button onClick={handleSetShow}>{!show ? 'Hide Travel Plan' : 'Show Travel Plan'}</button>
                         {!show ? <TravelPlan/> : ''}
                     </div>
+                    <footer><p>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></p></footer>
                 </>
             )
         }
