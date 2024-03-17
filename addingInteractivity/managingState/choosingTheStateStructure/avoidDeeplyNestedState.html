@@ -222,6 +222,9 @@
         //Path to 'overview-PrinciplesForStructuringState.html'
         const principlesForStructuringState = "../choosingTheStateStructure/overview-PrinciplesForStructuringState.html"
 
+        //Path to Updating Nested State:
+        const updatingNestedState = "https://react.dev/learn/updating-objects-in-state#updating-a-nested-object"
+
         function Intro(){
             const [show, setShow] = useState(true)
             
@@ -236,8 +239,12 @@
                         <p>Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example: (check code, general script tag, section: 'Deeply nested plan data')</p>
                         <button onClick={handleSetShow}>{!show ? 'Hide Travel Plan' : 'Show Travel Plan'}</button>
                         {!show ? <TravelPlan/> : ''}
+                        <hr/>
+                        <p>Now let's say you want to add a button to delete a place you've already visited. How would you go about it? <a href={updatingNestedState}>Updating nested state</a> involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.</p>
                     </div>
-                    <footer><p>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></p></footer>
+                    <footer>
+                        <p>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></p>
+                    </footer>
                 </>
             )
         }
