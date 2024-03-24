@@ -44,6 +44,15 @@
                         <p>This data structuring might remind you of seeing a database table: (check the structure in the script tag, section 'Flattened plan data')</p>
                         <button onClick={handleSetShowFlattened}>{!showFlattened ? 'Hide Travel Plan' : 'Show Travel Plan'}</button>
                         {!showFlattened ? <FlattenedTravelPlan/> : ''}
+                        <hr/>
+                        <p>Now that the state is "flat" (also known as "normalized"), updating nested items becomes easier.</p>
+                        <p>In order to remove a place now, I only need to update two levels of state:</p>
+                        <ul>
+                            <li><p>The updated version of its parent place should exclude the removed ID from <span className="bg-grey">childIds</span> array</p></li>
+                            <li><p>The updated version of the root "table" object should include the updated version of the parent place.</p></li>
+                            <p>Here is an example of how you could go about it:</p>
+                        </ul>
+                        <EditableTravelPlan/>
                     </div>
                     <footer>
                         <p>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></p>
@@ -127,6 +136,74 @@
                         ))}
                     </ol>
                 </>
+            );
+        }
+
+        function EditableTravelPlan() {
+            const [plan, setPlan] = useState(flattenedTravelPlan);
+
+            function handleComplete(parentId, childId) {
+                const parent = plan[parentId];
+                //Create a new version of the parent place
+                //that  doesn't include this child ID:
+                const nextParent = {
+                    ...parent,
+                    childIds: parent.childIds
+                        .filter(id => id !== childId)
+                };
+                //Update the root state object ...
+                setPlan({
+                    ...plan,
+                    // ... so that it has the updated parent.
+                    [parentId]: nextParent
+                });
+            }
+
+            const root = plan[0];
+            const planetIds = root.childIds;
+            return(
+                <>
+                    <h2>Places to visit</h2>
+                    <ol>
+                        {planetIds.map(id => (
+                            <EditablePlaceTree
+                                key={id}
+                                id={id}
+                                parentId={0}
+                                placesById={plan}
+                                onComplete={handleComplete}
+                            />
+                        ))}
+                    </ol>
+                </>
+            );
+        }
+
+        function EditablePlaceTree({ id, parentId, placesById, onComplete }){
+            const place = placesById[id];
+            const childIds = place.childIds;
+            return(
+                <li className="place">
+                    {place.title}
+                    <button className="travel-btn" onClick={() => {
+                        onComplete(parentId, id);
+                    }}>
+                        Complete
+                    </button>
+                    {childIds.length > 0 &&
+                        <ol>
+                            {childIds.map(childId => (
+                                <EditablePlaceTree
+                                    key={childId}
+                                    id={childId}
+                                    parentId={id}
+                                    placesById={placesById}
+                                    onComplete={onComplete}
+                                />
+                            ))}
+                        </ol>
+                    }
+                </li>
             );
         }
 
