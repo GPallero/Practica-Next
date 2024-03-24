@@ -108,3 +108,16 @@ a{
 footer{
   margin-top: 16px;
 }
+
+
+/* Css for avoidDeeplyNestedState.html */
+/* For the 'Complete' buttons */
+.travel-btn{
+  margin-left: 4px;
+  border-radius: 5px;
+}
+
+/* For li elements in the editable travel plan */
+.place{
+  margin-top: 8px;
+}
