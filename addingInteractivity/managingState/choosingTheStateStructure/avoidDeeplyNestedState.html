@@ -59,6 +59,19 @@
                         </ul>
                         <button onClick={handleSetShowEditable}>{!showEditable? 'Hide Travel Plan' : 'Show Travel Plan'}</button>
                         {!showEditable ? <EditableTravelPlan/> : '' }
+                        <hr/>
+                        <p>You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.</p>
+                        <hr/>
+                        <h2>Recap</h2>
+                        <ul>
+                            <li>If two state variables always update together, consider merging them into one.</li>
+                            <li>Choose your state variables carefully to avoid creating "impossible" states.</li>
+                            <li>Structure your state in a way that reduces the chances that you'll make a mistake updating it.</li>
+                            <li>Avoid redundant and duplicate state so that you don't need to keep it in sync.</li>
+                            <li>Don't put props into state unless you specifically want to prevent updates.</li>
+                            <li>For UI patterns like section, keep ID or index in state instead of the object itself.</li>
+                            <li>If updating deeply nested state is complicated, try flattening it.</li>
+                        </ul>
                     </div>
                     <footer>
                         <p>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></p>
