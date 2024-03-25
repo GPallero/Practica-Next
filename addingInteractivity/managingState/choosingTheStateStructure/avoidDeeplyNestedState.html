@@ -22,6 +22,7 @@
         function Intro(){
             const [showNested, setShowNested] = useState(true);
             const [showFlattened, setShowFlattened] = useState(true);
+            const [showEditable, setShowEditable] = useState(true);
             
             function handleSetShowNested(){
                 setShowNested(!showNested)
@@ -31,6 +32,10 @@
                 setShowFlattened(!showFlattened)
             }
             
+            function handleSetShowEditable(){
+                setShowEditable(!showEditable)
+            }
+
             return (
                 <>
                     <div>
@@ -52,7 +57,8 @@
                             <li><p>The updated version of the root "table" object should include the updated version of the parent place.</p></li>
                             <p>Here is an example of how you could go about it:</p>
                         </ul>
-                        <EditableTravelPlan/>
+                        <button onClick={handleSetShowEditable}>{!showEditable? 'Hide Travel Plan' : 'Show Travel Plan'}</button>
+                        {!showEditable ? <EditableTravelPlan/> : '' }
                     </div>
                     <footer>
                         <p>Back to <a href={principlesForStructuringState}>Principles for Structuring State</a></p>
