@@ -53,6 +53,24 @@
             )
         }
 
+        function App(){
+            const time = useTime();
+            const [color, setColor] useState('lightcoral');
+            return(
+                <div>
+                    <p>
+                        Pick a color: {" "}
+                        <select value="color" onChange={(e) => setColor(e.target.value)}>
+                            <option value="lightcoral">Lightcoral</option>
+                            <option value="midnightblue">Midnightblue</option>
+                            <option value="rebeccapurple">Rebeccapurple</option>
+                        </select>
+                    </p>
+                    <Clock color={color} time={time.toLocaleTimeString()}/>
+                </div>
+            )
+        }
+
     ReactDOM.render(<Intro/>, main)
     </script>
 </body>
