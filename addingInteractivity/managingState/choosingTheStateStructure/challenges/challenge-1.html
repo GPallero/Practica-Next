@@ -31,11 +31,19 @@
             )
         }
         
-        function useTime()
+        function useTime(){
+            const [time, setTime] = useState(() => new Date());
+            useEffect(() => {
+                const id = setInterval(() => {
+                    setTime(new Date());
+                }, 1000);
+                return() => clearInterval(id);
+            }, []);
+            return time;
+        }
 
         function Clock(props){
             const [color, setColor] = useState(prop.color);
-
             return(
                 <>
                     <h1 style={{color: color}}>
