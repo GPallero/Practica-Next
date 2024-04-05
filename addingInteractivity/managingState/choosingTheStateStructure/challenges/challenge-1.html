@@ -17,13 +17,30 @@
 
     <!-- General script -->
     <script type="text/jsx">
+        const { useState, useEffect } = React;
+
         function Intro(){
             return(
                 <>
                     <div>
                         <h1>Challenge 1 - Fix a component that's not updating</h1>
                         <p>This <span className="bg-grey">Clock</span> component receives two props: <span className="bg-grey">color</span> and <span className="bg-grey">time</span>. When you select a different color in the select box, the <span className="bg-grey">Clock</span> component receives a different <span className="bg-grey">color</span> prop from its parent component. However, for some reason, the display color doesn't update. Why? Fix the problem.</p>
+                        <Clock/>
                     </div>
+                </>
+            )
+        }
+        
+        function useTime()
+
+        function Clock(props){
+            const [color, setColor] = useState(prop.color);
+
+            return(
+                <>
+                    <h1 style={{color: color}}>
+                        {props.time}
+                    </h1>
                 </>
             )
         }
