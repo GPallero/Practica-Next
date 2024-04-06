@@ -121,3 +121,11 @@ footer{
 .place{
   margin-top: 8px;
 }
+
+/* Specific styles for: challenge-1.html */
+
+.clocks{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
