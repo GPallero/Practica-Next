@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../choosingStateStructure.css">
     <title>Challenge 2 - Fix a broken packing list</title>
 </head>
 <body>
@@ -16,7 +17,20 @@
 
     <!-- General script -->
     <script type="text/jsx">
-        
+        const principlesForStructuringState = "../overview-PrinciplesForStructuringState.html"
+        function Intro(){
+            return(
+                <>
+                    <div>
+                        <h1>Challenge2 - Fixing a broken packing list</h1>
+                        <p>This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that's always correct.</p>
+                    </div>
+                    <footer><p>Back to <a href={principlesForStructuringState}>Principles for structuring State</a></p></footer>
+                </>
+            )
+        }
+
+        ReactDOM.render(<Intro/>, main)
     </script>
 </body>
 </html>
