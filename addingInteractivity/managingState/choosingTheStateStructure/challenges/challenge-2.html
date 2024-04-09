@@ -17,6 +17,8 @@
 
     <!-- General script -->
     <script type="text/jsx">
+        const { useState } = React;
+
         const principlesForStructuringState = "../overview-PrinciplesForStructuringState.html"
         function Intro(){
             return(
@@ -28,6 +30,27 @@
                     <footer><p>Back to <a href={principlesForStructuringState}>Principles for structuring State</a></p></footer>
                 </>
             )
+        }
+
+        function AddItem({ onAddItem }){
+            const [title, setTitle] = useState('');
+            return (
+                <>
+                    <Input
+                        placeholder="Add item"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <button
+                        onClick={() => {
+                            setTitle("");
+                            onAddItem(title);
+                        }}
+                    >
+                        Add
+                    </button>
+                </>
+            );
         }
 
         ReactDOM.render(<Intro/>, main)
