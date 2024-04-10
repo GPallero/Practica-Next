@@ -39,7 +39,15 @@
                     <div>
                         <h1>Challenge2 - Fixing a broken packing list</h1>
                         <p>This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that's always correct.</p>
-                        <PackingPlan/>
+                        <div className="columns">
+                            <div>
+                                <PackingPlan/>
+                            </div>
+                            <hr/>
+                            <div>
+                                <PackingPlan/>
+                            </div>
+                        </div>
                     </div>
                     <footer><p>Back to <a href={principlesForStructuringState}>Principles for structuring State</a></p></footer>
                 </>
