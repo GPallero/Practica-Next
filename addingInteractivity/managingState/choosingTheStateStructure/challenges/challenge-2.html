@@ -17,15 +17,29 @@
 
     <!-- General script -->
     <script type="text/jsx">
+        // State 
         const { useState } = React;
 
+        // Paths
         const principlesForStructuringState = "../overview-PrinciplesForStructuringState.html"
+
+        // Data 
+        let nextId = 3;
+
+        // Components
+        const initialItems = [
+            {id: 0, title: 'Warm socks', packed: true},
+            {id: 1, title: 'Travel Journal', packed: false},
+            {id: 2, title: 'Watercolors', packed: false},
+        ];
+        
         function Intro(){
             return(
                 <>
                     <div>
                         <h1>Challenge2 - Fixing a broken packing list</h1>
                         <p>This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that's always correct.</p>
+                        <PackingPlan/>
                     </div>
                     <footer><p>Back to <a href={principlesForStructuringState}>Principles for structuring State</a></p></footer>
                 </>
@@ -36,7 +50,7 @@
             const [title, setTitle] = useState('');
             return (
                 <>
-                    <Input
+                    <input
                         placeholder="Add item"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
@@ -57,19 +71,19 @@
             return(
                 <ul>
                     {items.map(item => (
-                        <li key=item.id>
+                        <li key={item.id}>
                             <label>
                                 <input 
                                     type="checkbox"
                                     checked={item.packed}
-                                    onChange={e => (
+                                    onChange={e => {
                                         onChangeItem({
-                                            ...item
+                                            ...item,
                                             packed: e.target.checked
                                         });
-                                    )}
+                                    }}
                                 />
-                                {' ' + item.title}
+                                {' ' + item.title + ' '}
                             </label>
                             <button onClick={() => onDeleteItem(item.id)}>
                                 Delete
@@ -80,6 +94,58 @@
             );
         }
 
+        function PackingPlan(){
+            const [items, setItems] = useState(initialItems);
+            const [total, setTotal] = useState(3);
+            const [packed, setPacked] = useState(1);
+
+            function handleAddItem(title){
+                setTotal(total + 1);
+                setItems([
+                    ...items,
+                    {
+                        id: nextId++,
+                        title: title,
+                        checked: false
+                    }
+                ]);
+            }
+
+            function handleChangeItem(nextItem){
+                if (nextItem.packed){
+                    setPacked(packed + 1);
+                } else {
+                    setPacked(packed - 1);
+                }
+                setItems(
+                    items.map((item) => {
+                        if(item.id === nextItem.id){
+                            return nextItem;
+                        } else {
+                            return item;
+                        }
+                    })
+                );
+            }
+
+            function handleDeleteItem(itemId) {
+                setTotal(total - 1);
+                setItems(items.filter((item) => item.id !== itemId));
+            }
+
+            return(
+                <>
+                    <AddItem onAddItem={handleAddItem}/>
+                    <PackingList 
+                        items={items} 
+                        onChangeItem={handleChangeItem} 
+                        onDeleteItem={handleDeleteItem}
+                    />
+                    <hr/>
+                    <b>{packed} out of {total} packed !</b>
+                </>
+            )
+        }
         ReactDOM.render(<Intro/>, main)
     </script>
 </body>
