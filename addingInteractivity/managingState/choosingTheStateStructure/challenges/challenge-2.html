@@ -45,7 +45,7 @@
                             </div>
                             <hr/>
                             <div>
-                                <PackingPlan/>
+                                <ImprovedPackingPlan/>
                             </div>
                         </section>
                     </div>
@@ -154,6 +154,65 @@
                 </>
             )
         }
+
+        function ImprovedPackingPlan(){
+            const [items, setItems] = useState(initialItems);
+            const [total, setTotal] = useState(3);
+            const [packed, setPacked] = useState(1);
+
+            function handleAddItem(title){
+                setTotal(total + 1);
+                setItems([
+                    ...items,
+                    {
+                        id: nextId++,
+                        title: title,
+                        packed: false
+                    }
+                ]);
+            }
+
+            function handleChangeItem(nextItem){
+                if(nextItem.packed){
+                    setPacked(packed + 1)
+                } else {
+                    setPacked(packed - 1)
+                }
+                setItems(items.map(item => {
+                    if(item.id === nextItem.id){
+                        return nextItem;
+                    } else {
+                        return item;
+                    }
+                }))
+            }
+
+            function handleDeleteItem(itemId){
+                setTotal(total - 1);
+                setItems(items.filter(item => item.id !== itemId));
+                {items.map(item => {
+                    if(item.id === itemId && item.packed){
+                        setPacked(packed - 1);
+                    }
+                })}
+            }
+
+            return(
+                <>
+                    <AddItem onAddItem={handleAddItem}/>
+                    <PackingList
+                        items={items}
+                        onChangeItem={handleChangeItem}
+                        onDeleteItem={handleDeleteItem}
+                    />
+                    <hr/>
+                    <b>
+                        {packed} out of {total} packed!
+                    </b>
+                </>
+            )
+        }
+
         ReactDOM.render(<Intro/>, main)
     </script>
 </body>
