@@ -129,3 +129,8 @@ footer{
   flex-direction: row;
   justify-content: space-between;
 }
+
+/* Class for choosing the state structure challenge-3.html */
+.highlighted{
+  background: #d2eaff;
+}
