@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../choosingStateStructure.css">
-    <title>Challene 3 - Fix the disappearing selection</title>
+    <title>Challenge 3 - Fix the disappearing selection</title>
 </head>
 <body>
     <!-- Div for rendering -->
@@ -17,6 +17,8 @@
 
     <!-- General script -->
     <script type="text/jsx">
+        const { useState } = React;
+
         function Intro(){
             return(
                 <>
@@ -24,6 +26,7 @@
                         <h1>Challenge 3 - Fix the disappearing selection</h1>
                         <p>There is a list if <span className="bg-grey">letters</span> in state. When you hover or focus a particular letter, it gets highlighted. The currently highlighted letter is stored in the <span className="bg-grey">highlightedLetter</span> state variable. You can "star" and "unstar" individual letters, wich updates the <span className="bg-grey">letters</span> array in state.</p>
                         <p>This code works, but there is a minor UI glitch. When you press "Star" or "Unstar", the highlighting disappears for a moment. However, it appears as soon as you move your pointer or switch to another letter with keyboard. Why is this happening? Fix it so that the highlighting doesn't disappear after the button click.</p>
+                        <MailClient/>
                     </div>
                 </>
             )
@@ -56,6 +59,47 @@
                 </li>
             )
         }
+
+        function MailClient() {
+            const [letters, setLetters] = useState(initialLetters);
+            const [highlightedLetter, setHighlightedLetter] = useState(null);
+            
+             function handleHover(letter) {
+                setHighlightedLetter(letter);
+             }
+
+             function handleStar(starred) {
+                setLetters(letters.map(letter => {
+                    if (letter.id === starred.id){
+                        return { 
+                            ...letter,
+                            isStarred: !letter.isStarred
+                        };
+                    } else {
+                        return letter;
+                    }
+                }));
+             }
+
+             return(
+                <>
+                    <h2>Inbox</h2>
+                    <ul>
+                        {letters.map(letter => (
+                            <Letter
+                                key = {letter.id}
+                                letter = {letter}
+                                isHighlighted = {
+                                    letter === highlightedLetter
+                                }
+                                onHover = {handleHover}
+                                onToggleStar = {handleStar}
+                            />
+                        ))}
+                    </ul>
+                </>
+             );
+        }        
 
         ReactDOM.render(<Intro/>, main)
     </script>
