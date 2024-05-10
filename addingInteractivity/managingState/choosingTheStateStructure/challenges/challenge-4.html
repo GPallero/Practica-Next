@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../choosingStateStructure.css">
     <title>Challenge 4 - Implement multiple selection</title>
 </head>
 <body>
@@ -16,7 +17,18 @@
 
     <!-- General Script -->
     <script type="text/jsx">
-        
+        function Intro(){
+            return(
+                <>
+                    <div>
+                        <h1>Challenge 4 - Implemment multiple selection</h1>
+                        <p>In this example, each <span className="bg-grey">letter</span></p>
+                    </div>
+                </>
+            )
+        }
+
+        ReactDOM.render(<Intro/>, main)
     </script>
 </body>
 </html>
