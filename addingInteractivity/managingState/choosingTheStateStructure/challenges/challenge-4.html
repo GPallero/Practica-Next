@@ -29,6 +29,29 @@
             )
         }
 
+        function Letter({
+            letter,
+            onToggle,
+            isSelected,
+        }) {
+            return(
+                <li className={
+                    isSelected ? 'selected' : ''
+                }>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={isSelected}
+                            onToggle={()=>{
+                                onToggle(letter.id);
+                            }}
+                        />
+                        {letter.subject}
+                    </label>
+                </li>
+            )
+        }
+
         ReactDOM.render(<Intro/>, main)
     </script>
     <script src="challenges.js"></script>
