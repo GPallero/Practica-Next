@@ -17,6 +17,8 @@
 
     <!-- General Script -->
     <script type="text/jsx">
+        const { useState } = React;
+
         function Intro(){
             return(
                 <>
@@ -24,6 +26,7 @@
                         <h1>Challenge 4 - Implemment multiple selection</h1>
                         <p>In this example, each <span className="bg-grey">letter</span> has an <span className="bg-grey">isSelected</span> prop and an <span className="bg-grey">onToggle</span> handler that marks it as selected. This works, but state is stored as <span className="bg-grey">selectedId</span> (either <span className="bg-grey">null</span> or an ID), so only one letter can get selected at any given time.</p>
                         <p>Change the state structure to support multiple selection. (How would you structure it? Think about this before writing the code.) Each checkbox should become independient from others. Clicking a selected letter should uncheck it. Finally, the footer should show the correct number of the selected items.</p>
+                        <MailClient/>
                     </div>
                 </>
             )
@@ -42,7 +45,7 @@
                         <input
                             type="checkbox"
                             checked={isSelected}
-                            onToggle={()=>{
+                            onChange={()=>{
                                 onToggle(letter.id);
                             }}
                         />
@@ -50,6 +53,40 @@
                     </label>
                 </li>
             )
+        }
+
+        function MailClient(){
+            const [selectedId, setSelectedId] = useState(null);
+
+            const selectedCount = 1;
+
+            function handleToggle(toggleId) {
+                setSelectedId(toggleId);
+            }
+
+            return(
+                <>
+                    <h2>Inbox</h2>
+                    <ul>
+                        {initialLetters.map(letter => (
+                            <Letter
+                                key={letter.id}
+                                letter={letter}
+                                isSelected={
+                                    letter.id === selectedId
+                                }
+                                onToggle={handleToggle}
+                            />
+                        ))}
+                        <hr/>
+                        <p>
+                            <b>
+                                You selected {selectedCount} letters.
+                            </b>
+                        </p>
+                    </ul>
+                </>
+            );
         }
 
         ReactDOM.render(<Intro/>, main)
