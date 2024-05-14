@@ -134,3 +134,9 @@ footer{
 .highlighted{
   background: #055ba7;
 }
+
+/* Class for choosing the state structure challenge-4.html */
+.selected{
+  background: #055ba7;
+}
+
