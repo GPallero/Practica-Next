@@ -19,6 +19,9 @@
     <script type="text/jsx">
         const { useState } = React;
 
+        //Paths
+        const principlesForStructuringState = "../overview-PrinciplesForStructuringState.html"
+
         function Intro(){
             return(
                 <>
@@ -26,9 +29,17 @@
                         <h1>Challenge 3 - Fix the disappearing selection</h1>
                         <p>There is a list if <span className="bg-grey">letters</span> in state. When you hover or focus a particular letter, it gets highlighted. The currently highlighted letter is stored in the <span className="bg-grey">highlightedLetter</span> state variable. You can "star" and "unstar" individual letters, wich updates the <span className="bg-grey">letters</span> array in state.</p>
                         <p>This code works, but there is a minor UI glitch. When you press "Star" or "Unstar", the highlighting disappears for a moment. However, it appears as soon as you move your pointer or switch to another letter with keyboard. Why is this happening? Fix it so that the highlighting doesn't disappear after the button click.</p>
-                        <WronglyMailClient/>
-                        <ProperlyMailClient/>
+                        <section className="columns">
+                            <div>
+                                <WronglyMailClient/>
+                            </div>
+                            <hr/>
+                            <div>
+                                <ProperlyMailClient/>
+                            </div>
+                        </section>
                     </div>
+                    <footer>Bakc to <a href={principlesForStructuringState}>Principles for structuring state</a></footer>
                 </>
             )
         }
