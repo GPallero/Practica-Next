@@ -15,8 +15,75 @@
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- General Script -->
-    <script type="txt/jsx">
-        
+    <script type="text/jsx">
+        function App (){
+            return(
+                <>
+                    <h1>Sharing State Between Components</h1>
+                    <p>Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as <b><i>lifting state up</i></b>, and it's one of the most common things you will do writing React code.</p>
+                    <section>
+                        <h3>You will learn</h3>
+                        <ul>
+                            <li>How to share state between components by lifting it up</li>
+                            <li>What are controlled and uncontrolled components</li>
+                        </ul>
+                    </section>
+                    <h2>Lifting state up by example</h2>
+                    <p>In this exampl, a parent <span>Accordion</span> components renders two separate <span>Panels</span></p>
+                    <ul>
+                        <li>
+                            Accordion
+                            <ul>
+                                <li>Panel</li>
+                                <li>Panel</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p>Each <span>Panel</span> component has a boolean <span>isActive</span> state that determines wether its content is visible.</p>
+                    <section>
+                        <pre>
+                            <code>
+                                <h3>App.js</h3>
+                                <p>import {"{"} useState {"}"} from 'react';</p>
+                                <br/>
+                                <p>function Panel ({"{"} title, children {"}"}) {"{"}</p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </code>
+                        </pre>
+                    </section>
+                </>
+            )
+        }
+
+        ReactDOM.render(<App/>, main)
     </script>
     
 </body>
