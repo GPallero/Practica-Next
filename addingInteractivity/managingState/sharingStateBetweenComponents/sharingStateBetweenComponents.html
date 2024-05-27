@@ -17,6 +17,10 @@
     <!-- General Script -->
     <script type="text/jsx">
         function App (){
+            //Paths
+            const sharingStateBetweenComponents = "https://react.dev/learn/sharing-state-between-components#lifting-state-up-by-example"
+            const passingPropsToAComponent = "https://react.dev/learn/passing-props-to-a-component"
+
             return(
                 <>
                     <h1>Sharing State Between Components</h1>
@@ -40,45 +44,30 @@
                         </li>
                     </ul>
                     <p>Each <span>Panel</span> component has a boolean <span>isActive</span> state that determines wether its content is visible.</p>
-                    <section>
-                        <pre>
-                            <code>
-                                <h3>App.js</h3>
-                                <p>import {"{"} useState {"}"} from 'react';</p>
-                                <br/>
-                                <p>function Panel ({"{"} title, children {"}"}) {"{"}</p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                                <p></p>
-                            </code>
-                        </pre>
-                    </section>
+                    <p>See <a href={sharingStateBetweenComponents}>Sharing State Between Components</a> App.js 1</p>
+                    <p>Notice how pressing one panel's button does not affect the other panel -- they are independent.</p>
+                    <div>
+                        <img src="D:\Proyectos\Practica-Next\images\liftingStateUp3.png" alt=""/>
+                    </div>
+                    <p>But now let's say we want to change it so that only one panel is expanded at any given time. With that design, expanding the second panel should collapse the first one. How would you do that?</p>
+                    <p>To coordinate these two panels, you need to "lift their state up" to a parent component in three steps:</p>
+                    <ul>
+                        <li>Remove state from the child components.</li>
+                        <li>Pass hardcoded data from the common parent.</li>
+                        <li>Add state to the common parent and pass it down together with the event handlers</li>
+                    </ul>
+                    <p>This will allow the <span>Accordion</span> component to coordinate bot <span>Panel</span>s and only expand one at a time.</p>
+                    <h2>Step 1: Remove state from the child components</h2>
+                    <p>You will give control of the <span>Panel</span>'s <span>isActive</span> to its parent component. This means that the parent component will pass <span>isActive</span> to <span>Panel</span> as a prop instead. Start by removing this line from the <span>Panel</span> component:</p>
+                    <div>
+                        <p><span>const</span> [isActive, setIsActive] = <span>useState</span>(<span>false</span>);</p>
+                    </div>
+                    <p>And instead, add <span>isActive</span> to the <span>Panel</span>'s list of props:</p>
+                    <div>
+                        <p><span>function</span> <span>Panel</span>({"{"}<span> title</span>, <span>children</span>, <span>isActive</span> {"}"}) {"{"}</p>
+                    </div>
+                    <p>now the <span>Panel</span>'s parent component can control <span>isActive</span> by <a href={passingPropsToAComponent}>passing it down as a prop.</a> Conversely, the <span>Panel</span> component now has no control over the value of <span>isActive</span>--it's now up to the parent component!</p>
+                    
                 </>
             )
         }
