@@ -33,17 +33,17 @@
                         </ul>
                     </section>
                     <h2>Lifting state up by example</h2>
-                    <p>In this exampl, a parent <span>Accordion</span> components renders two separate <span>Panels</span></p>
+                    <p>In the example, a parent <span className="bg-grey">Accordion</span> components renders two separate <span className="bg-grey">Panel</span>s</p>
                     <ul>
                         <li>
-                            Accordion
+                            <span className="bg-grey">Accordion</span>
                             <ul>
-                                <li>Panel</li>
-                                <li>Panel</li>
+                                <li><span className="bg-grey">Panel</span></li>
+                                <li><span className="bg-grey">Panel</span></li>
                             </ul>
                         </li>
                     </ul>
-                    <p>Each <span>Panel</span> component has a boolean <span>isActive</span> state that determines wether its content is visible.</p>
+                    <p>Each <span className="bg-grey">Panel</span> component has a boolean <span className="bg-grey">isActive</span> state that determines wether its content is visible.</p>
                     <p>See <a href={sharingStateBetweenComponents}>Sharing State Between Components</a> App.js 1</p>
                     <p>Notice how pressing one panel's button does not affect the other panel -- they are independent.</p>
                     <div>
@@ -56,18 +56,17 @@
                         <li>Pass hardcoded data from the common parent.</li>
                         <li>Add state to the common parent and pass it down together with the event handlers</li>
                     </ul>
-                    <p>This will allow the <span>Accordion</span> component to coordinate bot <span>Panel</span>s and only expand one at a time.</p>
+                    <p>This will allow the <span className="bg-grey">Accordion</span> component to coordinate bot <span className="bg-grey">Panel</span>s and only expand one at a time.</p>
                     <h2>Step 1: Remove state from the child components</h2>
-                    <p>You will give control of the <span>Panel</span>'s <span>isActive</span> to its parent component. This means that the parent component will pass <span>isActive</span> to <span>Panel</span> as a prop instead. Start by removing this line from the <span>Panel</span> component:</p>
-                    <div>
-                        <p><span>const</span> [isActive, setIsActive] = <span>useState</span>(<span>false</span>);</p>
+                    <p>You will give control of the <span className="bg-grey">Panel</span>'s <span className="bg-grey">isActive</span> to its parent component. This means that the parent component will pass <span className="bg-grey">isActive</span> to <span className="bg-grey">Panel</span> as a prop instead. Start by removing this line from the <span className="bg-grey">Panel</span> component:</p>
+                    <div className="bg-dark">
+                        <p><span className="blue">const</span> [isActive, setIsActive] = <span className="skyblue">useState</span>(<span className="red">false</span>);</p>
                     </div>
-                    <p>And instead, add <span>isActive</span> to the <span>Panel</span>'s list of props:</p>
-                    <div>
-                        <p><span>function</span> <span>Panel</span>({"{"}<span> title</span>, <span>children</span>, <span>isActive</span> {"}"}) {"{"}</p>
+                    <p>And instead, add <span className="bg-grey">isActive</span> to the <span className="bg-grey">Panel</span>'s list of props:</p>
+                    <div className="bg-dark">
+                        <p><span className="blue">function</span> <span className="skyblue">Panel</span>({"{"}<span className="blue"> title</span>, <span className="blue">children</span>, <span className="blue">isActive</span> {"}"}) {"{"}</p>
                     </div>
-                    <p>now the <span>Panel</span>'s parent component can control <span>isActive</span> by <a href={passingPropsToAComponent}>passing it down as a prop.</a> Conversely, the <span>Panel</span> component now has no control over the value of <span>isActive</span>--it's now up to the parent component!</p>
-                    
+                    <p>Now the <span className="bg-grey">Panel</span>'s parent component can control <span className="bg-grey">isActive</span> by <a  className="skyblue" href={passingPropsToAComponent}>passing it down as a prop.</a> Conversely, the <span className="bg-grey">Panel</span> component now has no control over the value of <span className="bg-grey">isActive</span>--it's now up to the parent component!</p>
                 </>
             )
         }
