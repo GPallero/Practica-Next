@@ -19,7 +19,10 @@
         function App (){
             //Paths
             const sharingStateBetweenComponents = "https://react.dev/learn/sharing-state-between-components#lifting-state-up-by-example"
+            const step2= "https://react.dev/learn/sharing-state-between-components#step-2-pass-hardcoded-data-from-the-common-parent"
             const passingPropsToAComponent = "https://react.dev/learn/passing-props-to-a-component"
+            const passingEventHandlerAsAProp = "https://react.dev/learn/responding-to-events#passing-event-handlers-as-props"
+            const step3 = "https://react.dev/learn/sharing-state-between-components#step-3-add-state-to-the-common-parent"
 
             return(
                 <>
@@ -67,6 +70,35 @@
                         <p><span className="blue">function</span> <span className="skyblue">Panel</span>({"{"}<span className="blue"> title</span>, <span className="blue">children</span>, <span className="blue">isActive</span> {"}"}) {"{"}</p>
                     </div>
                     <p>Now the <span className="bg-grey">Panel</span>'s parent component can control <span className="bg-grey">isActive</span> by <a  className="skyblue" href={passingPropsToAComponent}>passing it down as a prop.</a> Conversely, the <span className="bg-grey">Panel</span> component now has no control over the value of <span className="bg-grey">isActive</span>--it's now up to the parent component!</p>
+                    <h2>Step 2: Pass hardcoded data from the common parent</h2>
+                    <p>To lift state up, you must locate the closest common parent component of both of the child components that you want to coordinate:</p>
+                    <ul>
+                        <li><span className="bg-grey">Accordion</span> (closest common parent)</li>
+                        <ul>
+                            <li><span className="bg-grey">Panel</span></li>
+                            <li><span className="bg-grey">Panel</span></li>
+                        </ul>
+                    </ul>
+                    <p>In the example, it's the <span className="bg-grey">Accordion</span> component. Since it's above both panels and can control their props, it will become the "source of truth" for wich panel is currently active. Make the <span className="bg-grey">Accordion</span> component pass a hardcoded value of <span className="bg-grey">isActive</span> (for example, <span className="bg-grey">true</span>) to both panels:</p>
+                    <p>See <a href={step2}>Step 2: Pass hardcoded data from the common parent</a> App.js</p>
+                    <h2>Step 3: Add state to the common parent</h2>
+                    <p>Lifting state up often changes the nature of what you're storing as state.</p>
+                    <p>In this case, only one panel should be active at a time. This means that the <span className="bg-grey">Accordion</span> common parent component needs to keep track of wich panel is the active one. Instead of a <span className="bg-grey">boolean</span> value, it could use a number as the index of the active <span class="bg-grey">Panel</span> for the state variable:</p>
+                    <div className="bg-dark">
+                        <p><span class="blue">const</span> [activeIndex, setActiveIndex] = <span className="skyblue">useState</span>(<span className="red">0</span>);</p>
+                    </div>
+                    <p>When the <span className="bg-grey">activeIndex</span> is <span className="bg-grey">0</span>, the first panel is active, and when it's <span className="bg-grey">1</span>, it's the second one.</p>
+                    <p>Clicking thw "Show" button in either <span className="bg-grey">Panel</span> needs to change the active index in <span className="bg-grey">Accordion</span>. A <span className="bg-grey">Panel</span> can't set the <span className="bg-grey">activeIndex</span> state directly because it's defined inside the <span className="bg-grey">accordion</span>. The <span className="bg-grey">Accordion</span> component needs to explicitly allow the <span className="bg-grey">Panel</span> component to change its state by <a href={passingEventHandlerAsAProp}>passing an event handler down as a prop</a>: see <a href={step3}>Step 3: Add state to the common parent</a> Fig.2</p>
+                    <p>The <span className="bg-grey">button</span> inside <span className="bg-grey">Panel</span> will now use the <span className="bg-grey">onShow</span> prop as its click event handler: see <a href={step3}>Step 3: Add state to the common parent</a> Fig.3</p>
+                    <p>This completes lifting state up! Moving state into the common parent component allowed us to coordinate the two panels. Using the active index instead of two "is shown" flags ensured that only one panel is active at a given time. And passing down the event handler to the child allowed the child to change the parent's state.</p>
+                    <div>
+                        <img src="D:\Proyectos\Practica-Next\images\liftingStateUp9.png" alt=""/>
+                    </div>
+                    <div className="bg-purple">
+                        <p class="purple">DEEP DIVE</p>
+                        <h4>Controled and uncontrolled components</h4>
+                        <button className="purple">Show Details | Hide Details</button>
+                    </div>
                 </>
             )
         }
