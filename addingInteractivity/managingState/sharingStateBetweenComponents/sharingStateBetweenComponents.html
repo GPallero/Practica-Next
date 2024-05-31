@@ -94,11 +94,19 @@
                     <div>
                         <img src="D:\Proyectos\Practica-Next\images\liftingStateUp9.png" alt=""/>
                     </div>
-                    <div className="bg-purple">
-                        <p class="purple">DEEP DIVE</p>
-                        <h4>Controled and uncontrolled components</h4>
-                        <button className="purple">Show Details | Hide Details</button>
-                    </div>
+                    <Card background="bg-purple" color="purple"/>
+                </>
+            )
+        }
+
+        function Card( {background, color} ){
+            return (
+                <>
+                    <section className={background}>
+                        <p className={color}>DEEP DIVE</p>
+                        <h4>Controlled and uncontrolled components</h4>
+                        <button></button>
+                    </section>
                 </>
             )
         }
