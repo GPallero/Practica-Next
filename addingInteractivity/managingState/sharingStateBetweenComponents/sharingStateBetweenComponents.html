@@ -16,6 +16,8 @@
 
     <!-- General Script -->
     <script type="text/jsx">
+        const { useState } = React;
+
         function App (){
             //Paths
             const sharingStateBetweenComponents = "https://react.dev/learn/sharing-state-between-components#lifting-state-up-by-example"
@@ -83,9 +85,9 @@
                     <p>See <a href={step2}>Step 2: Pass hardcoded data from the common parent</a> App.js</p>
                     <h2>Step 3: Add state to the common parent</h2>
                     <p>Lifting state up often changes the nature of what you're storing as state.</p>
-                    <p>In this case, only one panel should be active at a time. This means that the <span className="bg-grey">Accordion</span> common parent component needs to keep track of wich panel is the active one. Instead of a <span className="bg-grey">boolean</span> value, it could use a number as the index of the active <span class="bg-grey">Panel</span> for the state variable:</p>
+                    <p>In this case, only one panel should be active at a time. This means that the <span className="bg-grey">Accordion</span> common parent component needs to keep track of wich panel is the active one. Instead of a <span className="bg-grey">boolean</span> value, it could use a number as the index of the active <span className="bg-grey">Panel</span> for the state variable:</p>
                     <div className="bg-dark">
-                        <p><span class="blue">const</span> [activeIndex, setActiveIndex] = <span className="skyblue">useState</span>(<span className="red">0</span>);</p>
+                        <p><span className="blue">const</span> [activeIndex, setActiveIndex] = <span className="skyblue">useState</span>(<span className="red">0</span>);</p>
                     </div>
                     <p>When the <span className="bg-grey">activeIndex</span> is <span className="bg-grey">0</span>, the first panel is active, and when it's <span className="bg-grey">1</span>, it's the second one.</p>
                     <p>Clicking thw "Show" button in either <span className="bg-grey">Panel</span> needs to change the active index in <span className="bg-grey">Accordion</span>. A <span className="bg-grey">Panel</span> can't set the <span className="bg-grey">activeIndex</span> state directly because it's defined inside the <span className="bg-grey">accordion</span>. The <span className="bg-grey">Accordion</span> component needs to explicitly allow the <span className="bg-grey">Panel</span> component to change its state by <a href={passingEventHandlerAsAProp}>passing an event handler down as a prop</a>: see <a href={step3}>Step 3: Add state to the common parent</a> Fig.2</p>
@@ -100,12 +102,29 @@
         }
 
         function Card( {background, color} ){
+            const [isShow, setShow] = useState(true);
+            
             return (
                 <>
                     <section className={background}>
                         <p className={color}>DEEP DIVE</p>
                         <h4>Controlled and uncontrolled components</h4>
-                        <button></button>
+                        <button onClick={(e) => setShow(!isShow)}>
+                            { !isShow ? 'Hide Details' : 'Show Details'}
+                        </button>
+                        { !isShow ? 
+                            ( 
+                                <>
+                                    <hr className={color}/>
+                                    <p>It is common to call a component with some local state "uncontrolled". For example, the original <span className="bg-grey">Panel</span> component with <span className="bg-grey">isActive</span> state variable is uncontrolled because its parent cannont influence whether the panel is active or not.</p>
+                                    <p>In contrast, you might say a component is "controlled" when the important information in it is driven by props rather than its own local state. This lets the parent component fully specify its behavior. The final <span className="bg-grey">Panel</span> component with the <span className="bg-grey">isActive</span> prop is controlled by the <span className="bg-grey">Accordion</span> component.</p>
+                                    <p>Uncontrolled components are easier to use within their parents because they require less configuration. But they're less flexible when you want to coordinate them together. Controlled components are maximally flexible, but they require the parent components to fully configure them with props.</p>
+                                    <p>In practice, "controlled" and "uncontrolled" aren't strict technical terms  --each component usually has some mix of both local state and props. However, this is a useful way to talk about how components are designed and what capabilities they offer.</p>
+                                    <p>When writting a component, consider wich information in it should be controlled (via props), and which information should be uncontrolled (via state). But you can always change your mind and refactor later.</p>
+                                </>
+                            ) : 
+                            ''
+                        }
                     </section>
                 </>
             )
