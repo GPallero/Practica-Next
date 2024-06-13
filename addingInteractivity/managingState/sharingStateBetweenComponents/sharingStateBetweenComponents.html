@@ -96,12 +96,14 @@
                     <div>
                         <img src="D:\Proyectos\Practica-Next\images\liftingStateUp9.png" alt=""/>
                     </div>
-                    <Card background="bg-purple" color="purple"/>
+                    <Card background="bg-purple" color="purple" content={blocks}/>
+                    <Card background="bg-purple" color="purple" content={newBlocks}/>
+
                 </>
             )
         }
 
-        function Card( {background, color} ){
+        function Card( {background, color, content} ){
             const [isShow, setShow] = useState(true);
             
             return (
@@ -116,11 +118,13 @@
                             ( 
                                 <>
                                     <hr className={color}/>
-                                    <p>It is common to call a component with some local state "uncontrolled". For example, the original <span className="bg-grey">Panel</span> component with <span className="bg-grey">isActive</span> state variable is uncontrolled because its parent cannont influence whether the panel is active or not.</p>
-                                    <p>In contrast, you might say a component is "controlled" when the important information in it is driven by props rather than its own local state. This lets the parent component fully specify its behavior. The final <span className="bg-grey">Panel</span> component with the <span className="bg-grey">isActive</span> prop is controlled by the <span className="bg-grey">Accordion</span> component.</p>
-                                    <p>Uncontrolled components are easier to use within their parents because they require less configuration. But they're less flexible when you want to coordinate them together. Controlled components are maximally flexible, but they require the parent components to fully configure them with props.</p>
-                                    <p>In practice, "controlled" and "uncontrolled" aren't strict technical terms  --each component usually has some mix of both local state and props. However, this is a useful way to talk about how components are designed and what capabilities they offer.</p>
-                                    <p>When writting a component, consider wich information in it should be controlled (via props), and which information should be uncontrolled (via state). But you can always change your mind and refactor later.</p>
+                                    {blocks.map(block => (
+                                        <p>
+                                            {block.elements.map(el => 
+                                                el.tag === "span" ? <span key={el.id} className={el.className}>{el.text}</span> : el.text
+                                            )}
+                                        </p>
+                                    ))}
                                 </>
                             ) : 
                             ''
@@ -132,6 +136,6 @@
 
         ReactDOM.render(<App/>, main)
     </script>
-    
+    <script src="sharingStateBewtweenComponents.js"></script>
 </body>
 </html>
