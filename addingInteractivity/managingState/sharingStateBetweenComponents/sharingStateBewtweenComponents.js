@@ -93,5 +93,5 @@ const blocks = [
                 text: "When writing a component, consider which information in it should be controlled (via props), and which information should be uncontrolled (via state). But you can always change your mind and refactor later."
             }
         ]
-    },
+    }
 ]
