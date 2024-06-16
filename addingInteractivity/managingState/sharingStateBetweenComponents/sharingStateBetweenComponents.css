@@ -28,6 +28,10 @@ a{
     color: #c64640;
 }
 
+.purple{
+    color: #848de5;
+}
+
 /* Backgrounds: */
 .bg-dark{
     background-color: #16181d;
@@ -39,4 +43,9 @@ a{
 
 .bg-purple{
     background-color: #252943;
+}
+
+/* hr separator */
+.purple-rule{
+    border: 1px solid #282e6a;
 }
