@@ -27,3 +27,16 @@ a{
 .red{
     color: #c64640;
 }
+
+/* Backgrounds: */
+.bg-dark{
+    background-color: #16181d;
+}
+
+.bg-grey{
+    background-color: #2f333c;
+}
+
+.bg-purple{
+    background-color: #252943;
+}
