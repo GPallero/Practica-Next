@@ -25,6 +25,8 @@
             const passingPropsToAComponent = "https://react.dev/learn/passing-props-to-a-component"
             const passingEventHandlerAsAProp = "https://react.dev/learn/responding-to-events#passing-event-handlers-as-props"
             const step3 = "https://react.dev/learn/sharing-state-between-components#step-3-add-state-to-the-common-parent"
+            const singleSourceOfTruth = "https://en.wikipedia.org/wiki/Single_source_of_truth" 
+            const thingkingInReact = "https://react.dev/learn/thinking-in-react"
 
             return(
                 <>
@@ -97,6 +99,18 @@
                         <img src="D:\Proyectos\Practica-Next\images\liftingStateUp9.png" alt=""/>
                     </div>
                     <Card background="bg-purple" color="purple" content={blocks}/>
+                    <h2>A single source of truth for each state</h2>
+                    <p>In a React application, many components will have their own state. Some state may "live" close to the leaf components (components at the bottom of the tree like inputs. Other state may "live" closer to the top of the aap. For example, even client-side routing libraries are usually implemented by storing the current route in the React state, and passing it down by props!</p>
+                    <p>For each unique piece of state, you will choose the component that "owns" it. This principle is also known as having a <a href={singleSourceOfTruth}>"sinlge source of truth"</a>. It doesn't mean that all state lives in one place - but that for each piece of state, there is a specific component that holds that piece of information. Instead of duplicating shared state between components, lift it up to their common shared parent, and pass it down to the children that need it.</p>
+                    <p>Your app will change as you work on it. It is common that you will move state down or back up while you're still figuring out where each piece of the state "lives". This is all part of the process!</p>
+                    <p>To see what it feels like inf practice with a few more components, read <a href={thingkingInReact}>Thinking in React.</a></p>
+                    <h2>Recap</h2>
+                    <ul>
+                        <li>When you want to coordinate two components, move their state to their common parent.</li>
+                        <li>Then pass the information down through props from their common parent.</li>
+                        <li>Finally, pass the event handlers down so that the children can change the parent's state.</li>
+                        <li>It's useful to consider components as "controlled" (driven by props) or "uncontrolled" (driven by sate).</li>
+                    </ul>
                 </>
             )
         }
@@ -107,8 +121,8 @@
             return (
                 <>
                     <section className={background}>
-                        <p className={color}>DEEP DIVE</p>
-                        <h4>Controlled and uncontrolled components</h4>
+                        <h5 className={color}>DEEP DIVE</h5>
+                        <h3 className="white">Controlled and uncontrolled components</h3>
                         <button onClick={(e) => setShow(!isShow)}>
                             { !isShow ? 'Hide Details' : 'Show Details'}
                         </button>
@@ -137,5 +151,3 @@
     <script src="sharingStateBewtweenComponents.js"></script>
 </body>
 </html>
-
-blocks
