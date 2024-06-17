@@ -58,4 +58,5 @@ a{
 /* Unordered list */
 ul{
     list-style-type: disc;
+    margin: 12px 0px 12px 24px;
 }
