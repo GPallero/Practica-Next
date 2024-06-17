@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sharingStateBetweenComponents.css">
     <title>Sharing State Between Components</title>
 </head>
 <body>
@@ -77,7 +78,7 @@
                     <h2>Step 2: Pass hardcoded data from the common parent</h2>
                     <p>To lift state up, you must locate the closest common parent component of both of the child components that you want to coordinate:</p>
                     <ul>
-                        <li><span className="bg-grey">Accordion</span> (closest common parent)</li>
+                        <li><span className="bg-grey">Accordion</span> {"("}closest common parent{")"}</li>
                         <ul>
                             <li><span className="bg-grey">Panel</span></li>
                             <li><span className="bg-grey">Panel</span></li>
@@ -98,7 +99,7 @@
                     <div>
                         <img src="D:\Proyectos\Practica-Next\images\liftingStateUp9.png" alt=""/>
                     </div>
-                    <Card background="bg-purple" color="purple" content={blocks}/>
+                    <Card background="bg-purple" border="border-purple" color="purple" content={blocks}/>
                     <h2>A single source of truth for each state</h2>
                     <p>In a React application, many components will have their own state. Some state may "live" close to the leaf components (components at the bottom of the tree like inputs. Other state may "live" closer to the top of the aap. For example, even client-side routing libraries are usually implemented by storing the current route in the React state, and passing it down by props!</p>
                     <p>For each unique piece of state, you will choose the component that "owns" it. This principle is also known as having a <a href={singleSourceOfTruth}>"sinlge source of truth"</a>. It doesn't mean that all state lives in one place - but that for each piece of state, there is a specific component that holds that piece of information. Instead of duplicating shared state between components, lift it up to their common shared parent, and pass it down to the children that need it.</p>
@@ -115,12 +116,12 @@
             )
         }
 
-        function Card( {background, color, content} ){
+        function Card( {background, border, color, content} ){
             const [isShow, setShow] = useState(true);
             
             return (
                 <>
-                    <section className={background}>
+                    <section className={background + " " + border}>
                         <h5 className={color}>DEEP DIVE</h5>
                         <h3 className="white">Controlled and uncontrolled components</h3>
                         <button onClick={(e) => setShow(!isShow)}>
@@ -129,7 +130,7 @@
                         { !isShow ? 
                             ( 
                                 <>
-                                    <hr className={color}/>
+                                    <hr className="purple-rule"/>
                                     {content.map(block => (
                                         <p key={block.id}>
                                             {block.elements.map(el => 
