@@ -1,5 +1,6 @@
 *{
-    box-sizing: border-box;;
+    box-sizing: border-box;
+    margin: 8px;
 }
 
 body{
@@ -59,4 +60,13 @@ a{
 ul{
     list-style-type: disc;
     margin: 12px 0px 12px 24px;
+}
+
+/* Button */
+button{
+    border-radius: 10px;
+    padding: 4px;
+    color: #f6f7f9;
+    background: #6B75DB;
+    border: 0px solid #6B75DB;
 }
