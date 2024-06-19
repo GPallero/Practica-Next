@@ -24,6 +24,8 @@
                     <h1>Challenge 1 - Synced inputs</h1>
                     <p>These two inputs are independent. Make them stay in sync: editing one input should update the other input with the same text, and vice versa.</p>
                     <IndependentInputs/>
+                    <h3>Here I render the inputs now as Synced inputs:</h3>
+                    <SyncedInputs/>
                 </>
             )
         }
@@ -44,6 +46,34 @@
                 setText(e.target.value);
             }
 
+            return(
+                <label>
+                    {label}
+                    {' '}
+                    <input
+                        value={text}
+                        onChange={handleChange}
+                    />
+                </label>
+            );
+        }
+
+        function SyncedInputs(){
+            const [text, setText] = useState('')
+
+            function handleChange(e){
+                setText(e.target.value)
+            }
+
+            return(
+                <>
+                    <NewInput label="First input" text={text} handleChange={handleChange} />
+                    <NewInput label="Second input" text={text} handleChange={handleChange} />
+                </>
+            );
+        }
+
+        function NewInput({ label, text, handleChange }){
             return(
                 <label>
                     {label}
