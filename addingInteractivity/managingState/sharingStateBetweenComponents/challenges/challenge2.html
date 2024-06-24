@@ -16,6 +16,16 @@
 
      <!-- General Script -->
       <script type="text/jsx">
+        <!-- This function is for filter the list by the query we write in the Search field. -->
+        function filterItems (items, query){
+            query = query.toLowerCase();
+            return items.filter(item=>
+                item.name.split(' ').some(word=>
+                    word.toLowerCase()startsWith(query)
+                )
+            );
+        }
+
         function Intro(){
             return(
                 <>
