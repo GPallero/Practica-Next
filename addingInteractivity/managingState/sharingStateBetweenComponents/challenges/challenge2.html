@@ -16,12 +16,13 @@
 
      <!-- General Script -->
       <script type="text/jsx">
+        const { useState } = React;
         /* This function is for filter the list by the query we write in the Search field. */
         function filterItems (items, query){
             query = query.toLowerCase();
             return items.filter(item=>
                 item.name.split(' ').some(word=>
-                    word.toLowerCase()startsWith(query)
+                    word.toLowerCase().startsWith(query)
                 )
             );
         }
@@ -32,6 +33,7 @@
                     <h1>Challenge 2: Filtering a list</h1>
                     <p>In this example, the <span className="bg-grey">SearchBar</span> has its own <span className="bg-grey">query</span> state that controls the text input. Its parent <span className="bg-grey">FilterableList</span> component displays a <span className="bg-grey">List</span> of items, but it doesn't take the search query into account.</p>
                     <p>Use the <span className="bg-grey">filterItems(foods, query)</span> function to filter the list according to the search query. To test your changes, verify that typing "s" into the input filters down the list to "Sushi", "Shish kebab", and "Dim sum".</p>
+                    <FilterableList/>
                 </>
             )
         }
@@ -81,6 +83,6 @@
 
         ReactDOM.render(<Intro/>, main)
       </script>
-      <script src=""></script>
+      <script src="challenge2.js"></script>
 </body>
 </html>
