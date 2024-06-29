@@ -16,7 +16,7 @@
 
     <!-- General script -->
      <script type="text/jsx">
-        function Navigation (){
+        function Navigation(){
             return (
                 <>
                     <nav>
@@ -26,6 +26,23 @@
                             <li><a href="">Challenges</a></li>
                         </ul>
                     </nav>
+                </>
+            )
+        }
+
+        function Overview(){
+            return(
+                <>
+                    <h1>Preserving and Resetting State</h1>
+                    <p>State is isolated between components. React keeps track of wich state belongs to which component based on their place in the UI tree. You can control when to preserve state and when to reset it between re-renders.</p>
+                    <section>
+                        <h2>You will learn</h2>
+                        <ul>
+                            <li>When React chooses to preserve or reset the state</li>
+                            <li>How to force React to reset component's state</li>
+                            <li>How keys and types affect whethet the state is preserved</li>
+                        </ul>
+                    </section>
                 </>
             )
         }
