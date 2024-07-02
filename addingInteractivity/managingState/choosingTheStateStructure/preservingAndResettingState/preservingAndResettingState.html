@@ -16,6 +16,17 @@
 
     <!-- General script -->
      <script type="text/jsx">
+        //State:
+        const {useState} = React;
+
+        //Paths:
+        const renderTrees = "https://react.dev/learn/understanding-your-ui-as-a-tree#the-render-tree"
+        const stateIsTied = "https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree"
+        const sameComponentSamePositionPreserves = "https://react.dev/learn/preserving-and-resetting-state#same-component-at-the-same-position-preserves-state"
+
+        //Strings
+        const counterStr = "<Counter/>"
+
         function Navigation(){
             return (
                 <>
@@ -27,7 +38,7 @@
                         </ul>
                     </nav>
                 </>
-            )
+            );
         }
 
         function Overview(){
@@ -44,10 +55,81 @@
                         </ul>
                     </section>
                 </>
-            )
+            );
         }
 
-        ReactDOM.render(<Overview/>, main)
+        function FirstSection (){
+            const [show, setShow] = useState(false)
+            
+            function handleShow (){
+                setShow(!show)
+            }
+
+            return (
+                <>
+                    <h2>State is tied to a position in the render tree</h2>
+                    <button onClick={handleShow}>
+                        {!show ? "Show content !" : "Hide content"}
+                    </button>
+                    {show ?
+                        (<> 
+                            <p>React builds <a href={renderTrees}>render trees</a> for the component structure in your UI.</p>
+                            <p>When you give a component state, you might think the state "lives" inside the component. But the state is actually held inside React. React associates each piece of state it's holding with the correct component by where that component sits in the render tree.</p>
+                            <p>In <a href={stateIsTied}>State is tied to a position in the render tree.</a> We can see one {counterStr} JSX tag, but it's rendered at two different positions.</p>
+                            <p>In the tree it looks like inside a <span className="bg-grey">'div' tag</span> there are two {counterStr}. Those are two separate counters because each is rendered at its own position in the tree. We don't usually have to think about these positions to use React, but it can be useful to understand how it works.</p>
+                            <p>In React, each component on the screen has fully isolated state. For example, if you render two <span className="bg-grey">Counter</span> components side by side, each of them will get its own, independent <span className="bg-grey">score</span> and <span className="bg-grey">hover</span> states.</p>
+                            <p>We can see, when one counter is updated, only the state for that component is updated.</p>
+                            <p>React will keep the state around for as long as you render the same component at the same position in the tree.</p>
+                        </> )
+                        : ""
+                    }
+                </>
+            );
+        }
+
+        function SecondSection(){
+            const [show, setShow] = useState(false);
+
+            function handleShow (){
+                setShow(!show)
+            }
+
+            return(
+                <>
+                    <h2>Same component at the same position preserves state</h2>
+                    <button onClick={handleShow}>{!show ? "Show content !" : "Hide content"}</button>
+                    {show? (
+                      <>
+                        <p>In the example <a href={sameComponentSamePositionPreserves}>Same component at the same position preserves state</a> we can see two different <span className="bg-grey">{counterStr}</span> tags.</p>
+                        <p>When you tick or clear de checkbox, the counter state does not get reset. Wheter <span className="bg-grey">isFancy</span> is <span className="bg-grey">true</span> or <span className="bg-grey">false</span>, you always have a <span className="bg-grey">{counterStr}</span> as the first child of the <span className="bg-grey">div</span> returned from the root <span className="bg-grey">App</span> component.</p>
+                        <p>It's the same component at the same position, so from React's perspective, it's the same counter.</p>
+                        <Pitfall/>
+                      </>  
+                    ) : ""}
+                </>
+            );
+        }
+
+        function Pitfall(){
+            return(
+                <>
+                    <h3>Pitfall</h3>
+                </>
+            );
+        }
+
+        function App (){
+            return(
+                <>
+                    <Navigation/>
+                    <Overview/>
+                    <FirstSection/>
+                    <SecondSection/>
+                </>
+            );
+        }
+
+        ReactDOM.render(<App/>, main)
      </script>
 </body>
 </html>
