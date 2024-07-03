@@ -103,17 +103,13 @@
                         <p>In the example <a href={sameComponentSamePositionPreserves}>Same component at the same position preserves state</a> we can see two different <span className="bg-grey">{counterStr}</span> tags.</p>
                         <p>When you tick or clear de checkbox, the counter state does not get reset. Wheter <span className="bg-grey">isFancy</span> is <span className="bg-grey">true</span> or <span className="bg-grey">false</span>, you always have a <span className="bg-grey">{counterStr}</span> as the first child of the <span className="bg-grey">div</span> returned from the root <span className="bg-grey">App</span> component.</p>
                         <p>It's the same component at the same position, so from React's perspective, it's the same counter.</p>
-                        <Pitfall/>
+                        <section>
+                            <h3>Pitfall</h3>
+                            <p>Remember that it's the position in the UI tree (not the JSX markup) that matters to React! If a component has two <span className="bg-grey">return</span> clauses with <span className="bg-grey">{counterStr}</span> JSX tags inside and outside the <span className="bg-grey">if</span> you might expect the state to reset, but it doesn't! This is because both of those <span className="bg-grey">{counterStr}</span> tags are rendered at the same position. React doesn't know where you place the conditions in your function. All it "sees" is thetree you return.</p>
+                            <p>In both cases, you return a <span className="bg-grey">{"<div>"}</span> with <span className="bg-grey">{counterStr}</span> as a first child. To React, these two counters have the same "adress": the first child of the first child of the root. This is how React matches them up between the previous and next renders, regardless of how you structure your logic.</p>
+                        </section>
                       </>  
                     ) : ""}
-                </>
-            );
-        }
-
-        function Pitfall(){
-            return(
-                <>
-                    <h3>Pitfall</h3>
                 </>
             );
         }
