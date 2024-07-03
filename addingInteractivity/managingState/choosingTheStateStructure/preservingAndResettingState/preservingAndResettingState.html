@@ -23,6 +23,7 @@
         const renderTrees = "https://react.dev/learn/understanding-your-ui-as-a-tree#the-render-tree"
         const stateIsTied = "https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree"
         const sameComponentSamePositionPreserves = "https://react.dev/learn/preserving-and-resetting-state#same-component-at-the-same-position-preserves-state"
+        const differentComponentsSamePositionResets = "https://react.dev/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state"
 
         //Strings
         const counterStr = "<Counter/>"
@@ -114,6 +115,37 @@
             );
         }
 
+        function ThirdSection(){
+            const [show, setShow] = useState(false);
+
+            function handleShow(){
+                setShow(!show);
+            }
+
+            return(
+                <>
+                    <h2>Different components at the same position reset state</h2>
+                    <button onClick={handleShow}>{!show? "Show content !" : "Hide content"}</button>
+                    {show ? 
+                        (
+                            <>
+                                <p>In the first example at <a href={differentComponentsSamePositionResets}>Different components at the same position reset state</a> ticking the checkbox will replace <span className="bg-grey">{counterStr}</span> with a <span className="bg-grey">{"<p>"}</span></p>
+                                <p>In that example you switch between different component types at the same position. Initially, the first child of the <span className="bg-grey">{"<div>"}</span> cointened a <span className="bg-grey">{counterStr}</span>. But when you swapped in a <span className="bg-grey">p</span>, React removed the <span className="bg-grey">{counterStr}</span> from the UI tree and destroyed its state.</p>
+                                <p>Also when you render a different component in the same position, it resets the state of its entire subtree.</p>
+                                <p>As a rule of thumb, if you want to preserve the state between re-renders, the structure of your tree nees to "match up" from one render to another. If the structure is different, the state gets destroyed because React destroys state when it removes a component from the tree.</p>
+                                <section>
+                                    <h3>Pitfall</h3>
+                                    <p>You should not nest component functions definitions</p>
+                                    <p>That leads to bugs and performance problems. To avoid that, always declare component functions at the top level, and don't nest their functions.</p>
+                                </section>
+                            </>
+                            ) : 
+                        ""
+                    }
+                </>
+            )
+        }
+
         function App (){
             return(
                 <>
@@ -121,6 +153,7 @@
                     <Overview/>
                     <FirstSection/>
                     <SecondSection/>
+                    <ThirdSection/>
                 </>
             );
         }
