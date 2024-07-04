@@ -143,7 +143,22 @@
                         ""
                     }
                 </>
-            )
+            );
+        }
+
+        function FourthSection(){
+            const [show, setShow] = useState(false);
+
+            function handleShow(){
+                setShow(!show)
+            }
+
+            return(
+                <>
+                    <h2>Resetting state at the same position</h2>
+                    <p>By default, React preserves state of a component while it stays at the same position.</p>
+                </>
+            );
         }
 
         function App (){
