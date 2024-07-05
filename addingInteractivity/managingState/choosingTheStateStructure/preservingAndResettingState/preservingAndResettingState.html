@@ -24,6 +24,7 @@
         const stateIsTied = "https://react.dev/learn/preserving-and-resetting-state#state-is-tied-to-a-position-in-the-tree"
         const sameComponentSamePositionPreserves = "https://react.dev/learn/preserving-and-resetting-state#same-component-at-the-same-position-preserves-state"
         const differentComponentsSamePositionResets = "https://react.dev/learn/preserving-and-resetting-state#different-components-at-the-same-position-reset-state"
+        const renderingLists = "https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key"
 
         //Strings
         const counterStr = "<Counter/>"
@@ -161,9 +162,13 @@
                             <>
                                 <p>By default, React preserves state of a component while it stays at the same position. Usually, this is exactly what you want, so it makes sense as the default behavior. But sometimes, you may want to reset a component's state.</p>
                                 <ul>
-                                    <li><ResetingStateWithAKey/></li>
-                                    <li></li>
+                                    <li><RenderingInDifferentPositions/></li>
+                                    <li><ResettingStateWithAKey/></li>
                                 </ul>
+                                <section>
+                                    <h3>Note</h3>
+                                    <p>Remember that keys are not globally unique. They only specify the position within the parent.</p>
+                                </section>
                             </>
                         ) :
                         ""
@@ -192,6 +197,29 @@
                         ) : 
                         ""
                     }
+                </>
+            )
+        }
+
+        function ResettingStateWithAKey(){
+            const [show, setShow] = useState(false)
+
+            function handleShow(){
+                setShow(!show)
+            }
+
+            return(
+                <>
+                    <h4>Option 2: Resetting state with a key.</h4>
+                    <button onClick={handleShow}>{!show ? "Show Content !" : "Hide content"}</button>
+                    {show ? 
+                        (
+                            <>
+                                <p>Another, more generic, way to reset a component's state.</p>
+                                <p>You might have seen <span className="bg-grey">key</span>s when <a href={renderingLists}>rendering lists.</a> Keys aren't just for lists! you can use keys to make React distinguish between components. By default, React uses order within the parent ("first counter", "second counter") to dicern between components. But keys let you tell React that this is not just a first counter, or a second counter, but a specific counter -- for example, Nana's counter. This way, React will know Nana's counter wherever it appears in the tree!.</p>
+                                <p>Specifying a <span className="bg-grey">key</span> tells React to use the <span className="bg-grey">key</span> itself as part of the position, instead of their order within the parent. This is why, even though you render them in the same place in JSX, React sees them as two different counters, and so they will never share state. Every time a counter appears on the screen, its state is created. Every time it is removed, its state is destroyed. Toggling between them resets their state over and over.</p>
+                            </>
+                        ) : ""}
                 </>
             )
         }
