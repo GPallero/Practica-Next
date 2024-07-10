@@ -224,6 +224,71 @@
             )
         }
 
+        function FifthSection(){
+            const [to, setTo] = useState(contacts[0]);
+            const [show, setShow] = useState(false);
+
+            function handleShow(){
+                setShow(!show)
+            }
+
+            return(
+                <>
+                    <h2>Resetting a form with a key</h2>
+                    <button onClick={handleShow}>{!show? 'Show content !' : 'Hide content'}</button>
+                    {show ? 
+                        (
+                            <>
+                                <p>Resetting state with a key is particularly useful when dealing with forms.</p>
+                                <div>
+                                    <ContactList
+                                        contacts={contacts}
+                                        selectedContact={to}
+                                        onSelect={contact => setTo(contact)}
+                                    />
+                                    <Chat key={to.id} contact={to}/>
+                                </div>
+                            </>
+                        ) 
+                        : ''}
+                </>
+            )
+        }
+
+        function ContactList({ contacts, selectedContact, onSelect}){
+            return(
+                <section className="contact-list">
+                    <ul>
+                        {contacts.map(contact=>
+                            <li key={contact.id}>
+                                <button onClick={()=>{
+                                    onSelect(contact);
+                                }}>
+                                    {contact.name}
+                                </button>
+                            </li>    
+                        )}
+                    </ul>
+                </section>
+            )
+        }
+
+        function Chat({ contact }){
+            const [text, setText] = useState('');
+
+            return(
+                <section className="chat">
+                    <textarea
+                        value={text}
+                        placeholder={'Chat to ' + contact.name}
+                        onChange={e => setText(e.target.value)}
+                    />
+                    <br/>
+                    <button>Send to {contact.email}</button>
+                </section>
+            )
+        }
+
         function App (){
             return(
                 <>
@@ -233,11 +298,13 @@
                     <SecondSection/>
                     <ThirdSection/>
                     <FourthSection/>
+                    <FifthSection/>
                 </>
             );
         }
 
         ReactDOM.render(<App/>, main)
      </script>
+     <script src="preservingAndResettingState.js"></script>
 </body>
 </html>
