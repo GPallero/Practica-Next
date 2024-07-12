@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../choosingTheStateStructure/choosingStateStructure.css">
+    <link rel="stylesheet" href="challenges.css">
     <title>Challenge 1 - Fix disappearing input text</title>
 </head>
 <body>
@@ -15,6 +17,87 @@
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- General script -->
-     <script type="text/jsx"></script>
+     <script type="text/jsx">
+        const { useState } = React;
+
+        function Intro(){
+            return(
+                <>
+                    <h1>Challenge 1 - Fix disappearing input text</h1>
+                    <p>In the challenge statement the example shows a message when you press the button. However, pressing the button also accidentaly resets the input. Why does this happen? Fix it so that pressing the button does not reset the input text.</p>
+                </>
+            )
+        }
+
+        function Solutions(){
+            return(
+                <>
+                    <h2>Solutions:</h2>
+                    <ul>
+                        <li>
+                            <span className="bold">First option:</span>
+                            <p>You can either rearrange the order of components in the render tree. That is gonna keep the <span className="bg-grey">{"<Form/>"}</span> component in the same position in both branches <span>(Particularly I prefer this solution, I think its a more neat way to solve the problem.)</span></p>
+                        </li>
+                        <li>
+                            <span className="bold">Second option:</span>
+                            <p>In the other way you can add a <span className="bg-grey">{"<p>"}</span> tag as a first child of the <span className="bg-grey">{"<div>"}</span> in the second branch. To made equal branches.</p>
+                        </li>
+                    </ul>
+                </>
+            )
+        }
+
+        function Challenge(){
+            const [showHint, setShowHint] = useState(false)
+
+            if(showHint){
+                return(
+                    <>
+                        <h2>Challenge solved:</h2>
+                        <div className="challenge">
+                            <Form/>
+                            <p><i>Hint: Your favourite city?</i></p>
+                            <button className="challenge-btn" onClick={() => {
+                                setShowHint(false);    
+                            }}> Hide hint </button>
+                        </div>
+                    </>
+                );
+            }
+            return(
+                <>
+                    <h2>Challenge solved:</h2>
+                    <div className="challenge">
+                        <Form/>
+                        <button className="challenge-btn scnd-branch-btn" onClick={()=>{
+                            setShowHint(true)
+                        }}> Show hint</button>
+                    </div>
+                </>
+            );
+        }
+
+        function Form(){
+            const [text, setText] = useState('');
+            return(
+                <textarea
+                    value={text}
+                    onChange={e => setText(e.target.value)}
+                />
+            );
+        }
+
+        function App(){
+            return(
+                <>
+                    <Intro/>
+                    <Solutions/>
+                    <Challenge/>
+                </>
+            )
+        }
+
+        ReactDOM.render(<App/>, main)
+     </script>
 </body>
 </html>

@@ -1,0 +1,25 @@
+.challenge{
+    display: flex;
+    flex-direction: column;
+    width: 170px;
+}
+
+.challenge-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 6px 12px;
+    background-color: #e7dbdbd7;
+    border-radius: 8px;
+    border-width: 0;
+    color: #3e2e2e;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.scnd-branch-btn{
+    margin-top: 51px;
+}
+
+.bold{
+    font-weight: 600;
+}
