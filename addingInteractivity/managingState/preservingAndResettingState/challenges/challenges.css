@@ -16,10 +16,19 @@
     font-weight: 500;
 }
 
-.scnd-branch-btn{
-    margin-top: 51px;
-}
-
 .bold{
     font-weight: 600;
 }
+
+.hint{
+    background-color: #404a5b;
+    width: 100%;
+    height: 18.4px;
+    text-align: center;
+}
+
+textarea{
+    width: 100%;
+    height: 52.6px;
+    resize: none;
+  }
