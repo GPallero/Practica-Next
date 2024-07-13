@@ -20,6 +20,9 @@
      <script type="text/jsx">
         const { useState } = React;
 
+        /* Paths */
+        const  preservingAndResettingState = "../../choosingTheStateStructure/preservingAndResettingState/preservingAndResettingState.html"
+        
         function Intro(){
             return(
                 <>
@@ -88,12 +91,19 @@
             );
         }
 
+        function Footer(){
+            return(
+                <footer>Back to <a href={preservingAndResettingState}> Preserving and Resetting state</a></footer>
+            )
+        }
+
         function App(){
             return(
                 <>
                     <Intro/>
                     <Solutions/>
                     <Challenge/>
+                    <Footer/>
                 </>
             )
         }
