@@ -27,6 +27,11 @@
     text-align: center;
 }
 
+.flex-column{
+    display:flex;
+    flex-direction: column;
+}
+
 textarea{
     width: 100%;
     height: 52.6px;

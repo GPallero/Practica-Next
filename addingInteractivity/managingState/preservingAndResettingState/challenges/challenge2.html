@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../choosingTheStateStructure/choosingStateStructure.css">
+    <link rel="stylesheet" href="challenges.css">
     <title>Challenge - Swap two form fields</title>
 </head>
 <body>
@@ -16,6 +18,9 @@
 
      <!-- General script -->
       <script type="text/jsx">
+        /* Paths */
+        const preservingAndResettingState = "../../choosingTheStateStructure/preservingAndResettingState/preservingAndResettingState.html"
+
         const { useState } = React;
 
         function Intro(){
@@ -47,17 +52,21 @@
             if (reverse){
                 return(
                     <>
-                        <Field key="last name" label="Last name"/>
-                        <Field key="first name" label="First name"/>
-                        {checkbox}
+                        <div className="flex-column">
+                            <Field key="last name" label="Last name"/>
+                            <Field key="first name" label="First name"/>
+                            {checkbox}
+                        </div>
                     </>
                 );
             } else {
                 return(
                     <>
+                    <div className="flex-column">
                         <Field key="first name" label="First name"/>
                         <Field key="last name" label="Last name"/>
                         {checkbox}
+                    </div>
                     </>
                 );
             }
@@ -81,11 +90,20 @@
             );
         }
 
+        function Footer(){
+            return(
+                <footer>Back to <a href={preservingAndResettingState}>Preserving and Resetting state</a></footer>
+            )
+        }
+
         function App(){
             return(
                 <>
+                <div>
                     <Intro/>
                     <FormFields/>
+                </div>
+                <Footer/>
                 </>
             )
         }
