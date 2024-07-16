@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="challenges.css"> -->
+    <link rel="stylesheet" href="../../choosingTheStateStructure/choosingStateStructure.css">
     <link rel="stylesheet" href="challenges.css">
     <title>Challenge 3 - Reset a detail form</title>
 </head>
@@ -37,7 +39,7 @@
             const [email, setEmail] = useState(initialData.email);
 
             return(
-                <section>
+                <section className="flex-column">
                     <label>
                         Name:{' '}
                         <input
@@ -54,22 +56,24 @@
                             onChange={e => setEmail(e.target.value)}
                         />
                     </label>
-                    <button onClick={() => {
-                        const updatedData = {
-                            id: initialData.id,
-                            name: name,
-                            email: email
-                        };
-                        onSave(updatedData);    
-                    }}>
-                        Save
-                    </button>
-                    <button onClick={() => {
-                        setName(initialData.name);
-                        setEmail(initialData.email);
-                    }}>
-                        Reset
-                    </button>
+                    <div>
+                        <button className="btn" onClick={() => {
+                            const updatedData = {
+                                id: initialData.id,
+                                name: name,
+                                email: email
+                            };
+                            onSave(updatedData);    
+                        }}>
+                            Save
+                        </button>
+                        <button className="btn" onClick={() => {
+                            setName(initialData.name);
+                            setEmail(initialData.email);
+                        }}>
+                            Reset
+                        </button>
+                    </div>
                 </section>
             );
         }
@@ -81,10 +85,10 @@
         }) {
             return(
                 <section>
-                    <ul>
+                    <ul className="flex padding-0">
                         {contacts.map(contact => 
                             <li key={contact.id}>
-                                <button onClick={() => {
+                                <button className="btn" onClick={() => {
                                     onSelect(contact.id);
                                 }}>
                                     {contact.id === selectedId ?

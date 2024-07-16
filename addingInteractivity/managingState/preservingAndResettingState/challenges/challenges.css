@@ -16,6 +16,18 @@
     font-weight: 500;
 }
 
+.btn {
+    margin-left: 8px;
+    margin-top: 6px;
+    padding: 6px 12px;
+    background-color: #e7dbdbd7;
+    border-radius: 8px;
+    border-width: 0;
+    color: #3e2e2e;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .bold{
     font-weight: 600;
 }
@@ -27,9 +39,17 @@
     text-align: center;
 }
 
+.flex{
+    display: flex;
+}
+
 .flex-column{
     display:flex;
     flex-direction: column;
+}
+
+.padding-0{
+    padding: 0;
 }
 
 textarea{
