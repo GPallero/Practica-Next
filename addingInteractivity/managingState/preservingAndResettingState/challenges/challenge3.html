@@ -73,7 +73,7 @@
         function ContactList({
             contacts,
             selectedId, 
-            onSeelct
+            onSelect
         }) {
             return(
                 <section>
@@ -83,7 +83,7 @@
                                 <button onClick={() => {
                                     onSelect(contact.id);
                                 }}>
-                                    {contact.id === selected.id ?
+                                    {contact.id === selectedId ?
                                         <b>{contact.name}</b> :
                                         contact.name
                                     }
@@ -113,7 +113,7 @@
 
             return(
                 <div>
-                    <ContactsList
+                    <ContactList
                         contacts={contacts}
                         selectedId={selectedId}
                         onSelect={id => setSelectedId(id)}
@@ -127,7 +127,17 @@
             )
         }
 
-        ReactDOM.render(<Intro/>, main)
+        function App(){
+            return(
+                <>
+                    <Intro/>
+                    <ContactManager/>
+                </>
+            )
+        }
+
+        ReactDOM.render(<App/>, main)
      </script>
+     <script src="challenge3.js"></script>
 </body>
 </html>
