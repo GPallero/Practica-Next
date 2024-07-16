@@ -70,6 +70,31 @@
             );
         }
 
+        function ContactList({
+            contacts,
+            selectedId, 
+            onSeelct
+        }) {
+            return(
+                <section>
+                    <ul>
+                        {contacts.map(contact => 
+                            <li key={contact.id}>
+                                <button onClick={() => {
+                                    onSelect(contact.id);
+                                }}>
+                                    {contact.id === selected.id ?
+                                        <b>{contact.name}</b> :
+                                        contact.name
+                                    }
+                                </button>
+                            </li>
+                        )}
+                    </ul>
+                </section>
+            );
+        }
+
         ReactDOM.render(<Intro/>, main)
      </script>
 </body>
