@@ -95,6 +95,38 @@
             );
         }
 
+        function ContactManager(){
+            const [contacts, setContacts] = useState(initialContacts);
+            const [selectedId, setSelectedId] = useState(0);
+            const selectedContact = contacts.find(c => c.id === selectedId);
+
+            function handleSave(updatedData) {
+                const nextContacts = contacts.map(c => {
+                    if( c.id === updatedData.id) {
+                        return updatedData;
+                    } else {
+                        return c;
+                    }
+                });
+                setContacts(nextContacts);
+            }
+
+            return(
+                <div>
+                    <ContactsList
+                        contacts={contacts}
+                        selectedId={selectedId}
+                        onSelect={id => setSelectedId(id)}
+                    />
+                    <hr/>
+                    <EditContact
+                        initialData={selectedContact}
+                        onSave={handleSave}
+                    />
+                </div>
+            )
+        }
+
         ReactDOM.render(<Intro/>, main)
      </script>
 </body>
