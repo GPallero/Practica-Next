@@ -16,7 +16,19 @@
 
     <!-- General script -->
      <script type="text/jsx">
-        
+        const { useState } = React;
+
+        function Intro(){
+            return(
+                <>
+                    <h1>Challenge 3 - Reset a detail form</h1>
+                    <p>This is an editable contact list. You can edit the selected contact's details and then either press "Save" to update it, or "Reset" to undo your changes.</p>
+                    <p>When you select a different contact (for example, Alice), the state updates but the form keeps showing the previous contact's details. Fix it so that the form gets reset when the selected contact changes.</p>
+                </>
+            )
+        }
+
+        ReactDOM.render(<Intro/>, main)
      </script>
 </body>
 </html>
