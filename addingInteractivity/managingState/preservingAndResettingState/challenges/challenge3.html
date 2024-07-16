@@ -127,10 +127,20 @@
             )
         }
 
+        function Solution(){
+            return(
+                <>
+                    <h2>Solution: </h2>
+                    <p>To solve this challenge we need to add the attribute <span className="bg-grey">'key'</span> with value <span className="bg-grey">selectedContact.id</span> to our <span className="bg-grey">{"<EditContact/>"}</span> component</p>
+                </>
+            )
+        }
+
         function App(){
             return(
                 <>
                     <Intro/>
+                    <Solution/>
                     <ContactManager/>
                 </>
             )
