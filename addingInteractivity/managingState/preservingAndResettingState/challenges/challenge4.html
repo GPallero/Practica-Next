@@ -16,7 +16,25 @@
 
     <!-- General script -->
      <script type="text/jsx">
-        
+        function Intro(){
+            return(
+                <>
+                    <h1>Challenge 4 - Clear an image while it's loading</h1>
+                    <p>When you press "Next", the browser starts loading the next image. However, because it's displayed in the same <span className="bg-grey">{"<img>"}</span> tag, by default you would still see the previous image until the next one loads. This may be undesirable if it's important for the next to always match the image. Change it so that the moment you press "Next", the previous image immediatly clears.</p>
+                </>
+            )
+        }
+
+        function Solution(){
+            return(
+                <>
+                    <h2>Solution:</h2>
+                    <p>To solve this you could add the attribute <span className="bg-grey">key</span> with the adequate 'id' value in the <span className="bg-grey">{"<img>"}</span> tag. </p>
+                </>
+            )
+        }
+
+        ReactDOM.render(<Intro/>, main)
      </script>
 </body>
 </html>
