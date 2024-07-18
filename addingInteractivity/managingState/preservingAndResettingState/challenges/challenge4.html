@@ -36,7 +36,42 @@
             )
         }
 
-        ReactDOM.render(<Intro/>, main)
+        function Gallery(){
+            const [index, setIndex] = useState(0);
+            const hasNext = index < images.length - 1;
+
+            function handleClick(){
+                if(hasNext){
+                    setIndex(index + 1);
+                } else {
+                    setIndex(0);
+                }
+            }
+
+            let image = images[index];
+            
+            return(
+                <>
+                    <button onClick={handleClick}>
+                        Next
+                    </button>
+                    <h3>Image {index + 1} of {images.length}</h3>
+                    <img src={image.src}/>
+                    <p>{image.place}</p>
+                </>
+            );
+        }
+
+        function App(){
+            return(
+                <>
+                    <Intro/>
+                    <Solution/>
+                    <Gallery/>
+                </>
+            )
+        }
+        ReactDOM.render(<App/>, main)
      </script>
      <script src="challenge4.js"></script>
 </body>
