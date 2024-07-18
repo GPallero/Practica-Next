@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../choosingTheStateStructure/choosingStateStructure.css">
+    <link rel="stylesheet" href="challenges.css">
     <title>Challenge 4 - Clear an image while it's loading</title>
 </head>
 <body>
@@ -52,12 +54,14 @@
             
             return(
                 <>
-                    <button onClick={handleClick}>
-                        Next
-                    </button>
-                    <h3>Image {index + 1} of {images.length}</h3>
-                    <img src={image.src}/>
-                    <p>{image.place}</p>
+                    <div>
+                        <button className="btn" onClick={handleClick}>
+                            Next
+                        </button>
+                        <h3>Image {index + 1} of {images.length}</h3>
+                        <img key={image.id} src={image.src}/>
+                        <p>{image.place}</p>
+                    </div>
                 </>
             );
         }
