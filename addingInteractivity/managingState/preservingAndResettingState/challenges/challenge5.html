@@ -6,6 +6,47 @@
     <title>Challenge 5 - Fix misplaced state in the list</title>
 </head>
 <body>
+    <!-- Div for rendering -->
+     <div id="main"></div>
+
+     <!-- Scripts for React, React DOM & Babel -->
+     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+     <link rel="stylesheet" href="../../choosingTheStateStructure/preservingAndResettingState/preservingAndResettingState.css">
+     <link rel="stylesheet" href="../../choosingTheStateStructure/choosingStateStructure.css">
+
+     <!-- General script -->
+      <script type="text/jsx">
+        const {useState} = React;
+
+        /* Paths */
+        const preservingAndResettingState = "../../choosingTheStateStructure/preservingAndResettingState/preservingAndResettingState.html"
     
+        function Intro(){
+            return(
+                <>
+                    <h1>Challenge 5 - Fix misplaced state in the list</h1>
+                </>
+            );
+        }
+
+        function Footer(){
+            return(
+                <footer>Back to <a href={preservingAndResettingState}>Preserving and Resetting State</a></footer>
+            );
+        }
+
+        function App(){
+            return(
+                <>
+                    <Intro/>
+                    <Footer/>
+                </>
+            );
+        }
+
+        ReactDOM.render(<App/>, main)
+      </script>
 </body>
 </html>
