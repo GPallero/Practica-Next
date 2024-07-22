@@ -33,6 +33,65 @@
             );
         }
 
+        function Solution(){
+            return(
+                <>
+                    <h3>Solution:</h3>
+                    <p>In this case, instead of using the index <span className="bg-grey">'i'</span> as value for the <span className="bg-grey">key</span> attribute in the <span className="bg-grey">li</span> tag. I used <span className="bg-grey">contact.id</span> as a <span className="bg-grey">key</span></p>
+                    <p>Another solution that doesn't involve React would be to use a <span className="bg-grey">class</span> and together with <span className="bg-grey">CSS</span> aply <span className="bg-grey">flex-direction: column-reverse</span>.</p>
+                </>
+            )
+        }
+
+        function Contact({ contact }){
+            const [expanded, setExpanded] = useState(false);
+
+            return(
+                <>
+                    <p><b>{contact.name}</b></p>
+                    {expanded && 
+                        <p><b>{contact.email}</b></p>
+                    }
+                    <button onClick={() =>
+                        {setExpanded(!expanded)
+                    }}>
+                        {expanded ? "Hide" : "Show"} email
+                    </button>
+                </>
+            );
+        }
+
+        function ContactList(){
+            const [reverse, setReverse] = useState(false);
+
+            const displayedContacts = [...contacts];
+            if(reverse){
+                displayedContacts.reverse();
+            }
+
+            return(
+                <>
+                    <label>
+                        <input 
+                            type="checkbox"
+                            value={reverse}
+                            onChange={e => {
+                                setReverse(e.target.value)
+                            }}
+                        />{' '}
+                        Show in reverse order
+                    </label>
+                    <ul>
+                        {displayedContacts.map((contact, i) =>
+                            <li key={i}>
+                                <Contact contact={contact} />
+                            </li>
+                        )}
+                    </ul>
+                </>
+            );
+        }
+
         function Footer(){
             return(
                 <footer>Back to <a href={preservingAndResettingState}>Preserving and Resetting State</a></footer>
@@ -42,8 +101,10 @@
         function App(){
             return(
                 <>
-                    <div>
+                    <div>   
                         <Intro/>
+                        <Solution/>
+                        <ContactList/>
                     </div>
                     <Footer/>
                 </>
