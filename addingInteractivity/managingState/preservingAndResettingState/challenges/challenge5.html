@@ -27,6 +27,8 @@
             return(
                 <>
                     <h1>Challenge 5 - Fix misplaced state in the list</h1>
+                    <p>In this list, each <span className="bg-grey">Contact</span> has state that determines wheter "Show email" has been pressed for it. Press "Show email" for Alice, and then tick the "Show in reverse order" checkbox. You will notice that it's Taylor's email that is expanded now, but Alice's (which has moved to the bottom) appears collapsed.</p>
+                    <p>Fix it so that the expanded state is associated with each contact, regardless of the chosen ordering.</p>
                 </>
             );
         }
@@ -40,7 +42,9 @@
         function App(){
             return(
                 <>
-                    <Intro/>
+                    <div>
+                        <Intro/>
+                    </div>
                     <Footer/>
                 </>
             );
