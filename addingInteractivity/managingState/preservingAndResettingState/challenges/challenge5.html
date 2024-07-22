@@ -13,8 +13,8 @@
      <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
      <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
      <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-     <link rel="stylesheet" href="../../choosingTheStateStructure/preservingAndResettingState/preservingAndResettingState.css">
      <link rel="stylesheet" href="../../choosingTheStateStructure/choosingStateStructure.css">
+     <link rel="stylesheet" href="challenges.css">
 
      <!-- General script -->
       <script type="text/jsx">
@@ -52,7 +52,7 @@
                     {expanded && 
                         <p><b>{contact.email}</b></p>
                     }
-                    <button onClick={() =>
+                    <button className="btn" onClick={() =>
                         {setExpanded(!expanded)
                     }}>
                         {expanded ? "Hide" : "Show"} email
@@ -76,14 +76,14 @@
                             type="checkbox"
                             value={reverse}
                             onChange={e => {
-                                setReverse(e.target.value)
+                                setReverse(e.target.checked)
                             }}
                         />{' '}
                         Show in reverse order
                     </label>
                     <ul>
-                        {displayedContacts.map((contact, i) =>
-                            <li key={i}>
+                        {displayedContacts.map((contact) =>
+                            <li key={contact.id}>
                                 <Contact contact={contact} />
                             </li>
                         )}
@@ -113,5 +113,6 @@
 
         ReactDOM.render(<App/>, main)
       </script>
+      <script src="challenge5.js"></script>
 </body>
 </html>
