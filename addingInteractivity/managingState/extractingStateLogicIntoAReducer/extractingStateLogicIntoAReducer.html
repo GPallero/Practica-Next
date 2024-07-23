@@ -16,7 +16,41 @@
 
     <!-- General Script -->
     <script type="text/jsx">
+        const {useState} = React;
+        function Intro(){
+            return(
+                <>
+                    <h1>Extracting State logic into a Reducer</h1>
+                    <p>Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called <b>reducer</b>.</p>
+                    <div className="card grey">
+                        <h3>You will learn</h3>
+                        <ul>
+                            <li>What a reducer function is.</li>
+                            <li>How to refactor <span className="bg-grey">useState</span> to <span className="bg-grey">useReducer</span></li>
+                            <li>When to use a reducer</li>
+                            <li>How to write one well</li>
+                        </ul>
+                    </div>
+                    <h2>Consolidate state logic with a reducer</h2>
+                    <p>As your components grow in complexity, it can get harder to see at a glance all the different ways in which a component's state gets updated. For example, the <span className="bg-grey">TaskApp</span> component in the App below holds in his code an array of <span className="bg-grey">tasks</span> in state and uses three different event handlers to add, remove, and edit tasks:</p>
+                </>
+            );
+        }
 
+        function TaskApp(){
+            const [tasks, setTasks] = useState(initialtasks);
+        }
+
+        function App(){
+            return(
+                <>
+                    <Intro/>
+                </>
+            );
+        }
+
+        ReactDOM.render(<App/>, main)
     </script>
+    <script src="extractingStateLogicIntoAReducer.js"></script>
 </body>
 </html>
