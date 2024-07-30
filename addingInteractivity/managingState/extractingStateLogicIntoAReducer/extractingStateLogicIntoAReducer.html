@@ -47,54 +47,62 @@
         }
 
         function StepOne(){
+            const [show, setShow] = useState(false);
+
             return(
                 <>
-                    <h3>Step 1: Move from setting state to dispatching actions</h3>
-                    <p>Your event handlers currently specify what to do by setting state.</p>
-                    <p>Remove all the state logic. What you are left with are three event handlers:</p>
-                    <ul>
-                        <li>handleTask(text) is called when the user presses "Add".</li>
-                        <li>handleChangeTask(task) is called when the user toggles a task or presses "Save".</li>
-                        <li>handleDeleteTask(taskId) is called when the user presses "Delete".</li>
-                    </ul>
-                    <p>Managing state with reducers is slightly different from directly setting state. Instead of telling React "what to do" by setting state, you specify "what the user just did" by dispatching "actions" from your event handlers. (The state update logic will be elsewhere!) So instead of setting <span className="bg-grey">tasks</span>" via an event handler, you're dispatching an "added/changed/delete a task" action. This is more descriptive of the user's intent.</p>
-                    <div className="card dark">
-                        <pre><span className="blue">function</span> <span className="turquoise">handleAddTask</span>(text) {"{"}</pre>
-                        <pre>   <span className="turquoise">dispatch</span>{"({"}</pre>
-                        <pre>       <span className="blue">type</span>: <span className="violet">'added'</span>,</pre>
-                        <pre>       <span className="blue">id</span>: nextId++,</pre>
-                        <pre>       <span className="blue">text</span>: text,</pre>
-                        <pre>   {"})"}</pre>
-                        <pre>{"}"}</pre>
-
-                        <pre><span className="blue">function</span> <span className="turquoise">handleChangeTask</span>(task) {"{"}</pre>
-                        <pre>   <span className="turquoise">dispatch</span>{"({"}</pre>
-                        <pre>       <span className="blue">type</span>: <span className="violet">'changed'</span>,</pre>
-                        <pre>       <span className="blue">task</span>: task,</pre>
-                        <pre>   {"});"}</pre>
-                        <pre>{"}"}</pre>
-
-                        <pre><span className="blue">function</span> <span className="turquoise">handleDeleteTask</span>(taskId) {"{"}</pre>
-                        <pre>   <span className="turqoise">dispatch</span>{"({"}</pre>
-                        <pre>       <span className="blue">type</span>: <span className="violet">'deleted'</span>,</pre>
-                        <pre>       <span className="blue">id</span>: taskId,</pre>
-                        <pre>   {"});"}</pre>
-                        <pre>{"}"}</pre>
+                    <div className="flex">
+                        <h3>Step 1: Move from setting state to dispatching actions</h3>
+                        <button onClick={() => setShow(!show)}>{show ? "Show more :" : "Hide content"}</button>
                     </div>
-                    <p>The object you pass to <span className="bg-grey">dispatch</span> is called an "action"</p>
-                    <p>It is a regular JavaScript object. You decide what to put in it, but generally it should contain the minimal information about what happened. (You will add <span className="bg-grey">dispatch</span> function itself in a later step.)</p>
-                    <div className="card water">
-                        <h3>Note</h3>
-                        <p>An action object can have any shape.</p>
-                        <p>By convention, it is common to give it a string <span className="bg-grey">type</span> that describes what happened, and pass any additional information in other fields. The <span className="bg-grey">type</span> is specific to a component, so in this example either <span className="bg-grey">'added'</span> or <span className="bg-grey">'added_task'</span> would be fine. Choose a name that says what happened!</p>
+                    {show ? 
+                        (<>
+                        <p>Your event handlers currently specify what to do by setting state.</p>
+                        <p>Remove all the state logic. What you are left with are three event handlers:</p>
+                        <ul>
+                            <li>handleTask(text) is called when the user presses "Add".</li>
+                            <li>handleChangeTask(task) is called when the user toggles a task or presses "Save".</li>
+                            <li>handleDeleteTask(taskId) is called when the user presses "Delete".</li>
+                        </ul>
+                        <p>Managing state with reducers is slightly different from directly setting state. Instead of telling React "what to do" by setting state, you specify "what the user just did" by dispatching "actions" from your event handlers. (The state update logic will be elsewhere!) So instead of setting <span className="bg-grey">tasks</span>" via an event handler, you're dispatching an "added/changed/delete a task" action. This is more descriptive of the user's intent.</p>
                         <div className="card dark">
-                            <pre><span className="turquoise">dispatch</span>{"({"}</pre>
-                            <pre>   <span className="grey">// specific to component</span></pre>
-                            <pre>   <span className="blue">blue</span>: 'what_happened',</pre>
-                            <pre>   <span className="grey">// other fields go here</span></pre>
-                            <pre>{"});"}</pre>
+                            <pre><span className="blue">function</span> <span className="turquoise">handleAddTask</span>(text) {"{"}</pre>
+                            <pre>   <span className="turquoise">dispatch</span>{"({"}</pre>
+                            <pre>       <span className="blue">type</span>: <span className="violet">'added'</span>,</pre>
+                            <pre>       <span className="blue">id</span>: nextId++,</pre>
+                            <pre>       <span className="blue">text</span>: text,</pre>
+                            <pre>   {"})"}</pre>
+                            <pre>{"}"}</pre>
+
+                            <pre><span className="blue">function</span> <span className="turquoise">handleChangeTask</span>(task) {"{"}</pre>
+                            <pre>   <span className="turquoise">dispatch</span>{"({"}</pre>
+                            <pre>       <span className="blue">type</span>: <span className="violet">'changed'</span>,</pre>
+                            <pre>       <span className="blue">task</span>: task,</pre>
+                            <pre>   {"});"}</pre>
+                            <pre>{"}"}</pre>
+
+                            <pre><span className="blue">function</span> <span className="turquoise">handleDeleteTask</span>(taskId) {"{"}</pre>
+                            <pre>   <span className="turqoise">dispatch</span>{"({"}</pre>
+                            <pre>       <span className="blue">type</span>: <span className="violet">'deleted'</span>,</pre>
+                            <pre>       <span className="blue">id</span>: taskId,</pre>
+                            <pre>   {"});"}</pre>
+                            <pre>{"}"}</pre>
                         </div>
-                    </div>
+                        <p>The object you pass to <span className="bg-grey">dispatch</span> is called an "action"</p>
+                        <p>It is a regular JavaScript object. You decide what to put in it, but generally it should contain the minimal information about what happened. (You will add <span className="bg-grey">dispatch</span> function itself in a later step.)</p>
+                        <div className="card water">
+                            <h3>Note</h3>
+                            <p>An action object can have any shape.</p>
+                            <p>By convention, it is common to give it a string <span className="bg-grey">type</span> that describes what happened, and pass any additional information in other fields. The <span className="bg-grey">type</span> is specific to a component, so in this example either <span className="bg-grey">'added'</span> or <span className="bg-grey">'added_task'</span> would be fine. Choose a name that says what happened!</p>
+                            <div className="card dark">
+                                <pre><span className="turquoise">dispatch</span>{"({"}</pre>
+                                <pre>   <span className="grey">// specific to component</span></pre>
+                                <pre>   <span className="blue">blue</span>: 'what_happened',</pre>
+                                <pre>   <span className="grey">// other fields go here</span></pre>
+                                <pre>{"});"}</pre>
+                            </div>
+                        </div>
+                    </>) : ""}
                 </>
             )
         }
