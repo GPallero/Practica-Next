@@ -42,6 +42,7 @@
                         <li>3. Use the reducer from your component.</li>
                     </ul>
                     <StepOne/>
+                    <StepTwo/>
                 </>
             );
         }
@@ -53,7 +54,7 @@
                 <>
                     <div className="flex">
                         <h3>Step 1: Move from setting state to dispatching actions</h3>
-                        <button onClick={() => setShow(!show)}>{show ? "Show more :" : "Hide content"}</button>
+                        <button onClick={() => setShow(!show)}>{!show ? "Show more :" : "Hide content"}</button>
                     </div>
                     {show ? 
                         (<>
@@ -103,6 +104,40 @@
                             </div>
                         </div>
                     </>) : ""}
+                </>
+            )
+        }
+
+        function StepTwo(){
+            const [show, setShow] = useState(false);
+
+            return(
+                <>
+                    <div className="flex">
+                        <h3>Step 2: Write a reducer function.</h3>
+                        <button onClick={() => setShow(!show)}>{!show ? "Show more :" : "Hide content"}</button>
+                    </div>
+                    {show ? 
+                        (
+                            <>
+                                <p>A reducer function is where you will put your state logic. It takes two arguments, the current state and the action object, and it returns the next state.</p>
+                                <div className="card dark">
+                                    <pre><span className="blue">function</span> <span className="turquoise">yourReducer</span>(state, action){"{"}</pre>
+                                    <pre>   <span className="grey">// return next state for React to set</span></pre>
+                                    <pre>{"}"}</pre>
+                                </div>
+                                <p>React will set the state to what you return from the reducer.</p>
+                                <p>To move your state setting logic from your event handlers to a reducer function in this example, you will:</p>
+                                <ul>
+                                    <li>1. Declare the current state (<span className="bg-grey">tasks</span>) as the first argument.</li>
+                                    <li>2. Declare the <span className="bg-grey">action</span> object as the second argument.</li>
+                                    <li>3. Return the next state from the reducer (which React will set the state to).</li>
+                                </ul>
+                                <p>Here is all the state setting logic migrated to a reducer function:</p>
+                            </>
+                        ) 
+                        : 
+                    ""}
                 </>
             )
         }
