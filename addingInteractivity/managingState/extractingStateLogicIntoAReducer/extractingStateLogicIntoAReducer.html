@@ -81,6 +81,20 @@
                         <pre>   {"});"}</pre>
                         <pre>{"}"}</pre>
                     </div>
+                    <p>The object you pass to <span className="bg-grey">dispatch</span> is called an "action"</p>
+                    <p>It is a regular JavaScript object. You decide what to put in it, but generally it should contain the minimal information about what happened. (You will add <span className="bg-grey">dispatch</span> function itself in a later step.)</p>
+                    <div className="card water">
+                        <h3>Note</h3>
+                        <p>An action object can have any shape.</p>
+                        <p>By convention, it is common to give it a string <span className="bg-grey">type</span> that describes what happened, and pass any additional information in other fields. The <span className="bg-grey">type</span> is specific to a component, so in this example either <span className="bg-grey">'added'</span> or <span className="bg-grey">'added_task'</span> would be fine. Choose a name that says what happened!</p>
+                        <div className="card dark">
+                            <pre><span className="turquoise">dispatch</span>{"({"}</pre>
+                            <pre>   <span className="grey">// specific to component</span></pre>
+                            <pre>   <span className="blue">blue</span>: 'what_happened',</pre>
+                            <pre>   <span className="grey">// other fields go here</span></pre>
+                            <pre>{"});"}</pre>
+                        </div>
+                    </div>
                 </>
             )
         }
