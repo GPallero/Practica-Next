@@ -134,6 +134,33 @@
                                     <li>3. Return the next state from the reducer (which React will set the state to).</li>
                                 </ul>
                                 <p>Here is all the state setting logic migrated to a reducer function:</p>
+                                <div className="card dark">
+                                    <pre><span className="blue">function</span> <span className="turquoise">tasksReducer</span>(tasks, action) {"{"}</pre>
+                                    <pre>   <span className="blue">if</span> (action.<span className="blue">type</span> === <span className="violet">'added'</span>) {"{"}</pre>
+                                    <pre>       <span className="blue">return</span> [</pre>
+                                    <pre>           ...tasks,</pre>
+                                    <pre>           {"{"}</pre>
+                                    <pre>               <span className="blue">id</span>: action.<span className="blue">id</span>,</pre>
+                                    <pre>               <span className="blue">text</span>: action.<span class="blue">text</span></pre>
+                                    <pre>               <span className="blue">done</span>: <span className="red">false</span>,</pre>
+                                    <pre>           {"},"}</pre>
+                                    <pre>       ];</pre>
+                                    <pre>   {"}"} <span className="blue">else if</span> (action.<span className="blue">type</span> === <span class="violet">'changed'</span>) {"{"}</pre>
+                                    <pre>       <span className="blue">return</span> tasks.<span className="blue">map</span>((t) => {"{"}</pre>
+                                    <pre>           <span className="blue">if</span> (t.<span className="blue">id</span> === action.<span className="blue">task</span>.<span className="blue">id</span>){"{"}</pre>
+                                    <pre>               <span className="blue">return</span> action.<span className="blue">task</span>;</pre>
+                                    <pre>           {"}"} <span className="blue">else</span> {"{"}</pre>
+                                    <pre>               <span className="blue">return</span> t;</pre>
+                                    <pre>           {"}"}</pre>
+                                    <pre>       {"});"}</pre>
+                                    <pre>   {"}"} <span className="blue">else if</span> (action.<span className="blue">type</span> === <span className="violet">'deleted'</span>) {"{"}</pre>
+                                    <pre>       <span className="blue">return</span> tasks.<span className="blue">filter</span>((t) => t.<span className="blue">id</span> !== action.<span className="blue">id</span>);</pre>
+                                    <pre>   {"}"} else {"{"}</pre>
+                                    <pre>       <span className="blue">throw</span> <span className="turquoise">Error</span>(<span className="violet">'Unknown action: '</span> + action.<span className="blue">type</span>);</pre>
+                                    <pre>   {"}"}</pre>
+                                    <pre>{"}"}</pre>
+                                </div>
+                                <p>Because the reducer function takes state (<span className="bg-grey">tasks</span>) as an argument, you can declare it outside of your component. This decreases the indentation level and can make your code easier to read.</p>
                             </>
                         ) 
                         : 
