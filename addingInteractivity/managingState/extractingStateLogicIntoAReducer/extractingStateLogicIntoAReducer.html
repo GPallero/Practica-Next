@@ -168,7 +168,7 @@
                                 <div className="card green">
                                     <h2 className="green">Note</h2>
                                     <button onClick={() => setShowGreenCard(!showGreenCard)}>{!showGreenCard ? 'Show me more!' : 'Hide content'}</button>
-                                    {!showGreenCard ? 
+                                    {showGreenCard ? 
                                         (
                                             <>
                                                 <p>The code above uses if/else statements, but it's a convention to use <a href={switchStatements}>switch statements</a> inside reducers. The result is the same, but it can be easier to read switch statements at a glance.</p>
