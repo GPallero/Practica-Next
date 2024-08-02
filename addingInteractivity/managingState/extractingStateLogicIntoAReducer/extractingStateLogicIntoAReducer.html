@@ -145,11 +145,11 @@
                                     <pre>           ...tasks,</pre>
                                     <pre>           {"{"}</pre>
                                     <pre>               <span className="blue">id</span>: action.<span className="blue">id</span>,</pre>
-                                    <pre>               <span className="blue">text</span>: action.<span class="blue">text</span></pre>
+                                    <pre>               <span className="blue">text</span>: action.<span className="blue">text</span></pre>
                                     <pre>               <span className="blue">done</span>: <span className="red">false</span>,</pre>
                                     <pre>           {"},"}</pre>
                                     <pre>       ];</pre>
-                                    <pre>   {"}"} <span className="blue">else if</span> (action.<span className="blue">type</span> === <span class="violet">'changed'</span>) {"{"}</pre>
+                                    <pre>   {"}"} <span className="blue">else if</span> (action.<span className="blue">type</span> === <span className="violet">'changed'</span>) {"{"}</pre>
                                     <pre>       <span className="blue">return</span> tasks.<span className="blue">map</span>((t) => {"{"}</pre>
                                     <pre>           <span className="blue">if</span> (t.<span className="blue">id</span> === action.<span className="blue">task</span>.<span className="blue">id</span>){"{"}</pre>
                                     <pre>               <span className="blue">return</span> action.<span className="blue">task</span>;</pre>
@@ -165,16 +165,78 @@
                                     <pre>{"}"}</pre>
                                 </div>
                                 <p>Because the reducer function takes state (<span className="bg-grey">tasks</span>) as an argument, you can declare it outside of your component. This decreases the indentation level and can make your code easier to read.</p>
-                                <div class="card green">
+                                <div className="card green">
                                     <h2 className="green">Note</h2>
                                     <button onClick={() => setShowGreenCard(!showGreenCard)}>{!showGreenCard ? 'Show me more!' : 'Hide content'}</button>
-                                    {showGreenCard ? 
+                                    {!showGreenCard ? 
                                         (
-                                            <p>The code above uses if/else statements, but it's a convention to use <a href={switchStatements}>switch statements</a> inside reducers. The result is the same, but it can be easier to read switch statements at a glance.</p>
-                                            <p>We'll be using them throughout the rest of this documentation like so:</p>
-                                            <div class="card dark">
-                                                
-                                            </div>
+                                            <>
+                                                <p>The code above uses if/else statements, but it's a convention to use <a href={switchStatements}>switch statements</a> inside reducers. The result is the same, but it can be easier to read switch statements at a glance.</p>
+                                                <p>We'll be using them throughout the rest of this documentation like so:</p>
+                                                <div className="card dark">
+                                                    <pre>
+                                                        <span className="blue">function</span> <span className="turquoise">taskReducer</span>(tasks, action) {"{"}
+                                                        <br/>
+                                                        <span className="blue">  switch</span> (action.<span className="blue">type</span>){"{"}
+                                                        <br/>
+                                                        <span className="blue">    case</span> <span className="violet">'added'</span>: {"{"}
+                                                        <br/>
+                                                        <span className="blue">      return</span> [
+                                                        <br/>
+                                                        <span>        ...tasks,</span>
+                                                        <br/>
+                                                        <span>        {"{"}</span>
+                                                        <br/>
+                                                        <span className="blue">          id</span>: action.<span className="blue">id</span>,
+                                                        <br/>
+                                                        <span className="blue">          text</span>: action.<span className="blue">text</span>,
+                                                        <br/>
+                                                        <span className="blue">          done</span>: <span className="red">false</span>,
+                                                        <br/>
+                                                        <span>        {"}"},</span>
+                                                        <br/>
+                                                        <span>      ];</span>
+                                                        <br/>
+                                                        <span>    {"}"}</span>
+                                                        <br/>
+                                                        <span className="blue">    case</span> <span className="violet">'changed'</span>: {"{"}
+                                                        <br/>
+                                                        <span className="blue">      return</span> tasks.<span className="blue">map</span>((t) => {"{"}
+                                                        <br/>
+                                                        <span className="blue">        if</span>(t.<span className="blue">id</span> === action.<span className="blue">task</span>.<span className="blue">id</span>) {"{"}
+                                                        <br/>
+                                                        <span className="blue">          return</span> action.<span className="blue">task</span>;
+                                                        <br/>
+                                                        <span>        {"}"} <span className="blue">else</span> {"{"}</span>
+                                                        <br/>
+                                                        <span className="blue">          return</span> t;
+                                                        <br/>
+                                                        <span>        {"}"}</span>
+                                                        <br/>
+                                                        <span>      {"}"});</span>
+                                                        <br/>
+                                                        <span>    {"}"}</span>
+                                                        <br/>
+                                                        <span className="blue">    case</span> <span className="violet">'deleted'</span>: {"{"}
+                                                        <br/>
+                                                        <span className="blue">      return</span> tasks.<span className="blue">filter</span>((t) => t.<span className="blue">id</span> !== action.<span className="blue">id</span>);
+                                                        <br/>
+                                                        <span>    {"}"}</span>
+                                                        <br/>
+                                                        <span className="blue">    default</span>: {"{"}
+                                                        <br/>
+                                                        <span className="turquoise">      throw Error</span>(<span className="violet">'Unknown action: '</span> + action.<span className="blue">type</span>);
+                                                        <br/>
+                                                        <span>    {"}"}</span>
+                                                        <br/>
+                                                        <span>  {"}"}</span>
+                                                        <br/>
+                                                        <span>{"}"}</span>
+                                                    </pre>
+                                                </div>
+                                                <p>We recommend wrapping each <span className="bg-grey">case</span> block into the <span className="bg-grey">{"{"}</span> and <span className="bg-grey">{"}"}</span> curly braces so that variables declared inside of different <span className="bg-grey">case</span>s don't clash with each other. Also, a <span className="bg-grey">case</span> should usually end with a <span className="bg-grey">return</span>. If you forget to <span className="bg-grey">return</span> the code will "fall through" to the next <span className="bg-grey">case</span>, which can lead to mistakes!</p>
+                                                <p>If you're not yet comfortable with switch statements, using if/else is completly fine.</p>
+                                            </>
                                         ) 
                                     : ''}
                                 </div>
@@ -318,7 +380,7 @@
             );
         }
 
-        ReactDOM.render(<App/>, main)
+        ReactDOM.render(<StepTwo/>, main)
     </script>
     <script src="extractingStateLogicIntoAReducer.js"></script>
 </body>
