@@ -43,6 +43,7 @@
                     </ul>
                     <StepOne/>
                     <StepTwo/>
+                    <StepThree/>
                 </>
             );
         }
@@ -167,7 +168,7 @@
                                 <p>Because the reducer function takes state (<span className="bg-grey">tasks</span>) as an argument, you can declare it outside of your component. This decreases the indentation level and can make your code easier to read.</p>
                                 <div className="card green">
                                     <h2 className="green">Note</h2>
-                                    <button onClick={() => setShowGreenCard(!showGreenCard)}>{!showGreenCard ? 'Show me more!' : 'Hide content'}</button>
+                                    <button onClick={() => setShowGreenCard(!showGreenCard)}>{!showGreenCard ? 'Show more!' : 'Hide content'}</button>
                                     {showGreenCard ? 
                                         (
                                             <>
@@ -244,6 +245,48 @@
                         ) 
                         : 
                     ""}
+                </>
+            )
+        }
+    
+        function StepThree(){
+            const [show, setShow] = useState(false);
+
+            return(
+                <>
+                    <h3>Step 3: use the reducer from your component</h3>
+                    <button onClick={() => setShow(!show)}>{show ? "Hide content" : "Show more!"}</button>
+                    {show ? 
+                        (
+                            <>
+                                <p>Finally, you need to hook up the <span className="bg-grey">tasksReducer</span> to your component. Import the <span className="bg-grey">useReducer hook from React:</span></p>
+                                <div className="card dark">
+                                    <pre>   <span className="blue">import</span> {"{"} useReducer {"}"} <span className="blue">from</span> <span className="violet">'react'</span></pre>
+                                </div>
+                                <p>Then you can replace <span className="bg-grey">useState</span>:</p>
+                                <div className="card dark">
+                                    <pre>   <span className="blue">const</span> [tasks, setTasks] = <span className="turquoise">useState</span>(initialTasks);</pre>
+                                </div>
+                                <p>with <span className="bg-grey">useReducer</span> like so:</p>
+                                <div className="card dark">
+                                    <pre>   <span className="blue">const</span> [tasks, dispatch] = <span className="turquoise">useReducer</span>(tasksReducer, initialTasks);</pre>
+                                </div>
+                                <p>The <span className="bg-grey">useReducer</span> Hook is similar to <span className="bg-grey">useState</span> —You must pass it an initial state and it returns a stateful value and a way to set state (in this case, the dispatch function). But it's a little different.</p>
+                                <p>The <span className="bg grey">useReducer</span> Hook takes two arguments:</p>
+                                <ul>
+                                    <li>A reducer function</li>
+                                    <li>An initial state</li>
+                                </ul>
+                                <p>And it returns:</p>
+                                <ul>
+                                    <li>A stateful value</li>
+                                    <li>A dispatch function (to "dispatch" user actions to the reducer)</li>
+                                </ul>
+                                <p>Now it's fully wired up! Here, the reducer is declared at the bottom of the component file:</p>
+                            </>
+                        ) 
+                        : ''
+                    }
                 </>
             )
         }
@@ -380,7 +423,7 @@
             );
         }
 
-        ReactDOM.render(<StepTwo/>, main)
+        ReactDOM.render(<StepThree/>, main)
     </script>
     <script src="extractingStateLogicIntoAReducer.js"></script>
 </body>
