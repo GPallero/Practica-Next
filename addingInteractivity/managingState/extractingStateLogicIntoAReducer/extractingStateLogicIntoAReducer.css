@@ -1,0 +1,26 @@
+body{
+    background-color: #23272F;
+    color: #F6F7F9;
+}
+
+#main{
+    width: 80%;
+    margin: auto;
+    padding: 16px;
+}
+
+button{
+    margin-left: 8px;
+    margin-top: 6px;
+    padding: 6px 12px;
+    background-color: #e7dbdbd7;
+    border-radius: 8px;
+    border-width: 0;
+    color: #3e2e2e;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+ul{
+    list-style: none;
+}
