@@ -255,8 +255,10 @@
 
             return(
                 <>
-                    <h3>Step 3: use the reducer from your component</h3>
-                    <button onClick={() => setShow(!show)}>{show ? "Hide content" : "Show more!"}</button>
+                    <div className="flex">
+                        <h3>Step 3: use the reducer from your component</h3>
+                        <button onClick={() => setShow(!show)}>{show ? "Hide content" : "Show more!"}</button>
+                    </div>
                     {show ? 
                         (
                             <>

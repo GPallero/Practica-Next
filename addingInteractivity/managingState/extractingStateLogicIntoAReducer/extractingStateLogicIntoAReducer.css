@@ -22,5 +22,28 @@ button{
 }
 
 ul{
-    list-style: none;
+    list-style: disc;
+}
+
+.card{
+    padding: 8px;
+    border-radius: 15px;
+}
+
+.grey{
+    border: 1px solid #404651;
+    background-color: #343A46;
+}
+
+.bg-grey{
+    background-color: #3F4451;
+    padding: 1px 4px;;
+    border-radius: 6px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 650px
 }
