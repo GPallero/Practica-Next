@@ -1,11 +1,11 @@
 body{
+    width: 80%;
     background-color: #23272F;
     color: #F6F7F9;
+    margin: auto;
 }
 
 #main{
-    width: 80%;
-    margin: auto;
     padding: 16px;
 }
 
@@ -30,10 +30,43 @@ ul{
     border-radius: 15px;
 }
 
+/* Card backgrounds */
+
+.dark{
+    background-color: #16181D;
+}
+
 .grey{
     border: 1px solid #404651;
     background-color: #343A46;
 }
+
+.water{
+    background-color: #25353A;
+}
+
+/* Text color: Start */
+.blue{
+    color: #75B4D4;
+}
+
+.turquoise{
+    color: #7FCEC0;
+}
+
+.violet{
+    color: #856EC2;
+}
+
+.red{
+    color: #B1413C;
+}
+
+.green{
+    color: #44AC99;
+}
+
+/* Text colors: End */
 
 .bg-grey{
     background-color: #3F4451;
@@ -45,5 +78,11 @@ ul{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 650px
+}
+
+.flex-left{
+    display: flex;
+    align-items: center;
     width: 650px
 }

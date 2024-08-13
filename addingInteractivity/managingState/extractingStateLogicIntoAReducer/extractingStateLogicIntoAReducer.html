@@ -100,7 +100,7 @@
                             <div className="card dark">
                                 <pre><span className="turquoise">dispatch</span>{"({"}</pre>
                                 <pre>   <span className="grey">// specific to component</span></pre>
-                                <pre>   <span className="blue">blue</span>: 'what_happened',</pre>
+                                <pre>   <span className="blue">type</span>: <span className="violet">'what_happened'</span>,</pre>
                                 <pre>   <span className="grey">// other fields go here</span></pre>
                                 <pre>{"});"}</pre>
                             </div>
@@ -167,9 +167,11 @@
                                     <pre>{"}"}</pre>
                                 </div>
                                 <p>Because the reducer function takes state (<span className="bg-grey">tasks</span>) as an argument, you can declare it outside of your component. This decreases the indentation level and can make your code easier to read.</p>
-                                <div className="card green">
-                                    <h2 className="green">Note</h2>
-                                    <button onClick={() => setShowGreenCard(!showGreenCard)}>{!showGreenCard ? 'Show more!' : 'Hide content'}</button>
+                                <div className="card water">
+                                    <div className="flex-left">
+                                        <h2 className="green">Note</h2>
+                                        <button onClick={() => setShowGreenCard(!showGreenCard)}>{!showGreenCard ? 'Show more!' : 'Hide content'}</button>
+                                    </div>
                                     {showGreenCard ? 
                                         (
                                             <>
