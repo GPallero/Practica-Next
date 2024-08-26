@@ -254,6 +254,7 @@
     
         function StepThree(){
             const [show, setShow] = useState(false);
+            const pragueItineraryUsingReducer = "pragueItineraryUsingReducer.html"
 
             return(
                 <>
@@ -287,7 +288,7 @@
                                     <li>A stateful value</li>
                                     <li>A dispatch function (to "dispatch" user actions to the reducer)</li>
                                 </ul>
-                                <p>Now it's fully wired up! In the next link, the reducer is declared at the bottom of the component file: <a href="">Prague Itinerary using Reducer</a> </p>
+                                <p>Now it's fully wired up! In the next link, the reducer is declared at the bottom of the component file: <a href={pragueItineraryUsingReducer}>Prague Itinerary using Reducer</a> </p>
                             </>
                         ) 
                         : ''
