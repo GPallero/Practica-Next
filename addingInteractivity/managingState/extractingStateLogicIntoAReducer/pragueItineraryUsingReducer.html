@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="extractingStateLogicIntoAReducer.css">
     <title>Prague Itinerary using Reducer</title>
 </head>
 <body>
@@ -15,8 +16,24 @@
      <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
      <!-- General Script -->
-      <script type?="text/jsx">
-        
+      <script type="text/jsx">
+        function ItineraryWithReducerCode(){
+            return(
+                <>
+                    <h1>Here is the 'Prague Itinerary with Reducer' code</h1>
+                    <div className="card dark">
+                        <pre>
+                        <span className="blue">import</span> {"{ useReducer }"} <span className="blue">from</span> <span className="violet">'react'</span>;
+                        <br/>
+                        <span className="blue">import</span> AddTask <span className="blue">from</span> <span className="violet">'./AddTask.js'</span>;
+                        <br/>
+                        <span className="blue">import</span> TaskList <span className="blue">from</span> <span className="violet">'./TaskList.js'</span>;
+                        </pre>
+                    </div>
+                </>
+            )
+        }
+        ReactDOM.render(<ItineraryWithReducerCode/>, main)
       </script>
 </body>
 </html>
