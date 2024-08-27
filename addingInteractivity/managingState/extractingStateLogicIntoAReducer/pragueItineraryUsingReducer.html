@@ -23,11 +23,19 @@
                     <h1>Here is the 'Prague Itinerary with Reducer' code</h1>
                     <div className="card dark">
                         <pre>
-                        <span className="blue">import</span> {"{ useReducer }"} <span className="blue">from</span> <span className="violet">'react'</span>;
-                        <br/>
-                        <span className="blue">import</span> AddTask <span className="blue">from</span> <span className="violet">'./AddTask.js'</span>;
-                        <br/>
-                        <span className="blue">import</span> TaskList <span className="blue">from</span> <span className="violet">'./TaskList.js'</span>;
+                            <span className="blue">import</span> {"{ useReducer }"} <span className="blue">from</span> <span className="violet">'react'</span>;
+                            <br/>
+                            <span className="blue">import</span> AddTask <span className="blue">from</span> <span className="violet">'./AddTask.js'</span>;
+                            <br/>
+                            <span className="blue">import</span> TaskList <span className="blue">from</span> <span className="violet">'./TaskList.js'</span>;
+                            <br/>
+                            <br/>
+                            <span className="blue">export default function</span> <span className="turquoise">TaskApp</span>() {"{"}
+                            <br/>
+                            <span className="blue">    const</span> [tasks, dispatch] = <span className="turquoise">useReducer</span>(tasksReducer, initialTasks);
+                            <br/>
+                            <br/>
+                            <span className="blue">    function</span>
                         </pre>
                     </div>
                 </>
