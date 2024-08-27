@@ -35,7 +35,45 @@
                             <span className="blue">    const</span> [tasks, dispatch] = <span className="turquoise">useReducer</span>(tasksReducer, initialTasks);
                             <br/>
                             <br/>
-                            <span className="blue">    function</span>
+                            <span className="blue">    function</span> <span className="turquoise">handleAddTask</span>(text) {"{"}
+                            <br/>
+                            <span className="turquoise">        dispatch</span>{"({"}
+                            <br/>
+                            <span className="blue">            type</span>: <span className="violet">'added'</span>,
+                            <br/>
+                            <span className="blue">            id</span>: nextId++,
+                            <br/>
+                            <span className="blue">            text</span>: text,
+                            <br/>
+                            <span>        {"})"};</span>
+                            <br/>
+                            <span>    {"}"}</span>
+                            <br/>
+                            <br/>
+                            <span className="blue">    function</span> <span className="turquoise">handleChangeTask</span>(task) {"{"}
+                            <br/>
+                            <span className="turquoise">        dispatch</span>{"({"}
+                            <br/>
+                            <span className="blue">            type</span>: <span className="violet">'changed'</span>,
+                            <br/>
+                            <span className="blue">            task</span>: task,
+                            <br/>
+                            <span>        {"});"}</span>
+                            <br/>
+                            <span>    {"}"}</span>
+                            <br/>
+                            <br/>
+                            <span className="blue">    function</span> <span className="turquoise">handleDeleteTask</span>(taskId) {"{"}
+                            <br/>
+                            <span className="turquoise">        dispatch</span>{"({"}
+                            <br/>
+                            <span className="blue">            type</span>: <span className="violet">'deleted</span>,
+                            <br/>
+                            <span className="blue">            id</span>: taskId,
+                            <br/>
+                            <span>        {"});"}</span>
+                            <br/>
+                            <span>    {"}"}</span>
                         </pre>
                     </div>
                 </>
