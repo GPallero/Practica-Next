@@ -99,6 +99,65 @@
                             <span>    );</span>
                             <br/>
                             <span>{"}"}</span>
+                            <br/>
+                            <br/>
+                            <span className="blue">function</span> <span className="turquoise">taskReducer</span>(tasks, action) {"{"}
+                            <br/>
+                            <span className="blue">    switch</span> (action.<span className="blue">type</span>) {"{"}
+                            <br/>
+                            <span className="blue">        case</span><span className="violet"> 'added'</span>: {"{"}
+                            <br/>
+                            <span className="blue">            return</span> [
+                            <br/>
+                            <span>                ...tasks,</span>
+                            <br/>
+                            <span>                {"{"}</span>
+                            <br/>
+                            <span className="blue">                    id</span>: action.<span className="blue">id</span>,
+                            <br/>
+                            <span className="blue">                    text</span>: action.<span className="blue">text</span>,
+                            <br/>
+                            <span className="blue">                    done</span>: <span className="red">false</span>,
+                            <br/>
+                            <span>                {"},"}</span>
+                            <br/>
+                            <span>            ],</span>
+                            <br/>
+                            <span>        {"}"}</span>
+                            <br/>
+                            <span className="blue">        case</span> <span className="violet">'changed'</span>: {"{"}
+                            <br/>
+                            <span className="blue">            return</span> tasks.<span className="blue">map</span>((t) => {"{"}
+                            <br/>
+                            <span className="blue">                if</span> (t.<span className="blue">id</span> === action.<span className="blue">task</span>.<span className="blue">id</span>) {"{"}
+                            <br/>
+                            <span className="blue">                    return</span> action.<span className="blue">task</span>;
+                            <br/>
+                            <span>                {"}"} <span className="blue">else</span> {"{"}</span>
+                            <br/>
+                            <span className="blue">                    return</span> t;
+                            <br/>
+                            <span>                {"}"}</span>
+                            <br/>
+                            <span>            {"}"});</span>
+                            <br/>
+                            <span>        {"}"}</span>
+                            <br/>
+                            <span className="blue">        case</span> <span className="violet">'deleted'</span>: {"{"}
+                            <br/>
+                            <span className="blue">            return</span> tasks.<span className="blue">filter</span>((t) => t.<span className="blue">id</span> !== action.<span className="blue">id</span>);
+                            <br/>
+                            <span>        {"}"}</span>
+                            <br/>
+                            <span className="blue">        default</span>: {"{"}
+                            <br/>
+                            <span className="blue">            throw</span> <span className="turquoise">Error</span>(<span className="violet">'Unknown action: '</span> + action.<span class="blue">type</span>);
+                            <br/>
+                            <span>        {"}"}</span>
+                            <br/>
+                            <span>    {"}"}</span>
+                            <br/>
+                            <span>{"}"}</span>
                         </pre>
                     </div>
                 </>
