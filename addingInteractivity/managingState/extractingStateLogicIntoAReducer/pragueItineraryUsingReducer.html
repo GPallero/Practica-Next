@@ -17,6 +17,8 @@
 
      <!-- General Script -->
       <script type="text/jsx">
+        const extractingStateLogicIntoAReducer = "extractingStateLogicIntoAReducer.html"
+
         function ItineraryWithReducerCode(){
             return(
                 <>
@@ -151,17 +153,39 @@
                             <br/>
                             <span className="blue">        default</span>: {"{"}
                             <br/>
-                            <span className="blue">            throw</span> <span className="turquoise">Error</span>(<span className="violet">'Unknown action: '</span> + action.<span class="blue">type</span>);
+                            <span className="blue">            throw</span> <span className="turquoise">Error</span>(<span className="violet">'Unknown action: '</span> + action.<span className="blue">type</span>);
                             <br/>
                             <span>        {"}"}</span>
                             <br/>
                             <span>    {"}"}</span>
                             <br/>
                             <span>{"}"}</span>
+                            <br/>
+                            <br/>
+                            <span className="blue">let</span> nextId = <span className="red">3</span>;
+                            <br/>
+                            <span className="blue">    const</span> initialTasks = [
+                            <br/>
+                            <span>        {"{"}<span className="blue">id</span>: <span className="red">0</span>, <span className="blue">text</span>: <span className="violet">'Visit Kafka Museum'</span>, <span className="blue">done</span>: <span className="red">true</span>{"}"}</span>
+                            <br/>
+                            <span>        {"{"}<span className="blue">id</span>: <span className="red">1</span>, <span className="blue">text</span>: <span className="violet">'Watch a puppet show</span>, <span className="blue">false</span>: <span className="red">true</span>{"}"}</span>
+                            <br/>
+                            <span>        {"{"}<span className="blue">id</span>: <span className="red">2</span>, <span className="blue">text</span>: <span className="violet">'Lennon Wall pic'</span>, <span className="blue">false</span>: <span className="red">true</span>{"}"}</span>
+                            <br/>
+                            <span>];</span>
                         </pre>
                     </div>
+                    <Footer/>
                 </>
             )
+        }
+
+        function Footer(){
+            return (
+                <>
+                    <footer>Back to <a href={extractingStateLogicIntoAReducer}>Extracting State logic into a Reducer</a></footer>
+                </>
+            );
         }
         ReactDOM.render(<ItineraryWithReducerCode/>, main)
       </script>

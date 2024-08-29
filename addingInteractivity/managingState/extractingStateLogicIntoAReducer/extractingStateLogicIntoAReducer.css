@@ -5,9 +5,6 @@ body{
     margin: auto;
 }
 
-#main{
-    padding: 16px;
-}
 
 button{
     margin-left: 8px;
@@ -23,6 +20,14 @@ button{
 
 ul{
     list-style: disc;
+}
+
+footer{
+    margin-top: 16px;
+}
+
+#main{
+    padding: 16px;
 }
 
 .card{

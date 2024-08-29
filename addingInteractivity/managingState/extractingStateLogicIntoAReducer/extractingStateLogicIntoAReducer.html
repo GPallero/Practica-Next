@@ -18,33 +18,38 @@
     <!-- General Script -->
     <script type="text/jsx">
         const {useState} = React;
+        const pragueItineraryusingReducer = "pragueItineraryUsingReducer.html"
+
         function Intro(){
             return(
                 <>
-                    <h1>Extracting State logic into a Reducer</h1>
-                    <p>Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called <b>reducer</b>.</p>
-                    <div className="card grey">
-                        <h3>You will learn</h3>
+                    <div>
+                        <h1>Extracting State logic into a Reducer</h1>
+                        <p>Components with many state updates spread across many event handlers can get overwhelming. For these cases, you can consolidate all the state update logic outside your component in a single function, called <b>reducer</b>.</p>
+                        <div className="card grey">
+                            <h3>You will learn</h3>
+                            <ul>
+                                <li>What a reducer function is.</li>
+                                <li>How to refactor <span className="bg-grey">useState</span> to <span className="bg-grey">useReducer</span></li>
+                                <li>When to use a reducer</li>
+                                <li>How to write one well</li>
+                            </ul>
+                        </div>
+                        <h2>Consolidate state logic with a reducer</h2>
+                        <p>As your components grow in complexity, it can get harder to see at a glance all the different ways in which a component's state gets updated. For example, the <span className="bg-grey">TaskApp</span> component in the App below holds in his code an array of <span className="bg-grey">tasks</span> in state and uses three different event handlers to add, remove, and edit tasks:</p>
+                        <TaskApp/>
+                        <p>Each of its event handlers calls <span className="bg-grey">setTasks</span> in order to update the state. As this component grows, so does the amount of state logic sprinkled throughout it. To reduce this complexity and keep all your logic in one easy-to-acces place, you can move that state logic into a single function outside your component, called a "reducer".</p>
+                        <p>Reducers are a different way to handle state. You can migrate from <span className="bg-grey">useState</span> to <span className="bg-grey">useReducer</span> in three steps:</p>
                         <ul>
-                            <li>What a reducer function is.</li>
-                            <li>How to refactor <span className="bg-grey">useState</span> to <span className="bg-grey">useReducer</span></li>
-                            <li>When to use a reducer</li>
-                            <li>How to write one well</li>
+                            <li>1. Move from setting state to dispatching actions.</li>
+                            <li>2. Write a reducer function.</li>
+                            <li>3. Use the reducer from your component.</li>
                         </ul>
+                        <StepOne/>
+                        <StepTwo/>
+                        <StepThree/>
                     </div>
-                    <h2>Consolidate state logic with a reducer</h2>
-                    <p>As your components grow in complexity, it can get harder to see at a glance all the different ways in which a component's state gets updated. For example, the <span className="bg-grey">TaskApp</span> component in the App below holds in his code an array of <span className="bg-grey">tasks</span> in state and uses three different event handlers to add, remove, and edit tasks:</p>
-                    <TaskApp/>
-                    <p>Each of its event handlers calls <span className="bg-grey">setTasks</span> in order to update the state. As this component grows, so does the amount of state logic sprinkled throughout it. To reduce this complexity and keep all your logic in one easy-to-acces place, you can move that state logic into a single function outside your component, called a "reducer".</p>
-                    <p>Reducers are a different way to handle state. You can migrate from <span className="bg-grey">useState</span> to <span className="bg-grey">useReducer</span> in three steps:</p>
-                    <ul>
-                        <li>1. Move from setting state to dispatching actions.</li>
-                        <li>2. Write a reducer function.</li>
-                        <li>3. Use the reducer from your component.</li>
-                    </ul>
-                    <StepOne/>
-                    <StepTwo/>
-                    <StepThree/>
+                    <Footer/>
                 </>
             );
         }
@@ -427,6 +432,10 @@
                     <Intro/>
                 </>
             );
+        }
+
+        function Footer(){
+            return <footer>Go to <a href={pragueItineraryusingReducer}>Prague Itinerary code with Reducer</a></footer>;
         }
 
         ReactDOM.render(<Intro/>, main)
