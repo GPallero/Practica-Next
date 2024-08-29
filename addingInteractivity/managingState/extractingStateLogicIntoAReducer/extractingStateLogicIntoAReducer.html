@@ -19,6 +19,7 @@
     <script type="text/jsx">
         const {useState} = React;
         const pragueItineraryusingReducer = "pragueItineraryUsingReducer.html"
+        const useStateVsUseReducer = "comparingUseStateUseReducer.html"
 
         function Intro(){
             return(
@@ -435,7 +436,14 @@
         }
 
         function Footer(){
-            return <footer>Go to <a href={pragueItineraryusingReducer}>Prague Itinerary code with Reducer</a></footer>;
+            return (
+                <footer>
+                    <ul>
+                        <li><a href={pragueItineraryusingReducer}>Prague Itinerary code with Reducer</a></li>
+                        <li><a href={useStateVsUseReducer}>Comparing <span class="bg-grey">useState</span> and <span-bg-grey>useReducer</span-bg-grey></a></li>
+                    </ul>
+                </footer>
+            );
         }
 
         ReactDOM.render(<Intro/>, main)
