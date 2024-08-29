@@ -22,6 +22,14 @@ ul{
     list-style: disc;
 }
 
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    color: #F6F7F9;
+}
+
 footer{
     margin-top: 16px;
 }
