@@ -5,6 +5,9 @@ body{
     margin: auto;
 }
 
+p{
+    line-height: 1.6rem;
+}
 
 button{
     margin-left: 8px;
