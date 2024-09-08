@@ -85,6 +85,13 @@ footer{
 
 /* Text colors: End */
 
+/* Font weight: Start*/
+.weight-900{
+    font-weight: 900;
+}
+
+/* Font weight: End*/
+
 .bg-grey{
     background-color: #3F4451;
     padding: 1px 4px;;
