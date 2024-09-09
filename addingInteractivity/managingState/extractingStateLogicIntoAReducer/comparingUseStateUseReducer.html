@@ -16,6 +16,34 @@
     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <!-- General script -->
-     <script type="text/jsx"></script>
+     <script type="text/jsx">
+        // Path
+        const extractingStateLogicIntoAReducer = "extractingStateLogicIntoAReducer.html"
+        function Intro(){
+            return(
+                <>
+                    <h1>Comparing <span className="bg-grey">useState</span> and <span className="bg-grey">useReducer</span></h1>
+                    <p>Reducers are not without downsides! Here's a few ways you can compare them:</p>
+                    <ul>
+                        <li><p><span className="weight-900">Code size</span>: Generally, with <span className="bg-grey">useState</span> you have to write less code upfront. With <span className="bg-grey">useReducer</span>, you have to write both a reducer function and dispatch actions. However, <span className="bg-grey">useReducer</span> can help cut down on the code if many event handlers modify state in a similar way.</p></li>
+                        <li><p><span className="weight-900">Readability</span>: <span className="bg-grey">useState</span> is very easy to read when the state updates are simple. When they get more complex, they can bloat your component's code and make it difficult to scan. In this case, <span className="bg-grey">useReducer</span> lets you cleanly separate the <em>how of update logic</em> from the <em>what happened of event handlers</em></p></li>
+                        <li><p><span className="weight-900">Debugging</span>: When you have a bug with <span className="bg-grey">useState</span>, it can be difficult to tell where the state was set incorrectly, and why. With <span className="bg-grey">useReducer</span>, you can add a console log into your reducer to see every state update, and why it happened (due to which <span className="bg-grey">action</span>). If each <span className="bg-grey">action</span> is correct, you'll know that the mistake is in the reducer logic itself. However, you have to step through more code than with <span className="bg-grey">useState</span>.</p></li>
+                        <li><p><span className="weight-900">Testing</span>: A reducer is a pure function that doesn't depend on your component. This means that you can export and test it separately in isolation. While generally it's best to test components in a more realistic enviroment, for complex state update logic it can be useful to assert that your reducer returns a particular initial state and action.</p></li>
+                        <li><p><span className="weight-900">Personal preference</span>: Some people like reducers, others don't. That's okay. It's a matter of preference. You can always convert between <span className="bg-grey">useState</span> and <span className="bg-grey">useReducer</span> back and forth: they are equivalent.</p></li>
+                    </ul>
+                    <Footer/>
+                </>
+            );
+        }
+
+        function Footer(){
+            return(
+                <footer>
+                    <a href={extractingStateLogicIntoAReducer}>Back to Extracting State logic into a Reducer</a>
+                </footer>
+            );
+        }
+        ReactDOM.render(<Intro/>, main)
+     </script>
 </body>
 </html>
