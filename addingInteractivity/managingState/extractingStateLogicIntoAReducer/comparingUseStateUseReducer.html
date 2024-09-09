@@ -30,6 +30,7 @@
                         <li><p><span className="weight-900">Debugging</span>: When you have a bug with <span className="bg-grey">useState</span>, it can be difficult to tell where the state was set incorrectly, and why. With <span className="bg-grey">useReducer</span>, you can add a console log into your reducer to see every state update, and why it happened (due to which <span className="bg-grey">action</span>). If each <span className="bg-grey">action</span> is correct, you'll know that the mistake is in the reducer logic itself. However, you have to step through more code than with <span className="bg-grey">useState</span>.</p></li>
                         <li><p><span className="weight-900">Testing</span>: A reducer is a pure function that doesn't depend on your component. This means that you can export and test it separately in isolation. While generally it's best to test components in a more realistic enviroment, for complex state update logic it can be useful to assert that your reducer returns a particular initial state and action.</p></li>
                         <li><p><span className="weight-900">Personal preference</span>: Some people like reducers, others don't. That's okay. It's a matter of preference. You can always convert between <span className="bg-grey">useState</span> and <span className="bg-grey">useReducer</span> back and forth: they are equivalent.</p></li>
+                        
                     </ul>
                     <Footer/>
                 </>
