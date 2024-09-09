@@ -43,6 +43,21 @@
                         <li><p>Reducers must be pure. Similar to <a href={stateUpdaterFunctions}><span className="turquoise">state updater functions</span></a>, reducers run during rendering! (Actions are queued until the next render.) This means that reducers <a href={pureComponents}><span className="turquoise">must be pure</span></a>—same inputs always result in the same output. They should not send requests, schedule timeouts, or perform any side effects (operations that impact things outside the component). They should update <a href={objects}><span className="turquoise">objects</span></a> and <a href={arrays}><span className="turquoise">arrays</span></a> without mutations.</p></li>
                         <li><p>Each action describes a single user interaction, even if that leads to multiple changes in the data. For example, if a user presses "Reset" on a form with five fields managed by a reducer, it makes more sense to dispatch one <span className="bg-grey">reset_form</span> action rather than five separate <span className="bg-grey">set_field</span> actions. If you log every action in a reducer, that log should be clear enough for you to reconstruct what interactions or responses happened in what order. This helps with debugging!</p></li>
                     </ul>
+                    <h2>Recap</h2>
+                    <ul>
+                        <li>
+                            <p>To convert from <span className="bg-grey">useState</span> to <span className="bg-grey">useReducer</span>:</p>
+                            <ol>
+                                <li>Dispatch actions from event handlers.</li>
+                                <li>Write a reducer function that returns the next state for a given state and action.</li>
+                                <li>Replace <span className="bg-grey">useState</span> with <span className="bg-grey">useReducer</span>.</li>
+                            </ol>
+                        </li>
+                        <li>Reducers require you to write a bit more code, but they help with debugging and testing.</li>
+                        <li>Reducers must be pure.</li>
+                        <li>Each action describes a single user interaction.</li>
+                        <li>Use Immer if you want to write reducers in a mutating style.</li>
+                    </ul>
                     <Footer/>
                 </>
             );
