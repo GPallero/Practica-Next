@@ -18,8 +18,12 @@
     <!-- General Script -->
     <script type="text/jsx">
         const {useState} = React;
+        // Paths
         const pragueItineraryusingReducer = "pragueItineraryUsingReducer.html"
         const useStateVsUseReducer = "comparingUseStateUseReducer.html"
+        const challenge1 = "challenge1.html"
+        const challenge2 = "challenge2.html"
+        const challenge3 = "challenge3.html"
 
         function Intro(){
             return(
@@ -440,8 +444,11 @@
                 <footer>
                     <h3>More here:</h3>
                     <ul>
-                        <li><a href={pragueItineraryusingReducer}>Prague Itinerary code with Reducer</a></li>
-                        <li><a href={useStateVsUseReducer}>Comparing <span className="bg-grey">useState</span> and <span className="bg-grey">useReducer</span></a></li>
+                        <li><a href={pragueItineraryusingReducer}><span className="turquoise">Prague Itinerary code with Reducer</span></a></li>
+                        <li><a href={useStateVsUseReducer}><span className="turquoise">Comparing <span className="bg-grey">useState</span> and <span className="bg-grey">useReducer</span></span></a></li>
+                        <li><a href={challenge1}><span className="turquoise">Challenge 1</span></a>: dispatch actions from event handlers.</li>
+                        <li><a href={challenge2}><span className="turquoise">Challenge 2</span></a>: clear the input on sending a message.</li>
+                        <li><a href={challenge3}><span className="turquoise">Challenge 3</span></a>: restore input values when switching between tabs.</li>
                     </ul>
                 </footer>
             );
