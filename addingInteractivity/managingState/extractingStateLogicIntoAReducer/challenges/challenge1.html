@@ -43,7 +43,7 @@
                     <Chat
                         key={contact.id}
                         message={message}
-                        contact{contact}
+                        contact={contact}
                         dispatch={dispatch}
                     />
                 </div>
@@ -73,7 +73,7 @@
 
         function ContactList({contacts, selectedId, dispatch}){
             return(
-                <section class="contact-list">
+                <section className="contact-list">
                     <ul>
                         {contacts.map((contact) => (
                             <li key={contact.id}>
