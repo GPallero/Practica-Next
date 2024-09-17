@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../extractingStateLogicIntoAReducer.css">
     <title>Challenge 1 - Dispatch actions from event handlers</title>
 </head>
 <body>
-    
+    <!-- Div for rendering -->
+     <div id="main"></div>
+
+     <!-- Scripts for React, React DOM & Babel -->
+     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+     <!-- General script -->
+      <script type="text/jsx">
+        // Link
+        const challengesStatements = "https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges"
+        function Intro(){
+            return(
+                <>
+                    <h1>Challenge 1 - Dispatch actions from event handlers</h1>
+                    <p>If you want to see the Challenge 1 - Dispatch actions from event handlers <a href="challengesStatements"><span class="turquoise">Click here</span></a></p>
+                    <p>Here is the solution:</p>
+                </>
+            );
+        }
+
+        function Messenger (){
+            const [state, dispatch] = useReducer(messengerReducer, initialState);
+            const message = state.message;
+            const contact = contact.find((c) => c.id === state.selectedId);
+            return(
+                <div>
+                    <ContactList
+                        contacts={contacts}
+                        selectedId={state.selectedId}
+                        dispatch={dispatch}
+                    />
+                    <Chat
+                        key={contact.id}
+                        message={message}
+                        contact{contact}
+                        dispatch={dispatch}
+                    />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Intro/>, main)
+      </script>
+      <script src="challenge1.js"></script>
 </body>
 </html>
