@@ -71,6 +71,25 @@
             }
         }
 
+        function ContactList({contacts, selectedId, dispatch}){
+            return(
+                <section class="contact-list">
+                    <ul>
+                        {contacts.map((contact) => (
+                            <li key={contact.id}>
+                                <button
+                                    onClick={() =>{
+                                        //TO DO
+                                }}>
+                                    {selectedID === contact.id ? <b>{contact.name}</b> : contact.name}
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            );
+        }
+
         ReactDOM.render(<Intro/>, main)
       </script>
       <script src="challenge1.js"></script>
