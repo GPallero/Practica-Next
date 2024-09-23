@@ -81,7 +81,11 @@
                             <li key={contact.id}>
                                 <button
                                     onClick={() =>{
-                                        //TO DO
+                                        //TO DO (done)
+                                        dispatch({
+                                            type: 'changed_selection',
+                                            contactId: contact.id,
+                                        })
                                 }}>
                                     {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
                                 </button>
