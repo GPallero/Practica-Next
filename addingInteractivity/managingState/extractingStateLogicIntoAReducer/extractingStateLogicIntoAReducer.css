@@ -123,6 +123,10 @@ footer{
     align-items: flex-start;
     width: 300px;
     min-width: 30%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #FFFFFF;
 }
 
 
@@ -154,5 +158,6 @@ footer{
         resize: none;
         width: 98%;
         height: 80px;
+        border-radius: 10px;
     }
 }
