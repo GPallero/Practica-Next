@@ -1,5 +1,6 @@
 body{
     width: 80%;
+    min-height: 100vh;
     background-color: #23272F;
     color: #F6F7F9;
     margin: auto;
@@ -101,6 +102,7 @@ footer{
     border-radius: 6px;
 }
 
+/* Displays: START */
 .flex{
     display: flex;
     align-items: center;
@@ -113,6 +115,7 @@ footer{
     align-items: center;
     width: 650px
 }
+/* Displays: END */
 
 /* Challenge 1 */
 
