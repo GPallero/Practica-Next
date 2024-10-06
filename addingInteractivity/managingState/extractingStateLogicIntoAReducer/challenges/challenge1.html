@@ -18,15 +18,22 @@
      <!-- General script -->
       <script type="text/jsx">
         const {useReducer} = React;
-        // Link
+        // Paths
         const challengesStatements = "https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges"
+        const extractingStateLogicIntoAReducer = "../extractingStateLogicIntoAReducer.html"
+
         function Intro(){
             return(
                 <>
-                    <h1>Challenge 1 - Dispatch actions from event handlers</h1>
-                    <p>If you want to see the Challenge 1 - Dispatch actions from event handlers <a href="challengesStatements"><span className="turquoise">Click here</span></a></p>
-                    <p>Here is the solution:</p>
-                    <Messenger/>
+                    <div className="column-between">
+                        <div>
+                            <h1>Challenge 1 - Dispatch actions from event handlers</h1>
+                            <p>If you want to see the Challenge 1 - Dispatch actions from event handlers statement<a href="challengesStatements"><span className="turquoise">Click here</span></a></p>
+                            <p>Here is the solution:</p>
+                            <Messenger/>
+                        </div>
+                        <Footer/>
+                    </div>
                 </>
             );
         }
@@ -109,6 +116,14 @@
                     <br/>
                     <button>Send to {contact.email}</button>
                 </section>
+            );
+        }
+
+        function Footer(){
+            return(
+                <footer>
+                    <p>Back to <a href={extractingStateLogicIntoAReducer}><span className="turquoise">Extracting State Logic Into a Reducer</span></a></p>
+                </footer>
             );
         }
 
