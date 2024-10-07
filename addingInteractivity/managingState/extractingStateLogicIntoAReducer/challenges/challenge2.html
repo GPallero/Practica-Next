@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../extractingStateLogicIntoAReducer.css">
+    <title>Challenge 2 - Clear the input on sending a message</title>
+</head>
+<body>
+    <!-- Div for rendering -->
+     <div id="main"></div>
+
+     <!-- Scripts for React, React DOM & Babel -->
+     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+     <!-- General script -->
+      <script type="text/jsx">
+        //Paths
+        const challengeStatements = "https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges"
+        const extractingStateLogicIntoAReducer = "../extractingStateLogicIntoAReducer.html"
+        function Intro(){
+            return (
+                <>
+                    <h1>Challenge 2 - Clear the input on sending a message</h1>
+                    <p>If you want to check the Challenge 2 - Clear the input on sending a message statement <a href=""><span className="turquoise">Click here</span></a></p>
+                    <p>Here is the solution: </p>
+                    <Footer/>
+                </>
+            );
+        }
+
+        function Footer(){
+            return(
+                <footer>
+                    <p>Back to <a href={extractingStateLogicIntoAReducer}><span className="turquoise">Extracting state logic into a reducer</span></a></p>
+                </footer>
+            );
+        }
+
+        function App(){
+            return(
+                <>
+                    <Intro/>
+                </>
+            );
+        }
+
+        ReactDOM.render(<App/>, main)
+      </script>
+</body>
+</html>
