@@ -19,21 +19,21 @@
       <script type="text/jsx">
         const {useReducer} = React;
         // Paths
-        const challengesStatements = "https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges"
-        const extractingStateLogicIntoAReducer = "../extractingStateLogicIntoAReducer.html"
+        const challengesStatements = "https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges";
+        const extractingStateLogicIntoAReducer = "../extractingStateLogicIntoAReducer.html";
+        //Inner Height
+        const innerHeight = window.innerHeight;
 
         function Intro(){
             return(
                 <>
-                    <div className="column-between">
-                        <div>
-                            <h1>Challenge 1 - Dispatch actions from event handlers</h1>
-                            <p>If you want to see the Challenge 1 - Dispatch actions from event handlers statement<a href="challengesStatements"><span className="turquoise">Click here</span></a></p>
-                            <p>Here is the solution:</p>
-                            <Messenger/>
-                        </div>
-                        <Footer/>
+                    <div>
+                        <h1>Challenge 1 - Dispatch actions from event handlers</h1>
+                        <p>If you want to see the Challenge 1 - Dispatch actions from event handlers statement<a href="challengesStatements"><span className="turquoise">Click here</span></a></p>
+                        <p>Here is the solution:</p>
+                        <Messenger/>
                     </div>
+                    <Footer/>
                 </>
             );
         }
