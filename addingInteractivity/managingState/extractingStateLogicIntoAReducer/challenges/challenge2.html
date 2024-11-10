@@ -26,6 +26,7 @@
                     <h1>Challenge 2 - Clear the input on sending a message</h1>
                     <p>If you want to check the Challenge 2 - Clear the input on sending a message statement <a href=""><span className="turquoise">Click here</span></a></p>
                     <p>Here is the solution: </p>
+                    <Messenger/>
                     <Footer/>
                 </>
             );
@@ -39,6 +40,28 @@
             );
         }
 
+        function Messenger(){
+            const [state, dispatch] = useReducer(messengerReducer, initialState);
+            const message = state.message;
+            const contact = contacts.find((c) => c.id === state.selectedId);
+      
+            return(
+              <div>
+                <ContactList
+                  contacts={contacts}
+                  selectedId={state.selectedId}
+                  dispatch={dispatch}
+                />
+                <Chat
+                  key={contact.id}
+                  message={message}
+                  contact={contact}
+                  dispatch={dispatch}
+                />
+              </div>
+            );
+          }
+
         function App(){
             return(
                 <>
@@ -49,5 +72,6 @@
 
         ReactDOM.render(<App/>, main)
       </script>
+      <script src="challenge2.js"></script>
 </body>
 </html>
