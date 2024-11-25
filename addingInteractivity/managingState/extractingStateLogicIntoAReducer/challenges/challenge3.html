@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge 3 - Restore input values when switching between tabs</title>
+    <link rel="stylesheet" href="../extractingStateLogicIntoAReducer.css">
 </head>
 <body>
     <!-- Div for rendering -->
@@ -16,7 +17,72 @@
 
      <!-- General script -->
       <script type="text/jsx">
+        const { useReducer } = React;
 
+        //Paths
+        const challengeStatements = "https://react.dev/learn/extracting-state-logic-into-a-reducer#challenges";
+        const extractingStateLogicIntoAReducer = "../extractingStateLogicIntoAReducer.html"
+
+        function Intro(){
+            return(
+                <>
+                    <h1>Challenge 3 - Restore input values when switching between tabs</h1>
+                    <p>If you want to check the challenge 3 - Restore input values when switching between tabs statements <a href={challengeStatements}><span className="turquoise">Click here</span></a></p>
+                    <p>Here is the solution: </p>
+                </>
+            );
+        }
+
+        function Messenger(){
+            const [state, dispatch] = useReducer(messengerReducer, initialState);
+            const message = state.message;
+            const contact = contacts.find((c) => c.id === state.selectedId);
+
+            return(
+                <div className="messenger">
+                    <ContactList
+                        contacts={contacts}
+                        selectedId={state.selectedId}
+                        dispatch={dispatch}
+                    />
+                    <Chat
+                        key={contact.id}
+                        message={message}
+                        contact={contact}
+                        dispatch={dispatch}
+                    />
+                </div>
+            );
+        }
+
+        function messengerReduceR(state, action){
+            switch (action.type){
+                case 'changed_selection': {
+                    return{
+                        ...state,
+                        selectedId: action.contactId,
+                        message: '',
+                    };
+                }
+                case 'edited_message': {
+                    return{
+                        ...state,
+                        message: action.message,
+                    };
+                }
+                case 'sent_message': {
+                    return {
+                        ...state,
+                        message: '';
+                    };
+                }
+                default: {
+                    throw Error('Unknown action: ' + action.type);
+                }
+            }
+        }
+
+        ReactDOM.render(<Intro/>, main)
       </script>
       <script src="challenge3.js"></script>
 </body>
