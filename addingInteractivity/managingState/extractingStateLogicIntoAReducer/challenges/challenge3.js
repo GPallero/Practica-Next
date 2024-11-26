@@ -1,6 +1,10 @@
 const initialState = {
     selectedId: 0,
-    message: 'Hello',
+    messages: {
+        0: 'Hello Taylor',
+        1: 'Hello Alice',
+        2: 'Hello Bob',
+    },
 };
 
 const contacts = [
