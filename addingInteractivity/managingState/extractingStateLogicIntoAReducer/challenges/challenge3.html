@@ -26,10 +26,13 @@
         function Intro(){
             return(
                 <>
-                    <h1>Challenge 3 - Restore input values when switching between tabs</h1>
-                    <p>If you want to check the challenge 3 - Restore input values when switching between tabs statements <a href={challengeStatements}><span className="turquoise">Click here</span></a></p>
-                    <p>Here is the solution: </p>
-                    <Messenger/>
+                    <div>
+                        <h1>Challenge 3 - Restore input values when switching between tabs</h1>
+                        <p>If you want to check the challenge 3 - Restore input values when switching between tabs statements <a href={challengeStatements}><span className="turquoise">Click here</span></a></p>
+                        <p>Here is the solution: </p>
+                        <Messenger/>
+                    </div>
+                    <Footer/>
                 </>
             );
         }
@@ -137,6 +140,13 @@
             );
         }
 
+        function Footer(){
+            return (
+                <footer>
+                    <p>Back to <a href={extractingStateLogicIntoAReducer}><span className="turquoise">extracting state logic into a reducer</span></a></p>
+                </footer>
+            )
+        }
         ReactDOM.render(<Intro/>, main)
       </script>
       <script src="challenge3.js"></script>
