@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 4 - implement useReducer from scratch</title>
+</head>
+<body>
+    <!-- Div for rendering -->
+     <div id="main"></div>
+
+     <!-- scripts for React, React DOM & Babel -->
+     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+     <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+     <!-- General script -->
+      <script type="txt/jsx">
+        conts { useState } = React;
+
+        //useReducer from scratch
+        function useReducer (reducer, initialState){
+            const [state, setState] = useReducer(initialState);
+
+            //Dispatch function
+            function dispatch(action){
+                //Seting nextState based on the action 
+                const nextState = reducer(state, action);
+                setState(nextState);
+            }
+
+            return [state, dispatch];
+        }
+
+        function Messenger (){
+            const [state, dispatch] = useReducer(messengerReducer, initialState);
+            const message = state.messages[state.selectedId];
+            const contact = contacts.find((c) => c.id === state.selectedId);
+
+            return(
+                <div>
+                    <ContactList
+                        contacts={contacts}
+                        selectedId={state.selectedId}
+                        dispatch={dispatch}
+                    />
+                    <Chat
+                        key={contact.id}
+                        message={message}
+                        contact={contact}
+                        dispatch={dispatch}
+                    />
+                </div>
+            );
+        }
+      </script>
+
+      <script src="challenge4.js"></script>
+</body>
+</html>
