@@ -53,6 +53,60 @@
                 </div>
             );
         }
+
+        function messengerReducer(state, action){
+            switch (action.type){
+                case 'changed_selection': {
+                    return {
+                        ...state,
+                        selectedId: action.contactId,
+                    };
+                }
+                case 'edited_message': {
+                    return {
+                        ...state,
+                        messages: {
+                            ...state.messages,
+                            [state.selectedId]: action.message,
+                        },
+                    };
+                }
+                case 'sent_message': {
+                    return {
+                        ...state,
+                        messages: {
+                            ...state.messages,
+                            [state.selectedId]: '',
+                        },
+                    };
+                }
+                default: {
+                    throw Error('Unknown action: ' + action.type);
+                }
+            }
+        }
+
+        function ContactList({ contacts, selectedId, dispatch }){
+            return(
+                <section className="contact-list">
+                    <ul>
+                        {contacts.map((contact) => (
+                            <li key={contact.id}>
+                                <button
+
+                                // Create and finish messengerReducer function above this component first.
+
+                                    onClick={() =>}
+                                    >
+
+                                </button>
+                            </li>    
+                    ))}
+
+                    </ul>
+                </section>
+            );
+        }
       </script>
 
       <script src="challenge4.js"></script>
